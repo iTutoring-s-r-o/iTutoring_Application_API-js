@@ -1,0 +1,28 @@
+class Reservation
+{
+    Date;
+    StartTime;
+    Subject;
+    TeacherId;
+    Note;
+    FirstName;
+    LastName;
+    Email;
+    ID;
+
+    IsValid()
+    {
+        if (this.Date == null       ||
+            this.StartTime == null  ||
+            this.Subject == null    ||
+            this.Note == null       ||
+            this.FirstName == null  ||
+            this.LastName == null   ||
+            this.Email == null)
+                return false;
+
+        return true;
+    }
+}
+
+export default Reservation;

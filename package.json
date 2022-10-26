@@ -1,0 +1,22 @@
+{
+  "name": "itutoring_application_js_api",
+  "version": "1.0.0",
+  "description": "Javascript API for iTutoring Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iTutoring-s-r-o/iTutoring-Application-JS-API.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Tadeas Kaba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iTutoring-s-r-o/iTutoring-Application-JS-API/issues"
+  },
+  "homepage": "https://github.com/iTutoring-s-r-o/iTutoring-Application-JS-API#readme"
+}
