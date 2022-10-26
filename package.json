@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iTutoring-s-r-o/iTutoring-Application-JS-API.git"
+    "url": "git+https://github.com/iTutoring-s-r-o/iTutoring_Application_API-js"
   },
   "keywords": [
     "api"
@@ -16,7 +16,7 @@
   "author": "Tadeas Kaba",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iTutoring-s-r-o/iTutoring-Application-JS-API/issues"
+    "url": "https://github.com/iTutoring-s-r-o/iTutoring_Application_API-js/issues"
   },
-  "homepage": "https://github.com/iTutoring-s-r-o/iTutoring-Application-JS-API#readme"
+  "homepage": "https://github.com/iTutoring-s-r-o/iTutoring_Application_API-js#readme"
 }
