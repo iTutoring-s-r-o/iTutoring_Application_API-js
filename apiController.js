@@ -18,6 +18,7 @@ class APIController
         if (location.hostname == 'localhost')
         {
             return "https://itutoring.9e.cz/server/php/API/";
+            
         }
         else
         {
