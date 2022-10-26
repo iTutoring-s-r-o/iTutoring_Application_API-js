@@ -1,5 +1,5 @@
-import APIController from "./api/apiController";
-import Customer from "./Customer";
+import APIController from "./../apiController";
+import Customer from "./../objects/Customer";
 
 class CustomerPortal
 {

@@ -1,6 +1,6 @@
-import APIController from "./api/apiController";
-import Course from "./Course";
-import CourseReservation from "./CourseReservation";
+import APIController from "./../apiController";
+import Course from "./../objects/Course";
+import CourseReservation from "../objects/CourseReservation";
 
 class CoursesSystem
 {

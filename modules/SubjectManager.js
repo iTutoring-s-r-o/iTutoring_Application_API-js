@@ -1,7 +1,6 @@
-import Subject from "./Subject";
-import APIController from "./api/apiController";
-import APICache from "./api/cache";
-import Course from "./Course";
+import Subject from "./../objects/Subject";
+import APIController from "./../apiController";
+import Course from "./../objects/Course";
 
 class SubjectManager
 {
@@ -37,7 +36,6 @@ class SubjectManager
         }*/
 
         data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_SUBJECTS);
-        APICache.Cache(this.#SUBJECTS_CACHE_KEY, data);
 
         var dataArray = JSON.parse(data);
 
@@ -79,7 +77,6 @@ class SubjectManager
         }*/
 
         data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_COURSES);
-        APICache.Cache(this.#COURSES_CACHE_KEY, data);
 
         var dataArray = JSON.parse(data);
 

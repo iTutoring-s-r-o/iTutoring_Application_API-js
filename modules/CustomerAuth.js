@@ -1,5 +1,5 @@
-import APIController from "./api/apiController";
-import EventHandling from "./EventHandling";
+import APIController from "./../apiController";
+//import EventHandling from "./EventHandling";
 
 class CustomerAuth
 {
@@ -41,11 +41,11 @@ class CustomerAuth
             'lname': lname,
         });
 
-        EventHandling.OnUserSignIn.publish(
+        /*EventHandling.OnUserSignIn.publish(
             {
                 result: result
             }
-        );
+        );*/
 
         return result;
     }
@@ -63,12 +63,12 @@ class CustomerAuth
             'pass': password,
         });
 
-        EventHandling.OnUserLogIn.publish(
+        /*EventHandling.OnUserLogIn.publish(
             {
                 result: result,
             }
         );
-
+*/
         return result;
     }
 }

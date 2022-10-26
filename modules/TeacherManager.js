@@ -1,5 +1,5 @@
-import APIController from "./api/apiController";
-import Teacher from "./Teacher";
+import APIController from "./../apiController";
+import Teacher from "./../objects/Teacher";
 
 class TeacherManager
 {

@@ -6,4 +6,4 @@ class Customer
     ID;
 }
 
-export default Customer
+export default Customer;

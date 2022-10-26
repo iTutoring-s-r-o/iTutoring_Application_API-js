@@ -1,7 +1,5 @@
-import Config from "./config";
-import APIController from "./api/apiController";
-import Reservation from "./Reservation";
-import { getJSON } from "jquery";
+import APIController from "./../apiController";
+import Reservation from "./../objects/Reservation";
 
 class ReservationSystem
 {

@@ -1,4 +1,4 @@
-import APIController from "./api/apiController";
+import APIController from "./../apiController";
 
 class Email
 {
