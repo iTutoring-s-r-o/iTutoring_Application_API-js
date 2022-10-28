@@ -171,7 +171,14 @@ class APIController
                 resolve(APIController.#CLIENT_KEY);
             }
 
-            fetch('/client_key.xml').then(response => response.text()).then((data) =>
+            let keyPath = '/client_key.xml';
+            // For localhost use different xml file (to make suer we won't revwrite the server key when uploading websites)
+            if (location.hostname === "localhost")
+            {
+                keyPath = '/local_client_key.xml'
+            }
+
+            fetch(keyPath).then(response => response.text()).then((data) =>
             {
                 var parser = new DOMParser();
                 var keyXML = parser.parseFromString(data, "text/xml");
@@ -180,6 +187,7 @@ class APIController
                 APIController.#CLIENT_KEY = key;
                 resolve(APIController.#CLIENT_KEY);
             });
+
         });
     }
 
