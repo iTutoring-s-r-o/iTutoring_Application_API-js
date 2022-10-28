@@ -1,5 +1,5 @@
-import CookiesManager  from "./CookiesManager";
-import {R_KEYs} from "./objects/Enums";
+import CookiesManager from "./CookiesManager";
+import { R_KEYs } from "./objects/Enums";
 
 /**
  * Main class for comunicating with our backend REST api.
@@ -171,25 +171,15 @@ class APIController
                 resolve(APIController.#CLIENT_KEY);
             }
 
-            // For localhost don't use xml config, but automaticly
-            // return test key.
-            if (location.hostname === "localhost")
+            fetch('/client_key.xml').then(response => response.text()).then((data) =>
             {
-                APIController.#CLIENT_KEY = "r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E";
-                resolve(APIController.#R_KEY);
-            }
-            else
-            {
-                fetch('/client_key.xml').then(response => response.text()).then((data) =>
-                {
-                    var parser = new DOMParser();
-                    var keyXML = parser.parseFromString(data, "text/xml");
-                    var key = keyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
+                var parser = new DOMParser();
+                var keyXML = parser.parseFromString(data, "text/xml");
+                var key = keyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
 
-                    APIController.#CLIENT_KEY = key;
-                    resolve(APIController.#CLIENT_KEY);
-                });
-            }
+                APIController.#CLIENT_KEY = key;
+                resolve(APIController.#CLIENT_KEY);
+            });
         });
     }
 
