@@ -20,6 +20,21 @@ class TeacherPortal
     static #GET_RESERVATIONS = "GetReservations";
     static #SET_BITMOJI = "SetBitmoji";
     static #HAS_BITMOJI = "HasBitmoji";
+    static #TAKE_RESERVATION = "TakeReservation";
+
+    /**
+     * 
+     * @param {*} id Reservation id 
+     * @returns bool
+     */
+    static async TakeReservation(id)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#TAKE_RESERVATION, {
+            'id': id,
+        });
+
+        return APIController.IntToBool(res);
+    }
 
     static async HasBitmoji()
     {
