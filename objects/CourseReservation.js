@@ -5,6 +5,7 @@ class CourseReservation
     CourseId;
     Email;
     TeacherId;
+    Phone;
 }
 
 export default CourseReservation;

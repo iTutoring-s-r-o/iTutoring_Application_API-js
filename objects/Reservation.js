@@ -9,6 +9,7 @@ class Reservation
     LastName;
     Email;
     ID;
+    Phone;
 
     IsValid()
     {
@@ -18,6 +19,7 @@ class Reservation
             this.Note == null       ||
             this.FirstName == null  ||
             this.LastName == null   ||
+            this.Phone == null   ||
             this.Email == null)
                 return false;
 

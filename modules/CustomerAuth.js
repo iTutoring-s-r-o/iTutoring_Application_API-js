@@ -32,13 +32,14 @@ class CustomerAuth
      * @param {*} lname 
      * @returns Int (AuthResult)
      */
-    static async SignIn(email, pass, fname, lname)
+    static async SignIn(email, pass, fname, lname, phone)
     {
         var result = await APIController.Post(this.#MODULE, this.#SIGN_ING, {
             'email': email,
             'pass': pass,
             'fname': fname,
             'lname': lname,
+            'phone': phone,
         });
 
         /*EventHandling.OnUserSignIn.publish(

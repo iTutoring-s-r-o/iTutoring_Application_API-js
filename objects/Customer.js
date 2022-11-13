@@ -4,6 +4,7 @@ class Customer
     LastName;
     Email;
     ID;
+    Phone;
 }
 
 export default Customer;
