@@ -30,6 +30,7 @@ class CustomerPortal
       customer.FirstName = customerArray['FirstName'];
       customer.LastName = customerArray['LastName'];
       customer.ID = customerArray['ID'];
+      customer.Phone = customerArray['Phone'];
 
       return customer;
    }
