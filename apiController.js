@@ -17,12 +17,12 @@ class APIController
     {
         if (location.hostname == 'localhost')
         {
-            return "https://itutoring.9e.cz/server/php/API/";
+            return "https://api.test.itutoring.cz";
 
         }
         else
         {
-            return "server/php/API/";
+            return "https://api.itutoring.cz";
         }
     }
 
@@ -202,7 +202,7 @@ class APIController
             var r_key = await this.GetLocalRKey();
             if (r_key == R_KEYs.r_key_test)
             {
-                return "https://itutoring.9e.cz";
+                return "https://test.itutoring.cz";
             }
             else
             {
