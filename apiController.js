@@ -10,17 +10,18 @@ class APIController
     static #CLIENT_KEY = "-1";
 
     /**
-     * 
+     * R_KEY MUST be loaded before calling this method!
      * @returns Returns apropriate rest url based on current server.
      */
     static REST_URL()
     {
-        if (location.hostname == 'localhost')
+        if (location.hostname == 'localhost' || this.#R_KEY == R_KEYs.r_key_test)
         {
             return "https://api.test.itutoring.cz/";
 
         }
-        else
+        
+        if (this.#R_KEY == R_KEYs.r_key_live)
         {
             return "https://api.itutoring.cz/";
         }
