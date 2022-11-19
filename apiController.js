@@ -17,12 +17,12 @@ class APIController
     {
         if (location.hostname == 'localhost')
         {
-            return "https://api.test.itutoring.cz";
+            return "https://api.test.itutoring.cz/";
 
         }
         else
         {
-            return "https://api.itutoring.cz";
+            return "https://api.itutoring.cz/";
         }
     }
 
