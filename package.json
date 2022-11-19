@@ -1,6 +1,6 @@
 {
   "name": "@itutoring/itutoring_application_js_api",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Javascript API for iTutoring Application",
   "main": "index.js",
   "types": "index.d.ts",
