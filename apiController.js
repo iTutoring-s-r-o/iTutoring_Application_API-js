@@ -20,7 +20,7 @@ class APIController
             return "https://api.test.itutoring.cz/";
 
         }
-        
+
         if (this.#R_KEY == R_KEYs.r_key_live)
         {
             return "https://api.itutoring.cz/";
@@ -85,13 +85,19 @@ class APIController
      * @param data "data must be as array - key, value pair. They'll be passed into the request"
      * @returns "Response from server"
      */
-    static async Post(module, method, data)
+    static async Post(module, method, data, file = null)
     {
         await APIController.GetLocalRKey();
         await APIController.GetClientKey();
 
         return new Promise(resolve =>
         {
+            var formData = new FormData();
+            if (file != null)
+            {
+                var formData = new FormData();
+            }
+
             var args = APIController.GetArgsFromArray(data);
 
             var request = new XMLHttpRequest();
@@ -105,12 +111,21 @@ class APIController
                 }
             }
 
-            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.setRequestHeader("r-key", APIController.#R_KEY);
             request.setRequestHeader("sites", location.hostname);
             request.setRequestHeader("key", APIController.#CLIENT_KEY);
             request.setRequestHeader("visitor-session", this.GetVisitorSessionID());
-            request.send(args);
+
+            if (file != null)
+            {
+                console.log(formData);
+                request.send(formData);
+            }
+            else
+            {
+                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.send(args);
+            }
         });
     }
 

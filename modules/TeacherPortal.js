@@ -21,6 +21,7 @@ class TeacherPortal
     static #SET_BITMOJI = "SetBitmoji";
     static #HAS_BITMOJI = "HasBitmoji";
     static #TAKE_RESERVATION = "TakeReservation";
+    static #UPDATE_PHOTO = "UpdatePhoto";
 
     /**
      * 
@@ -132,7 +133,7 @@ class TeacherPortal
         teacher.ID = teacherArray['ID'];
         teacher.TeachedLessons = teacherArray['TeachedLessons'];
         teacher.Admin = teacherArray['Admin'];
-        teacher.BitmojiURL =decodeURIComponent(teacherArray['BitmojiURL']);
+        teacher.BitmojiURL = decodeURIComponent(teacherArray['BitmojiURL']);
 
         return teacher;
     }
@@ -214,9 +215,15 @@ class TeacherPortal
      */
     static async GetDayTimes(date, id = 'logged')
     {
-        var res = await APIController.Get(this.#MODULE, this.#GET_DATE_TIMES, { 'date': date, 'id': id});
+        var res = await APIController.Get(this.#MODULE, this.#GET_DATE_TIMES, { 'date': date, 'id': id });
 
         return JSON.parse(res);
+    }
+
+    static async UpdatePhoto(photoFile)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#UPDATE_PHOTO, null, photoFile);
+        return APIController.IntToBool(res);
     }
 }
 

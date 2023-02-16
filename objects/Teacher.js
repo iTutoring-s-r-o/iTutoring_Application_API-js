@@ -7,6 +7,7 @@ class Teacher
    TeachedLessons;
    Admin;
    BitmojiURL;
+   TeacherProfile;
 }
 
 export default Teacher;
