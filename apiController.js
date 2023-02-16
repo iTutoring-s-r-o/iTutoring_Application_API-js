@@ -95,7 +95,11 @@ class APIController
             var formData = new FormData();
             if (file != null)
             {
+                console.log("api - U_F");
                 var formData = new FormData();
+                formData.append("file", file);
+
+
             }
 
             var args = APIController.GetArgsFromArray(data);
