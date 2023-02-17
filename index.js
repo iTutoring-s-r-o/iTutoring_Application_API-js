@@ -15,6 +15,7 @@ import TeacherAuth from "./modules/TeacherAuth";
 import TeacherManager from "./modules/TeacherManager";
 import TeacherPortal from "./modules/TeacherPortal";
 import TeacherProfiles from "./modules/TeacherProfiles";
+import WebinarSystem from "./modules/WebinarsSystem";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -51,6 +52,7 @@ export
     TeacherManager,
     TeacherPortal,
     TeacherProfiles,
+    WebinarSystem,
 
     Course,
     CourseReservation,

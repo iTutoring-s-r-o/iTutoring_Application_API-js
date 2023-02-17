@@ -1,3 +1,4 @@
+import TeacherProfile from "../objects/TeacherProfile";
 import APIController from "./../apiController";
 import Teacher from "./../objects/Teacher";
 
@@ -37,12 +38,12 @@ class TeacherManager
     static async GetAllTeachers()
     {
         var teachers = await APIController.Get(this.#MODULE, this.#GET_ALL_TEACHERS);
-        
+
         var teachersArray = JSON.parse(teachers);
 
         var teachersClasses = [];
 
-        for (const[key, value] of Object.entries(teachersArray))
+        for (const [key, value] of Object.entries(teachersArray))
         {
             var teacher = new Teacher;
 
@@ -52,6 +53,13 @@ class TeacherManager
             teacher.ID = value['ID'];
             teacher.TeachedLessons = value['TeachedLessons'];
             teacher.Admin = APIController.IntToBool(value['Admin']);
+
+            var teacherProfile = new TeacherProfile();
+            teacherProfile.Bio = value['Profile']['Bio'];
+            teacherProfile.Name = value['Profile']['Name'];
+            teacherProfile.PhotoPath = value['Profile']['PhotoPath'];
+
+            teacher.TeacherProfile = teacherProfile;
 
             teachersClasses[teacher.ID] = teacher;
         }

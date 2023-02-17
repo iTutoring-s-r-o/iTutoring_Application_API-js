@@ -1,3 +1,4 @@
+import TeacherProfile from "../objects/TeacherProfile";
 import APIController from "./../apiController";
 import Reservation from "./../objects/Reservation";
 import Teacher from "./../objects/Teacher";
@@ -134,6 +135,13 @@ class TeacherPortal
         teacher.TeachedLessons = teacherArray['TeachedLessons'];
         teacher.Admin = teacherArray['Admin'];
         teacher.BitmojiURL = decodeURIComponent(teacherArray['BitmojiURL']);
+
+        var teacherProfile = new TeacherProfile();
+        teacherProfile.Bio = teacherArray['Profile']['Bio'];
+        teacherProfile.Name = teacherArray['Profile']['Name'];
+        teacherProfile.PhotoPath = teacherArray['Profile']['PhotoPath'];
+
+        teacher.TeacherProfile = teacherProfile;
 
         return teacher;
     }
