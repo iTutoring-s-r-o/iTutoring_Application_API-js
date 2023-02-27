@@ -16,6 +16,7 @@ import TeacherManager from "./modules/TeacherManager";
 import TeacherPortal from "./modules/TeacherPortal";
 import TeacherProfiles from "./modules/TeacherProfiles";
 import WebinarSystem from "./modules/WebinarsSystem";
+import GoogleReviews from "./modules/GoogleReviews";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -53,6 +54,7 @@ export
     TeacherPortal,
     TeacherProfiles,
     WebinarSystem,
+    GoogleReviews,
 
     Course,
     CourseReservation,
