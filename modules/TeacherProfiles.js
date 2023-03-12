@@ -7,7 +7,7 @@ class TeacherProfiles
 
     static #GET_PROFILES = "GetProfiles";
 
-    
+
     /**
      * Retrive all public teacher profiles
      * 
@@ -15,8 +15,8 @@ class TeacherProfiles
      */
     static async GetProfiles()
     {
-        var profiles =  await APIController.Get(this.#MODULE, this.#GET_PROFILES);
-        
+        var profiles = await APIController.Get(this.#MODULE, this.#GET_PROFILES);
+
         var parsedProfiles;
         try
         {
@@ -26,7 +26,7 @@ class TeacherProfiles
         {
             return null;
         }
-        
+
         var profilesArray = [];
 
         for (const [key, value] of Object.entries(parsedProfiles))
@@ -36,6 +36,7 @@ class TeacherProfiles
             profile.Name = value['Name'];
             profile.Bio = value['Bio'];
             profile.PhotoPath = value['PhotoPath'];
+            profile.Subjects = value['Subjects'] == null ? [] : value['Subjects'];
 
             profilesArray[key] = profile;
         }

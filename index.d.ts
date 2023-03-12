@@ -19,6 +19,9 @@ import TeacherPortal from "./modules/TeacherPortal";
 import TeacherProfiles from "./modules/TeacherProfiles";
 import WebinarSystem from "./modules/WebinarsSystem";
 import GoogleReviews from "./modules/GoogleReviews";
+import CustomerEduPortal from "./modules/CustomerEduPortal";
+import EventManager from "./modules/EventManager";
+import iTutoringApplicationVersion from "./modules/Version";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -27,6 +30,7 @@ import Reservation from "./objects/Reservation";
 import Subject from "./objects/Subject";
 import Teacher from "./objects/Teacher";
 import TeacherProfile from "./objects/TeacherProfile";
+import iEvent from "./objects/Event";
 
 import
     {
@@ -57,6 +61,9 @@ export
     TeacherProfiles,
     WebinarSystem,
     GoogleReviews,
+    CustomerEduPortal,
+    EventManager,
+    iTutoringApplicationVersion,
 
     Course,
     CourseReservation,
@@ -65,6 +72,7 @@ export
     Subject,
     Teacher,
     TeacherProfile,
+    iEvent,
 
     BookReturn,
     AuthResult,
