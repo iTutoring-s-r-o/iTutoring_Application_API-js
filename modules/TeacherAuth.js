@@ -14,6 +14,14 @@ class TeacherAuth
    static #CHANGE_PASSWOD = "ChangePassword";
 
    /**
+    * This mothod will force default auth dialog
+    */
+   static async Auth(callbackUrl)
+   {
+      location.href = APIController.REST_URL() + encodeURI(APIController.GetVisitorSessionID() + '/auth/tauth?c=' + encodeURI(callbackUrl));
+   }
+
+   /**
     * 
     * @param {*} email 
     * @param {*} password 

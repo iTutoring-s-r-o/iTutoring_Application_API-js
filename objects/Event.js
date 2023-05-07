@@ -79,6 +79,8 @@ class iEvent
 
     ReadOnly;
 
+    State;
+
 
     CreateFromJSON(json)
     {
@@ -99,6 +101,7 @@ class iEvent
         this.Recursivity = json['Recursivity'];
         this.IsVideoConference = json['IsVideoConference'];
         this.ReadOnly = json['ReadOnly'];
+        this.State = json['State'];
     }
 }
 

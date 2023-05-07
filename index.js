@@ -20,6 +20,7 @@ import GoogleReviews from "./modules/GoogleReviews";
 import CustomerEduPortal from "./modules/CustomerEduPortal";
 import EventManager from "./modules/EventManager";
 import iTutoringApplicationVersion from "./modules/Version";
+import LessonManager from "./modules/LessonManager";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -62,6 +63,7 @@ export
     CustomerEduPortal,
     EventManager,
     iTutoringApplicationVersion,
+    LessonManager,
 
     Course,
     CourseReservation,
