@@ -13,6 +13,7 @@ class LessonManager
     static #GET_ALL_EVENTS = "GetAllEvents";
     static #DELETE_EVENT = "DeleteEvent";
     static #UPDATE_EVENT = "UpdateEvent";
+    static #CREATE_EVENT = "CreateEvent";
 
     static async GetAllEvents()
     {
@@ -43,6 +44,14 @@ class LessonManager
         await APIController.Post(this.#MODULE, this.#UPDATE_EVENT, {
             "event": eventJson,
         });
+    }
+
+    /**
+     * Will create a new event. 
+     */
+    static async CreateEvent()
+    {
+        await APIController.Post(this.#MODULE, this.#CREATE_EVENT);
     }
 }
 
