@@ -15,9 +15,11 @@ class LessonManager
     static #UPDATE_EVENT = "UpdateEvent";
     static #CREATE_EVENT = "CreateEvent";
 
-    static async GetAllEvents()
+    static async GetAllEvents(filters)
     {
-        var events = await APIController.Get(this.#MODULE, this.#GET_ALL_EVENTS);
+        var events = await APIController.Get(this.#MODULE, this.#GET_ALL_EVENTS, {
+            "filters": JSON.stringify(filters),
+        });
 
         var eventObjs = [];
         var eventsJson = JSON.parse(events)
