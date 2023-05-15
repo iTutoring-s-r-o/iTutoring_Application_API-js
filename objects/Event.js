@@ -80,6 +80,8 @@ class iEvent
     ReadOnly;
 
     State;
+    Place;
+    Class;
 
 
     CreateFromJSON(json)
@@ -102,6 +104,8 @@ class iEvent
         this.IsVideoConference = json['IsVideoConference'];
         this.ReadOnly = json['ReadOnly'];
         this.State = json['State'];
+        this.Class = json['Class'];
+        this.Place = json['Place'];
     }
 }
 

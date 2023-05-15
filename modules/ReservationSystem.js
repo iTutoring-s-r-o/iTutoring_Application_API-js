@@ -21,6 +21,7 @@ class ReservationSystem
     static #IS_RESERVATION_PAID = "IsReservationPaid";
     static #MARK_RESERVATION_PAID = "MarkReservationPaid";
     static #RETRIVE_ORDER_ID = "RetriveOrderID";
+    static #SEND_REQUEST = "SendRequest";
 
     /**
      * Returns availability for specific day and subject
@@ -232,6 +233,25 @@ class ReservationSystem
         var id = await APIController.Get(this.#MODULE, this.#RETRIVE_ORDER_ID);
 
         return id;
+    }
+
+    /**
+     * Send request for tutoring. Will register as event
+     * @param {*} name 
+     * @param {*} email 
+     * @param {*} tel 
+     * @param {*} msg 
+     * @param {*} place  must be PlaceID !
+     */
+    static async SendRequest(name, email, tel, msg, place)
+    {
+        await APIController.Post(this.#MODULE, this.#SEND_REQUEST, {
+            "name": name,
+            "email": email,
+            "tel": tel,
+            "msg": msg,
+            "place": place
+        })            
     }
 }
 

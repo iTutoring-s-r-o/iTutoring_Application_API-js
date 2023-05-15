@@ -12,6 +12,8 @@ class SubjectManager
     // All method names
     static #GET_ALL_AVAILABLE_SUBJECTS = "GetAllAvailableSubjects";
     static #GET_ALL_AVAILABLE_COURSES = "GetAllAvailableCourses";
+    static #GET_ALL_AVAILABLE_PLACES = "GetAllAvailablePlaces";
+    static #GET_ALL_AVAILABLE_CLASSES = "GetAllAvailableClasses";
 
     // Cache keys
     static #SUBJECTS_CACHE_KEY = "json_subjects_c_k";
@@ -106,6 +108,22 @@ class SubjectManager
         }
 
         return availableCourses;
+    }
+
+    static async GetAllAvailablePlaces()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_PLACES);
+
+        var arr = JSON.parse(data);
+
+        return arr;
+    }
+
+    static async GetAllAvailableClasses()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_CLASSES);
+        var arr = JSON.parse(data);
+        return arr;
     }
 }
 
