@@ -32,6 +32,8 @@ import Subject from "./objects/Subject";
 import Teacher from "./objects/Teacher";
 import TeacherProfile from "./objects/TeacherProfile";
 import iEvent from "./objects/Event";
+import AuthUser from "./objects/AuthUser";
+import Authentication from "./modules/Authentication";
 
 import
     {
@@ -40,7 +42,8 @@ import
         PaymentType,
         DeviceOS,
         PasswordChange,
-        R_KEYs
+        R_KEYs,
+        AuthType,
     } from "./objects/Enums";
 
 export
@@ -66,6 +69,7 @@ export
     EventManager,
     iTutoringApplicationVersion,
     LessonManager,
+    Authentication,
     
     Course,
     CourseReservation,
@@ -75,11 +79,13 @@ export
     Teacher,
     TeacherProfile,
     iEvent,
+    AuthUser,
 
     BookReturn,
     AuthResult,
     PaymentType,
     DeviceOS,
     PasswordChange,
-    R_KEYs
+    R_KEYs,
+    AuthType
 }

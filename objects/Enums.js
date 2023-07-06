@@ -37,6 +37,11 @@ const R_KEYs = {
     r_key_live: 'r_key_live'
 }
 
+const AuthType = {
+    Teacher: 0,
+    Customer: 1,
+}
+
 export
 {
     BookReturn,
@@ -44,5 +49,6 @@ export
     PaymentType,
     DeviceOS,
     PasswordChange,
-    R_KEYs
+    R_KEYs,
+    AuthType
 }
