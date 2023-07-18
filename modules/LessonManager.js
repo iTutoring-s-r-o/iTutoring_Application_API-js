@@ -51,9 +51,11 @@ class LessonManager
     /**
      * Will create a new event. 
      */
-    static async CreateEvent()
+    static async CreateEvent(defaultTimeUnix = null)
     {
-        await APIController.Post(this.#MODULE, this.#CREATE_EVENT);
+        await APIController.Post(this.#MODULE, this.#CREATE_EVENT, {
+            'def_time': defaultTimeUnix,
+        });
     }
 }
 
