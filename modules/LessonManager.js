@@ -11,6 +11,7 @@ class LessonManager
 
     // All method names
     static #GET_ALL_EVENTS = "GetAllEvents";
+    static #SEARCH_ALL_EVENTS = "SearchAllEvents";
     static #DELETE_EVENT = "DeleteEvent";
     static #UPDATE_EVENT = "UpdateEvent";
     static #CREATE_EVENT = "CreateEvent";
@@ -20,6 +21,24 @@ class LessonManager
         var events = await APIController.Get(this.#MODULE, this.#GET_ALL_EVENTS, {
             "filters": JSON.stringify(filters),
             "filterOp": filterOp,
+        });
+
+        var eventObjs = [];
+        var eventsJson = JSON.parse(events)
+        for (const [key, value] of Object.entries(eventsJson))
+        {
+            var ev = new iEvent();
+            ev.CreateFromJSON(JSON.parse(value))
+            eventObjs.push(ev);
+        }
+
+        return eventObjs;
+    }
+
+    static async SearchAllEvents(searchParam)
+    {
+        var events = await APIController.Get(this.#MODULE, this.#SEARCH_ALL_EVENTS, {
+            "search_param": searchParam,
         });
 
         var eventObjs = [];
