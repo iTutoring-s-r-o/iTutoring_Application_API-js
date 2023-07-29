@@ -23,6 +23,7 @@ import CustomerEduPortal from "./modules/CustomerEduPortal";
 import EventManager from "./modules/EventManager";
 import iTutoringApplicationVersion from "./modules/Version";
 import LessonManager from "./modules/LessonManager";
+import AttendanceManager from "./modules/AttendanceManager";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -34,6 +35,7 @@ import TeacherProfile from "./objects/TeacherProfile";
 import iEvent from "./objects/Event";
 import AuthUser from "./objects/AuthUser";
 import Authentication from "./modules/Authentication";
+import AttendanceEvent from "./objects/AttendanceEvent";
 
 import
     {
@@ -70,6 +72,7 @@ export
     iTutoringApplicationVersion,
     LessonManager,
     Authentication,
+    AttendanceManager,
     
     Course,
     CourseReservation,
@@ -80,6 +83,7 @@ export
     TeacherProfile,
     iEvent,
     AuthUser,
+    AttendanceEvent,
 
     BookReturn,
     AuthResult,
