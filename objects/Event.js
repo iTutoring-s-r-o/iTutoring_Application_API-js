@@ -82,6 +82,7 @@ class iEvent
     State;
     Place;
     Class;
+    Students;
 
 
     CreateFromJSON(json)
@@ -106,6 +107,7 @@ class iEvent
         this.State = json['State'];
         this.Class = json['Class'];
         this.Place = json['Place'];
+        this.Students = json['Students'];
     }
 }
 

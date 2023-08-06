@@ -5,7 +5,8 @@ class AttendanceEvent
     Note;
     ID;
     EventName;
-    Subject
+    Subject;
+    StudentName
 
     CreateFromJSON(json)
     {
@@ -15,6 +16,7 @@ class AttendanceEvent
         this.ID = json['ID'];
         this.EventName = json['EventName'];
         this.Subject = json['Subject'];
+        this.StudentName = json['StudentName'];
     }
 }
 

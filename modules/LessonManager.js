@@ -18,10 +18,13 @@ class LessonManager
 
     static async GetAllEvents(filters, filterOp = "AND")
     {
+
         var events = await APIController.Get(this.#MODULE, this.#GET_ALL_EVENTS, {
             "filters": JSON.stringify(filters),
             "filterOp": filterOp,
         });
+
+        this.CheckForError(events);
 
         var eventObjs = [];
         var eventsJson = JSON.parse(events)
@@ -41,6 +44,8 @@ class LessonManager
             "search_param": searchParam,
         });
 
+        this.CheckForError(events);
+
         var eventObjs = [];
         var eventsJson = JSON.parse(events)
         for (const [key, value] of Object.entries(eventsJson))
@@ -55,17 +60,21 @@ class LessonManager
 
     static async DeleteEvent(eventId)
     {
-        await APIController.Post(this.#MODULE, this.#DELETE_EVENT, {
+        var data = await APIController.Post(this.#MODULE, this.#DELETE_EVENT, {
             "id": eventId,
         });
+
+        this.CheckForError(data);
     }
 
     static async UpdateEvent(event)
     {
         var eventJson = JSON.stringify(event);
-        await APIController.Post(this.#MODULE, this.#UPDATE_EVENT, {
+        var data = await APIController.Post(this.#MODULE, this.#UPDATE_EVENT, {
             "event": eventJson,
         });
+
+        this.CheckForError(data);
     }
 
     /**
@@ -73,9 +82,20 @@ class LessonManager
      */
     static async CreateEvent(defaultTimeUnix = null)
     {
-        await APIController.Post(this.#MODULE, this.#CREATE_EVENT, {
+        var data = await APIController.Post(this.#MODULE, this.#CREATE_EVENT, {
             'def_time': defaultTimeUnix,
         });
+
+        this.CheckForError(data);
+    }
+
+    static async CheckForError(data)
+    {
+        if (data.includes("error: "))
+        {
+            data = data.replace("error: ", "");
+            location.href = data;
+        }
     }
 }
 

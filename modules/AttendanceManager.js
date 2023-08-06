@@ -12,15 +12,24 @@ class AttendanceManager
     {
         var data = await APIController.Get(this.#MODULE, this.#RETRIVE_ALL_EVENTS);
 
+        this.CheckForError(data);
+
+        data = JSON.parse(data);
         var events = [];
         for (const [key, value] of Object.entries(data))
         {
             var atEvents = []
-            for (const [k1, v1] of Object.entries(value))
+            for (const [k0, v0] of Object.entries(value))
             {
-                var ev = new AttendanceEvent();
-                ev.CreateFromJSON(JSON.parse(v1));
-                atEvents.push(ev);
+                var atEventsStudent = [];
+                for (const [k1, v1] of Object.entries(v0))
+                {
+                    var ev = new AttendanceEvent();
+                    ev.CreateFromJSON(JSON.parse(v1));
+                    atEventsStudent.push(ev);
+                }
+
+                atEvents.push(atEventsStudent);
             }
             events.push(atEvents);
         }
@@ -30,9 +39,20 @@ class AttendanceManager
 
     static async UpdateEvent(event)
     {
-        await APIController.Post(this.#MODULE, this.#UPDATE_EVENT, {
+        var data = await APIController.Post(this.#MODULE, this.#UPDATE_EVENT, {
             'event': JSON.stringify(event),
         });
+
+        this.CheckForError(data);
+    }
+
+    static async CheckForError(data)
+    {
+        if (data.includes("error: "))
+        {
+            data = data.replace("error: ", "");
+            location.href = data
+        }
     }
 }
 
