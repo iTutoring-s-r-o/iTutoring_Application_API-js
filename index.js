@@ -34,6 +34,7 @@ import iEvent from "./objects/Event";
 import AuthUser from "./objects/AuthUser";
 import Authentication from "./modules/Authentication";
 import AttendanceEvent from "./objects/AttendanceEvent";
+import Toolkit from "./toolkit/Toolkit";
 
 import
     {
@@ -71,6 +72,7 @@ export
     LessonManager,
     Authentication,
     AttendanceManager,
+    Toolkit,
 
     Course,
     CourseReservation,
