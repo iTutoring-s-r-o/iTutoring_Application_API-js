@@ -10,6 +10,7 @@ class Payments
     // All method names
     static #PURCHASE = "Purchase";
     static #VALIDATE_PURCHASE = "ValidatePurchase";
+    static #GET_AVAILABLE_ITEMS = "GetAvailableItems";
 
     /**
      * Purchase specific product. After calling you'll be redirected depending on the result to success or cancel (failed) url
@@ -46,6 +47,14 @@ class Payments
         var res = await APIController.Get(this.#MODULE, this.#VALIDATE_PURCHASE, { 'id': transactionId });
 
         return APIController.IntToBool(res);
+    }
+
+    // Array of avaialable item names. returned as parsed json.
+    static async GetAvailableItems()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_ITEMS);
+
+        return JSON.parse(res);
     }
 }
 
