@@ -6,7 +6,10 @@ class AttendanceEvent
     ID;
     EventName;
     Subject;
-    StudentName
+    StudentName;
+    EventDescription;
+    Class;
+    Place;
 
     CreateFromJSON(json)
     {
