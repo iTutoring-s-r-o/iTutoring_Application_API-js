@@ -20,6 +20,9 @@ class AttendanceEvent
         this.EventName = json['EventName'];
         this.Subject = json['Subject'];
         this.StudentName = json['StudentName'];
+        this.EventDescription = json['EventDescription'];
+        this.Class = json['Class'];
+        this.Place = json['Place'];
     }
 }
 
