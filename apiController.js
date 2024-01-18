@@ -8,6 +8,8 @@ class APIController
 {
     static #R_KEY = "-1";
     static #CLIENT_KEY = "-1";
+    
+    static UserSource = null;
 
     /**
      * R_KEY MUST be loaded before calling this method!
@@ -34,12 +36,33 @@ class APIController
         date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
 
         CookiesManager.SetCookie("session", id, date.toUTCString());
+        this.ReadUserSource();
     }
 
     static GetVisitorSessionID()
     {
-        console.log(CookiesManager.GetCookie("session"));
+        //console.log(CookiesManager.GetCookie("session"));
         return CookiesManager.GetCookie("session");
+    }
+
+    static ReadUserSource()
+    {
+        this.UserSource = CookiesManager.GetCookie("_o");
+        if (this.UserSource != null)
+            return;
+
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("o"))
+        {
+            var source = urlParams.get("o");
+            if (this.UserSource == null)
+            {
+                var date = new Date();
+                date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+                CookiesManager.SetCookie("_o", source, date.toUTCString());
+                this.UserSource = source;
+            }
+        }
     }
 
     /**
@@ -74,6 +97,8 @@ class APIController
             request.setRequestHeader("sites", location.hostname);
             request.setRequestHeader("key", APIController.#CLIENT_KEY);
             request.setRequestHeader("visitor-session", this.GetVisitorSessionID());
+            if (this.UserSource != null)
+                request.setRequestHeader("visitor-source", this.UserSource);
             request.send();
         });
     }
@@ -118,6 +143,8 @@ class APIController
             request.setRequestHeader("sites", location.hostname);
             request.setRequestHeader("key", APIController.#CLIENT_KEY);
             request.setRequestHeader("visitor-session", this.GetVisitorSessionID());
+            if (this.UserSource != null)
+                request.setRequestHeader("visitor-source", this.UserSource);
 
             if (file != null)
             {
