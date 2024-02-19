@@ -10,6 +10,7 @@ class AttendanceEvent
     EventDescription;
     Class;
     Place;
+    Recursivity
 
     CreateFromJSON(json)
     {
@@ -23,6 +24,7 @@ class AttendanceEvent
         this.EventDescription = json['EventDescription'];
         this.Class = json['Class'];
         this.Place = json['Place'];
+        this.Recursivity = json['Recursivity'];
     }
 }
 

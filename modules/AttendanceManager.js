@@ -7,6 +7,8 @@ class AttendanceManager
 
     static #RETRIVE_ALL_EVENTS = "RetriveAllEvents";
     static #UPDATE_EVENT = "UpdateEvent";
+    static #GET_EVENTS = "GetEvents";
+    static #GET_ATTENDANCE_FROM_EVENT = "GetAttendanceFromEvent";
 
     static async RetriveAllEvents()
     {
@@ -44,6 +46,48 @@ class AttendanceManager
         });
 
         this.CheckForError(data);
+    }
+
+    static async GetEvents()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_EVENTS);
+        this.CheckForError(data);
+
+        data = JSON.parse(data);
+        var atEvents = [];
+        for (const [k0, v0] of Object.entries(data))
+        {
+            var ev = new AttendanceEvent();
+            ev.CreateFromJSON(v0);
+            atEvents.push(ev);
+        }
+
+        return atEvents;
+    }
+
+    static async GetAttendanceFromEvent(id)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_ATTENDANCE_FROM_EVENT, {
+            "id": id,
+        });
+        this.CheckForError(data);
+
+        data = JSON.parse(data);
+        var atEvents = []
+        for (const [k0, v0] of Object.entries(data))
+        {
+            var atEventsStudent = [];
+            for (const [k1, v1] of Object.entries(v0))
+            {
+                var ev = new AttendanceEvent();
+                ev.CreateFromJSON(JSON.parse(v1));
+                atEventsStudent.push(ev);
+            }
+
+            atEvents.push(atEventsStudent);
+        }
+
+        return atEvents;
     }
 
     static async CheckForError(data)
