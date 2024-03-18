@@ -35,6 +35,7 @@ import AuthUser from "./objects/AuthUser";
 import Authentication from "./modules/Authentication";
 import AttendanceEvent from "./objects/AttendanceEvent";
 import Toolkit from "./toolkit/Toolkit";
+import TeacherProfileModule from "./modules/TeacherProfileModule";
 
 import
     {
@@ -73,6 +74,7 @@ export
     Authentication,
     AttendanceManager,
     Toolkit,
+    TeacherProfileModule,
 
     Course,
     CourseReservation,

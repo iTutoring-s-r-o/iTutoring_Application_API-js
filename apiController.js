@@ -88,7 +88,19 @@ class APIController
             {
                 if (request.readyState == 4)
                 {
-                    resolve(request.responseText);
+                    var json = JSON.parse(request.responseText);
+                    if (json.code ==200)
+                    {
+                        resolve(json.data);
+                    }
+                    if (json.code == 400)
+                    {
+                        console.log("API Error:");
+                        console.log("Error: " + json.error_message);
+                        console.log("ErrorCode: " + json.error_code);
+                        console.log("StackTrace: " + json.stack_trace);
+                        resolve("Invalid data");
+                    }
                 }
             }
 
@@ -135,7 +147,19 @@ class APIController
             {
                 if (request.readyState == 4)
                 {
-                    resolve(request.responseText);
+                    var json = JSON.parse(request.responseText);
+                    if (json.code ==200)
+                    {
+                        resolve(json.data);
+                    }
+                    if (json.code == 400)
+                    {
+                        console.log("API Error:");
+                        console.log("Error: " + json.error_message);
+                        console.log("ErrorCode: " + json.error_code);
+                        console.log("StackTrace: " + json.stack_trace);
+                        resolve("Invalid data");
+                    }
                 }
             }
 
