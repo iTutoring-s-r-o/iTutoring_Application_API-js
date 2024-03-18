@@ -1,3 +1,5 @@
+import APIController from "../apiController";
+
 class TeacherProfileModule
 {
     static #MODULE = "TeacherProfileModule";
@@ -120,9 +122,9 @@ class TeacherProfileModule
         });
     }
 
-    static async uploadProfilePicture()
+    static async uploadProfilePicture(photoFile)
     {
-        // implementation goes here
+        await APIController.Post(this.#MODULE, this.#UPLOAD_PROFILE_PICTURE, null, photoFile);
     }
 
     static async setOnsitePlace(places)
