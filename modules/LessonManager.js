@@ -24,7 +24,6 @@ class LessonManager
             "filterOp": filterOp,
         });
 
-        this.CheckForError(events);
 
         var eventObjs = [];
         var eventsJson = JSON.parse(events)
@@ -44,8 +43,6 @@ class LessonManager
             "search_param": searchParam,
         });
 
-        this.CheckForError(events);
-
         var eventObjs = [];
         var eventsJson = JSON.parse(events)
         for (const [key, value] of Object.entries(eventsJson))
@@ -64,7 +61,6 @@ class LessonManager
             "id": eventId,
         });
 
-        this.CheckForError(data);
     }
 
     static async UpdateEvent(event)
@@ -74,7 +70,6 @@ class LessonManager
             "event": eventJson,
         });
 
-        this.CheckForError(data);
     }
 
     /**
@@ -86,16 +81,6 @@ class LessonManager
             'def_time': defaultTimeUnix,
         });
 
-        this.CheckForError(data);
-    }
-
-    static async CheckForError(data)
-    {
-        if (data.includes("error: "))
-        {
-            data = data.replace("error: ", "");
-            location.href = data;
-        }
     }
 }
 

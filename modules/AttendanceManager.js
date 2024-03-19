@@ -14,8 +14,6 @@ class AttendanceManager
     {
         var data = await APIController.Get(this.#MODULE, this.#RETRIVE_ALL_EVENTS);
 
-        this.CheckForError(data);
-
         data = JSON.parse(data);
         var events = [];
         for (const [key, value] of Object.entries(data))
@@ -44,14 +42,11 @@ class AttendanceManager
         var data = await APIController.Post(this.#MODULE, this.#UPDATE_EVENT, {
             'event': JSON.stringify(event),
         });
-
-        this.CheckForError(data);
     }
 
     static async GetEvents()
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_EVENTS);
-        this.CheckForError(data);
 
         data = JSON.parse(data);
         var atEvents = [];
@@ -70,7 +65,6 @@ class AttendanceManager
         var data = await APIController.Get(this.#MODULE, this.#GET_ATTENDANCE_FROM_EVENT, {
             "id": id,
         });
-        this.CheckForError(data);
 
         data = JSON.parse(data);
         var atEvents = []
@@ -88,15 +82,6 @@ class AttendanceManager
         }
 
         return atEvents;
-    }
-
-    static async CheckForError(data)
-    {
-        if (data.includes("error: "))
-        {
-            data = data.replace("error: ", "");
-            location.href = data
-        }
     }
 }
 

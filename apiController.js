@@ -91,6 +91,11 @@ class APIController
                     var json = JSON.parse(request.responseText);
                     if (json.code ==200)
                     {
+                        // check for redirect
+                        if (json.data == "redirect" && json.url != undefined)
+                        {
+                            window.location.href = json.url;
+                        }
                         resolve(json.data);
                     }
                     if (json.code == 400)
@@ -150,6 +155,11 @@ class APIController
                     var json = JSON.parse(request.responseText);
                     if (json.code ==200)
                     {
+                        // check for redirect
+                        if (json.data == "redirect" && json.url != undefined)
+                        {
+                            window.location.href = json.url;
+                        }
                         resolve(json.data);
                     }
                     if (json.code == 400)

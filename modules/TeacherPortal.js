@@ -128,20 +128,11 @@ class TeacherPortal
         var teacherArray = JSON.parse(data);
 
         var teacher = new Teacher();
-        teacher.Email = teacherArray['Email'];
-        teacher.Name = teacherArray['Name'];
-        teacher.ZoomMeeting = teacherArray['ZoomMeeting'];
-        teacher.ID = teacherArray['ID'];
-        teacher.TeachedLessons = teacherArray['TeachedLessons'];
-        teacher.Admin = teacherArray['Admin'];
-        teacher.BitmojiURL = decodeURIComponent(teacherArray['BitmojiURL']);
-
-        var teacherProfile = new TeacherProfile();
-        teacherProfile.Bio = teacherArray['Profile']['Bio'];
-        teacherProfile.Name = teacherArray['Profile']['Name'];
-        teacherProfile.PhotoPath = teacherArray['Profile']['PhotoPath'];
-
-        teacher.TeacherProfile = teacherProfile;
+        teacher.Email = teacherArray['email'];
+        teacher.Name = teacherArray['name'];
+        teacher.ZoomMeeting = teacherArray['zoomMeeting'];
+        teacher.ID = teacherArray['id'];
+        teacher.TeachedLessons = teacherArray['taughtLessons'];
 
         return teacher;
     }
