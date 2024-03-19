@@ -32,8 +32,6 @@ class Toolkit
         var data = await APIController.Post(this.#MODULE, this.#REQUEST_ACCESS, {
             'uid': moduleUid
         });
-
-        this.CheckForError(data);
     }
 
     /**
@@ -47,18 +45,7 @@ class Toolkit
             'uid': moduleUid
         });
 
-        this.CheckForError(info);
-
         return JSON.parse(info);
-    }
-
-    static async CheckForError(data)
-    {
-        if (data.includes("error: "))
-        {
-            data = data.replace("error: ", "");
-            location.href = data
-        }
     }
 }
 
