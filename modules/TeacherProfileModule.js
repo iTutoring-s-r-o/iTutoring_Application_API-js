@@ -27,6 +27,21 @@ class TeacherProfileModule
     static #IS_PUBLIC_PROFILE_ACTIVE = "IsPublicProfileActive";
     static #GET_PROFILE_PICTURE = "GetProfilePicture";
     static #GET_TEACHER_INFO = "GetTeacherInfo";
+    static #IS_TEACHING_ONSITE = "IsTeachingOnsite";
+    static #SET_TEACHING_ONSITE = "SetTeachingOnsite";
+
+    static async isTeachingOnsite()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#IS_TEACHING_ONSITE);
+        return data;
+    }
+
+    static async setTeachingOnsite(onsite)
+    {
+        await APIController.Post(this.#MODULE, this.#SET_TEACHING_ONSITE, {
+            'teachingOnsite': onsite,
+        });
+    }
 
     static async getTeacherInfo()
     {
