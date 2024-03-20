@@ -36,7 +36,7 @@ class TeacherProfileModule
 
     static async getProfilePicture()
     {
-        data = await APIController.Get(this.#MODULE, this.#GET_PROFILE_PICTURE);
+        var data = await APIController.Get(this.#MODULE, this.#GET_PROFILE_PICTURE);
         return data;
     }
 
