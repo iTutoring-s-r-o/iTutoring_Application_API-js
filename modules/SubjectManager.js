@@ -14,10 +14,18 @@ class SubjectManager
     static #GET_ALL_AVAILABLE_COURSES = "GetAllAvailableCourses";
     static #GET_ALL_AVAILABLE_PLACES = "GetAllAvailablePlaces";
     static #GET_ALL_AVAILABLE_CLASSES = "GetAllAvailableClasses";
+    static #GET_ALL_AVAILABLE_LOCATIONS = "GetAllAvailableLocations";
 
     // Cache keys
     static #SUBJECTS_CACHE_KEY = "json_subjects_c_k";
     static #COURSES_CACHE_KEY = "json_courses_c_k";
+
+    static async getAllAvailableLocations()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_LOCATIONS);
+        var arr = JSON.parse(data);
+        return arr;
+    }
 
     /**
      * 
