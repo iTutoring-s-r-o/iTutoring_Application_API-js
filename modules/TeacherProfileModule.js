@@ -26,6 +26,13 @@ class TeacherProfileModule
     static #GET_BIO = "GetBio";
     static #IS_PUBLIC_PROFILE_ACTIVE = "IsPublicProfileActive";
     static #GET_PROFILE_PICTURE = "GetProfilePicture";
+    static #GET_TEACHER_INFO = "GetTeacherInfo";
+
+    static async getTeacherInfo()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_TEACHER_INFO);
+        return JSON.parse(data);
+    }
 
     static async getProfilePicture()
     {
