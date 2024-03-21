@@ -94,39 +94,43 @@ class TeacherProfileModule
         });
     }
 
-    static async addTimeInterval(day, from, to)
+    static async addTimeInterval(day, from, to, id)
     {
         await APIController.Post(this.#MODULE, this.#ADD_TIME_INTERVAL, {
             'day': day,
             'from': from,
             'to': to,
+            'id': id,
         });
     }
 
-    static async removeTimeInterval(day, from, to)
+    static async removeTimeInterval(day, from, to, id)
     {
         await APIController.Post(this.#MODULE, this.#REMOVE_TIME_INTERVAL, {
             'day': day,
             'from': from,
             'to': to,
+            'id': id,
         });
     }
 
-    static async addUnavailableTimeInterval(date, from, to)
+    static async addUnavailableTimeInterval(date, from, to, id)
     {
         await APIController.Post(this.#MODULE, this.#ADD_UNAVAILABLE_TIME_INTERVAL, {
             'day': date,
             'from': from,
             'to': to,
+            'id': id,
         });
     }
 
-    static async removeUnavailableTimeInterval(date, from, to)
+    static async removeUnavailableTimeInterval(date, from, to, id)
     {
         await APIController.Post(this.#MODULE, this.#REMOVE_UNAVAILABLE_TIME_INTERVAL, {
             'day': date,
             'from': from,
             'to': to,
+            'id': id,
         });
     }
 
