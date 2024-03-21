@@ -143,8 +143,6 @@ class APIController
 
             }
 
-            var args = APIController.GetArgsFromArray(data);
-
             var request = new XMLHttpRequest();
             request.open("POST", APIController.REST_URL() + module + "/" + method, true);
 
@@ -188,7 +186,7 @@ class APIController
             else
             {
                 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send(args);
+                request.send(data);
             }
         });
     }
