@@ -29,6 +29,14 @@ class TeacherProfileModule
     static #GET_TEACHER_INFO = "GetTeacherInfo";
     static #IS_TEACHING_ONSITE = "IsTeachingOnsite";
     static #SET_TEACHING_ONSITE = "SetTeachingOnsite";
+    static #REMOVE_UNAVAILABLE_DATE = "RemoveUnavailableDate";
+
+    static async removeUnavailableDate(date)
+    {
+        await APIController.Post(this.#MODULE, this.#REMOVE_UNAVAILABLE_DATE, {
+            'date': date,
+        });
+    }
 
     static async isTeachingOnsite()
     {
