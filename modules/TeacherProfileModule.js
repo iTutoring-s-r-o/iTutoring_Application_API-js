@@ -192,7 +192,7 @@ class TeacherProfileModule
     static async getMaxEvents()
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_MAX_EVENTS);
-        return data;
+        return parseInt(data);
     }
 
     static async setMaxEvents(maxEvents)
