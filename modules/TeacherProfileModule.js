@@ -115,7 +115,7 @@ class TeacherProfileModule
     static async addUnavailableTimeInterval(date, from, to, id)
     {
         await APIController.Post(this.#MODULE, this.#ADD_UNAVAILABLE_TIME_INTERVAL, {
-            'day': date,
+            'date': date,
             'from': from,
             'to': to,
             'id': id,
@@ -125,7 +125,7 @@ class TeacherProfileModule
     static async removeUnavailableTimeInterval(date, id)
     {
         await APIController.Post(this.#MODULE, this.#REMOVE_UNAVAILABLE_TIME_INTERVAL, {
-            'day': date,
+            'date': date,
             'id': id,
         });
     }
