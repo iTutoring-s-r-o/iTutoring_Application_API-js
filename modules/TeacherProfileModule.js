@@ -30,6 +30,14 @@ class TeacherProfileModule
     static #IS_TEACHING_ONSITE = "IsTeachingOnsite";
     static #SET_TEACHING_ONSITE = "SetTeachingOnsite";
     static #REMOVE_UNAVAILABLE_DATE = "RemoveUnavailableDate";
+    static #SET_PERSONAL_INFO = "SetPersonalInfo";
+
+    static async setPersonalInfo(personalInfo)
+    {
+        await APIController.Post(this.#MODULE, this.#SET_PERSONAL_INFO, {
+            'personalInfo': JSON.stringify(personalInfo),
+        });
+    }
 
     static async removeUnavailableDate(date)
     {
@@ -160,14 +168,14 @@ class TeacherProfileModule
     static async setOnsitePlace(places)
     {
         await APIController.Post(this.#MODULE, this.#SET_ONSITE_PLACE, {
-            'place': places,
+            'place': JSON.stringify(places),
         });
     }
 
     static async removeOnsitePlace(places)
     {
         await APIController.Post(this.#MODULE, this.#REMOVE_ONSITE_PLACE, {
-            'place': places,
+            'place': JSON.stringify(places),
         });
     }
 
@@ -185,7 +193,7 @@ class TeacherProfileModule
 
     static async requestPersonalInfo()
     {
-        await APIController.Post(this.#MODULE, this.#REQUEST_PERSONAL_INFO);
+        await APIController.Get(this.#MODULE, this.#REQUEST_PERSONAL_INFO);
     }
 
     static async getPersonalInfo(token)
