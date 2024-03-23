@@ -35,7 +35,7 @@ class TeacherProfileModule
     static async setPersonalInfo(personalInfo)
     {
         await APIController.Post(this.#MODULE, this.#SET_PERSONAL_INFO, {
-            'personalInfo': JSON.stringify(personalInfo),
+            'info': JSON.stringify(personalInfo),
         });
     }
 
