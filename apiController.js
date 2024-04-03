@@ -104,7 +104,13 @@ class APIController
                         console.log("Error: " + json.error_message);
                         console.log("ErrorCode: " + json.error_code);
                         console.log("StackTrace: " + json.stack_trace);
-                        resolve("Invalid data");
+                        resolve(JSON.stringify({
+                            error: {
+                                message: json.error_message,
+                                code: json.error_code,
+                                stackTrace: json.stack_trace
+                            }
+                        }));
                     }
                 }
             }
@@ -168,7 +174,13 @@ class APIController
                         console.log("Error: " + json.error_message);
                         console.log("ErrorCode: " + json.error_code);
                         console.log("StackTrace: " + json.stack_trace);
-                        resolve("Invalid data");
+                        resolve(JSON.stringify({
+                            error: {
+                                message: json.error_message,
+                                code: json.error_code,
+                                stackTrace: json.stack_trace
+                            }
+                        }));
                     }
                 }
             }

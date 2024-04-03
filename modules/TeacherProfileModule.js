@@ -31,6 +31,55 @@ class TeacherProfileModule
     static #SET_TEACHING_ONSITE = "SetTeachingOnsite";
     static #REMOVE_UNAVAILABLE_DATE = "RemoveUnavailableDate";
     static #SET_PERSONAL_INFO = "SetPersonalInfo";
+    static #NO_PERSONAL_INFO_SET = "NoPersonalInfoSet";
+    static #VALIDATE_ON_SITE_PREFERENCES = "ValidateOnSitePreferences";
+    static #VALIDATE_PERSONAL_INFO = "ValidatePersonalInfo";
+    static #VALIDATE_SUBJECTS = "ValidateSubjects";
+    static #VALIDATE_TIME_AVAILABILITY = "ValidateTimeAvailability";
+    static #IS_PROFILE_COMPLETED = "IsProfileCompleted";
+    static #SET_PROFILE_COMPLETE = "SetProfileComplete";
+
+    static async noPersonalInfoSet()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#NO_PERSONAL_INFO_SET);
+        return JSON.parse(JSON.parse(data));
+    }
+
+    static async validateOnSitePreferences()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#VALIDATE_ON_SITE_PREFERENCES);
+        return JSON.parse(JSON.parse(data));
+    }
+
+    static async validatePersonalInfo()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#VALIDATE_PERSONAL_INFO);
+        return JSON.parse(JSON.parse(data));
+    }
+
+    static async validateSubjects()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#VALIDATE_SUBJECTS);
+        return JSON.parse(JSON.parse(data));
+    }
+
+    static async validateTimeAvailability()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#VALIDATE_TIME_AVAILABILITY);
+        return JSON.parse(JSON.parse(data));
+    }
+
+    static async isProfileCompleted()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#IS_PROFILE_COMPLETED);
+        return data;
+    }
+
+    static async setProfileComplete()
+    {
+        var date = await APIController.Post(this.#MODULE, this.#SET_PROFILE_COMPLETE);
+        return date;
+    }
 
     static async setPersonalInfo(personalInfo)
     {
