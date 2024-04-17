@@ -39,30 +39,20 @@ class TeacherManager
     {
         var teachers = await APIController.Get(this.#MODULE, this.#GET_ALL_TEACHERS);
 
-        var teachersArray = JSON.parse(teachers);
-
         var teachersClasses = [];
 
-        for (const [key, value] of Object.entries(teachersArray))
+        teachers.forEach(value =>
         {
-            var teacher = new Teacher;
-
-            teacher.Name = value['Name'];
-            teacher.Email = value['Email'];
-            teacher.ZoomMeeting = value['ZoomMeeting'];
-            teacher.ID = value['ID'];
-            teacher.TeachedLessons = value['TeachedLessons'];
-            teacher.Admin = APIController.IntToBool(value['Admin']);
-
-            var teacherProfile = new TeacherProfile();
-            teacherProfile.Bio = value['Profile']['Bio'];
-            teacherProfile.Name = value['Profile']['Name'];
-            teacherProfile.PhotoPath = value['Profile']['PhotoPath'];
-
-            teacher.TeacherProfile = teacherProfile;
+            var teacherArray = JSON.parse(value);
+            var teacher = new Teacher();
+            teacher.Email = teacherArray['email'];
+            teacher.Name = teacherArray['name'];
+            teacher.ZoomMeeting = teacherArray['zoomMeeting'];
+            teacher.ID = teacherArray['id'];
+            teacher.TeachedLessons = teacherArray['taughtLessons'];
 
             teachersClasses[teacher.ID] = teacher;
-        }
+        });
 
         return teachersClasses;
     }

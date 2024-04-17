@@ -25,6 +25,7 @@ import iTutoringApplicationVersion from "./modules/Version";
 import LessonManager from "./modules/LessonManager";
 import AttendanceManager from "./modules/AttendanceManager";
 import TeacherProfileModule from "./modules/TeacherProfileModule";
+import LectorDatabase from "./modules/LectorDatabase";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -77,6 +78,7 @@ export
     AttendanceManager,
     Toolkit,
     TeacherProfileModule,
+    LectorDatabase,
     
     Course,
     CourseReservation,

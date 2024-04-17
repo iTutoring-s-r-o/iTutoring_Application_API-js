@@ -11,6 +11,8 @@ class APIController
     
     static UserSource = null;
 
+    static onErrorReceived = null
+
     /**
      * R_KEY MUST be loaded before calling this method!
      * @returns Returns apropriate rest url based on current server.
@@ -94,7 +96,7 @@ class APIController
                         // check for redirect
                         if (json.data == "redirect" && json.url != undefined)
                         {
-                            window.location.href = json.url;
+                            window.location.href =  json.url;
                         }
                         resolve(json.data);
                     }
@@ -104,13 +106,18 @@ class APIController
                         console.log("Error: " + json.error_message);
                         console.log("ErrorCode: " + json.error_code);
                         console.log("StackTrace: " + json.stack_trace);
-                        resolve(JSON.stringify({
+                        var error = {
                             error: {
                                 message: json.error_message,
                                 code: json.error_code,
                                 stackTrace: json.stack_trace
                             }
-                        }));
+                        };
+                        resolve(JSON.stringify(error));
+                        if (APIController.onErrorReceived != null)
+                        {
+                            APIController.onErrorReceived(error);
+                        }
                     }
                 }
             }
@@ -174,13 +181,18 @@ class APIController
                         console.log("Error: " + json.error_message);
                         console.log("ErrorCode: " + json.error_code);
                         console.log("StackTrace: " + json.stack_trace);
-                        resolve(JSON.stringify({
+                        var error = {
                             error: {
                                 message: json.error_message,
                                 code: json.error_code,
                                 stackTrace: json.stack_trace
                             }
-                        }));
+                        };
+                        resolve(JSON.stringify(error));
+                        if (APIController.onErrorReceived != null)
+                        {
+                            APIController.onErrorReceived(error);
+                        }
                     }
                 }
             }

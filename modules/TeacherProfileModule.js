@@ -37,7 +37,7 @@ class TeacherProfileModule
     static #VALIDATE_SUBJECTS = "ValidateSubjects";
     static #VALIDATE_TIME_AVAILABILITY = "ValidateTimeAvailability";
     static #IS_PROFILE_COMPLETED = "IsProfileCompleted";
-    static #SET_PROFILE_COMPLETE = "SetProfileComplete";
+    static #SET_PROFILE_COMPLETE = "SetProfileCompleted";
 
     static async noPersonalInfoSet()
     {

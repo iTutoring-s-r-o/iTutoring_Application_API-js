@@ -130,7 +130,7 @@ class SubjectManager
     static async GetAllAvailableClasses()
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_CLASSES);
-        var arr = JSON.parse(data);
+        var arr = JSON.parse(JSON.parse(data));
         return arr;
     }
 }
