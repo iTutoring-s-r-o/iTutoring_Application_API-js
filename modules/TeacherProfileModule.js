@@ -38,6 +38,13 @@ class TeacherProfileModule
     static #VALIDATE_TIME_AVAILABILITY = "ValidateTimeAvailability";
     static #IS_PROFILE_COMPLETED = "IsProfileCompleted";
     static #SET_PROFILE_COMPLETE = "SetProfileCompleted";
+    static #GET_AVAILABLE_MODULES = "GetAvailableModules";
+
+    static async getAvailableModules()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_MODULES);
+        return data;
+    }
 
     static async noPersonalInfoSet()
     {

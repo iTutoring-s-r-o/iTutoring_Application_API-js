@@ -77,13 +77,17 @@ class LectorDatabase
      *  desc: Add lector
      * @param {string} name 
      * @param {string} email 
+     * 
+     * @returns {string} lectorId
      */
     static async addLector(name, email)
     {
-        await APIController.Post(this.#MODULE, this.#ADD_LECTOR, {
+        var id = await APIController.Post(this.#MODULE, this.#ADD_LECTOR, {
             'name': name,
             'email': email,
         });
+
+        return id;
     }
 
     /**
