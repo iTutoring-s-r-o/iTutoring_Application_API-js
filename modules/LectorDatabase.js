@@ -15,6 +15,33 @@ class LectorDatabase
     static #ADD_LECTOR = "AddLector";
     static #RESET_PASSWORD = "ResetPassword";
     static #ADD_MODULE_ACCESS = "AddModuleAccess";
+    static #REMOVE_MODULE_ACCESS = "RemoveModuleAccess";
+    static #GET_COUNT_OF_LECTORS = "GetCountOfLectors";
+
+    /**
+     * desc: Get count of lectors
+     * 
+     * @returns {int} count of lectors
+     */
+    static async getCountOfLectors()
+    {
+        var count = await APIController.Get(this.#MODULE, this.#GET_COUNT_OF_LECTORS);
+
+        return count;
+    }
+
+    /**
+     * desc: Remove module access
+     * @param {string} lectorId
+     * @param {string} moduleId
+     */
+    static async removeModuleAccess(lectorId, moduleId)
+    {
+        await APIController.Post(this.#MODULE, this.#REMOVE_MODULE_ACCESS, {
+            'lectorId': lectorId,
+            'module': moduleId,
+        });
+    }
 
     /**
      * desc: Get all lectors
@@ -29,7 +56,7 @@ class LectorDatabase
             'maxCount': maxCount,
         });
 
-        return JSON.parse(lectors);
+        return lectors;
     }
 
     /**
@@ -43,7 +70,7 @@ class LectorDatabase
             'lectorId': lectorId,
         });
 
-        return JSON.parse(lector);
+        return lector;
     }
 
 
@@ -58,7 +85,7 @@ class LectorDatabase
             "query": dssQuery
         });
 
-        return JSON.parse(lector);
+        return lector;
     }
 
 
