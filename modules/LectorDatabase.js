@@ -17,6 +17,7 @@ class LectorDatabase
     static #ADD_MODULE_ACCESS = "AddModuleAccess";
     static #REMOVE_MODULE_ACCESS = "RemoveModuleAccess";
     static #GET_COUNT_OF_LECTORS = "GetCountOfLectors";
+    static #GET_PUBLIC_PROFILES = "GetPublicProfiles";
 
     /**
      * desc: Get count of lectors
@@ -140,6 +141,20 @@ class LectorDatabase
             'lectorId': lectorId,
             'module': moduleId,
             'access': access,
+        });
+    }
+
+    /**
+     * desc: Get public profiles
+     * @param {number} offset
+     * @param {number} maxCount
+     * @returns {Promise<array>}
+     */
+    static async getPublicProfiles(offset = 0, maxCount = -1)
+    {
+        return await APIController.Get(this.#MODULE, this.#GET_PUBLIC_PROFILES, {
+            'offset': offset,
+            'maxCount': maxCount,
         });
     }
 }

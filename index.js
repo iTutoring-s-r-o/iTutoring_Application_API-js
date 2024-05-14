@@ -37,6 +37,8 @@ import Authentication from "./modules/Authentication";
 import AttendanceEvent from "./objects/AttendanceEvent";
 import Toolkit from "./toolkit/Toolkit";
 import TeacherProfileModule from "./modules/TeacherProfileModule";
+import Pricing from "./modules/Pricing";
+import Reviews from "./modules/Reviews";
 
 import
     {
@@ -77,6 +79,8 @@ export
     Toolkit,
     TeacherProfileModule,
     LectorDatabase,
+    Pricing,
+    Reviews,
 
     Course,
     CourseReservation,

@@ -39,6 +39,8 @@ import AuthUser from "./objects/AuthUser";
 import Authentication from "./modules/Authentication";
 import AttendanceEvent from "./objects/AttendanceEvent";
 import Toolkit from "./toolkit/Toolkit";
+import Pricing from "./modules/Pricing";
+import Reviews from "./modules/Reviews";
 
 import
     {
@@ -79,6 +81,8 @@ export
     Toolkit,
     TeacherProfileModule,
     LectorDatabase,
+    Pricing,
+    GoogleReviews,
     
     Course,
     CourseReservation,
