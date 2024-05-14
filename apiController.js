@@ -2,7 +2,7 @@ import CookiesManager from "./CookiesManager";
 import { R_KEYs } from "./objects/Enums";
 
 /**
- * Main class for comunicating with our backend REST api.
+ * Main class for communicating with our backend REST api.
  */
 class APIController
 {
@@ -15,17 +15,17 @@ class APIController
 
     /**
      * R_KEY MUST be loaded before calling this method!
-     * @returns Returns apropriate rest url based on current server.
+     * @returns Returns appropriate rest url based on current server.
      */
     static REST_URL()
     {
-        if (location.hostname == 'localhost' || this.#R_KEY == R_KEYs.r_key_test)
+        if (location.hostname === 'localhost' || this.#R_KEY === R_KEYs.r_key_test)
         {
             return "https://api.test.itutoring.cz/";
 
         }
 
-        if (this.#R_KEY == R_KEYs.r_key_live)
+        if (this.#R_KEY === R_KEYs.r_key_live)
         {
             return "https://api.itutoring.cz/";
         }
@@ -33,8 +33,8 @@ class APIController
 
     static CreateVisitorSession()
     {
-        var id = Date.now();
-        var date = new Date();
+        const id = Date.now();
+        const date = new Date();
         date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
 
         CookiesManager.SetCookie("session", id, date.toUTCString());
@@ -53,19 +53,54 @@ class APIController
         if (this.UserSource != null)
             return;
 
-        var urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has("o"))
         {
-            var source = urlParams.get("o");
+            const source = urlParams.get("o");
             if (this.UserSource == null)
             {
-                var date = new Date();
+                const date = new Date();
                 date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
                 CookiesManager.SetCookie("_o", source, date.toUTCString());
                 this.UserSource = source;
             }
         }
     }
+
+    static ResolveResponse(request)
+    {
+        const json = JSON.parse(request.responseText);
+        if (json.code ===200)
+        {
+            // check for redirect
+            if (json.data === "redirect" && json.url !== undefined)
+            {
+                window.location.href =  json.url;
+            }
+            return (json.data);
+        }
+        if (json.code === 400)
+        {
+            console.log("API Error:");
+            console.log("Error: " + json.error_message);
+            console.log("ErrorCode: " + json.error_code);
+            console.log("StackTrace: " + json.stack_trace);
+            const error = {
+                error: {
+                    message: json.error_message,
+                    code: json.error_code,
+                    stackTrace: json.stack_trace
+                }
+            };
+            if (APIController.onErrorReceived !== null && APIController.onErrorReceived !== undefined)
+            {
+                APIController.onErrorReceived(error);
+            }
+
+            return (JSON.stringify(error));
+        }
+    }
+
 
     /**
      * 
@@ -81,44 +116,16 @@ class APIController
 
         return new Promise(resolve =>
         {
-            var args = APIController.GetArgsFromArray(data);
+            const args = APIController.GetArgsFromArray(data);
 
-            var request = new XMLHttpRequest();
+            const request = new XMLHttpRequest();
             request.withCredentials = true;
             request.open("GET", APIController.REST_URL() + module + "/" + method + "?" + args, true);
             request.onreadystatechange = function ()
             {
-                if (request.readyState == 4)
+                if (request.readyState === 4)
                 {
-                    var json = JSON.parse(request.responseText);
-                    if (json.code ==200)
-                    {
-                        // check for redirect
-                        if (json.data == "redirect" && json.url != undefined)
-                        {
-                            window.location.href =  json.url;
-                        }
-                        resolve(json.data);
-                    }
-                    if (json.code == 400)
-                    {
-                        console.log("API Error:");
-                        console.log("Error: " + json.error_message);
-                        console.log("ErrorCode: " + json.error_code);
-                        console.log("StackTrace: " + json.stack_trace);
-                        var error = {
-                            error: {
-                                message: json.error_message,
-                                code: json.error_code,
-                                stackTrace: json.stack_trace
-                            }
-                        };
-                        resolve(JSON.stringify(error));
-                        if (APIController.onErrorReceived != null)
-                        {
-                            APIController.onErrorReceived(error);
-                        }
-                    }
+                   resolve(APIController.ResolveResponse(request));
                 }
             }
 
@@ -134,10 +141,11 @@ class APIController
     }
 
     /**
-     * 
+     *
      * @param module "Name of API module"
      * @param method "Name of API method "
      * @param data "data must be as array - key, value pair. They'll be passed into the request"
+     * @param file
      * @returns "Response from server"
      */
     static async Post(module, method, data, file = null)
@@ -147,53 +155,25 @@ class APIController
 
         return new Promise(resolve =>
         {
-            var formData = new FormData();
+            let formData = new FormData();
             if (file != null)
             {
-                var formData = new FormData();
+                formData = new FormData();
                 formData.append("file", file);
 
 
             }
 
-            var args = APIController.GetArgsFromArray(data);
+            const args = APIController.GetArgsFromArray(data);
 
-            var request = new XMLHttpRequest();
+            const request = new XMLHttpRequest();
             request.open("POST", APIController.REST_URL() + module + "/" + method, true);
 
             request.onreadystatechange = function ()
             {
-                if (request.readyState == 4)
+                if (request.readyState === 4)
                 {
-                    var json = JSON.parse(request.responseText);
-                    if (json.code ==200)
-                    {
-                        // check for redirect
-                        if (json.data == "redirect" && json.url != undefined)
-                        {
-                            window.location.href = json.url;
-                        }
-                        resolve(json.data);
-                    }
-                    if (json.code == 400)
-                    {
-                        console.log("API Error:");
-                        console.log("Error: " + json.error_message);
-                        console.log("ErrorCode: " + json.error_code);
-                        console.log("StackTrace: " + json.stack_trace);
-                        var error = {
-                            error: {
-                                message: json.error_message,
-                                code: json.error_code,
-                                stackTrace: json.stack_trace
-                            }
-                        };
-                        resolve(JSON.stringify(error));
-                        if (APIController.onErrorReceived != null)
-                        {
-                            APIController.onErrorReceived(error);
-                        }
-                    }
+                    resolve(APIController.ResolveResponse(request));
                 }
             }
 
@@ -219,7 +199,7 @@ class APIController
 
     static GetArgsFromArray(args)
     {
-        var argsString = "";
+        let argsString = "";
 
         if (args != null)
         {
@@ -239,12 +219,12 @@ class APIController
     {
         return new Promise(resolve =>
         {
-            if (APIController.#R_KEY != "-1")
+            if (APIController.#R_KEY !== "-1")
             {
                 resolve(APIController.#R_KEY);
             }
 
-            // For localhost don't use xml config, but automaticly
+            // For localhost don't use xml config, but automatically
             // return test key.
             if (location.hostname === "localhost")
             {
@@ -255,9 +235,9 @@ class APIController
             {
                 fetch('/key_config.xml').then(response => response.text()).then((data) =>
                 {
-                    var parser = new DOMParser();
-                    var rKeyXML = parser.parseFromString(data, "text/xml");
-                    var rKey = rKeyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
+                    const parser = new DOMParser();
+                    const rKeyXML = parser.parseFromString(data, "text/xml");
+                    const rKey = rKeyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
 
                     APIController.#R_KEY = rKey;
                     resolve(APIController.#R_KEY);
@@ -270,13 +250,13 @@ class APIController
     {
         return new Promise(resolve =>
         {
-            if (APIController.#CLIENT_KEY != "-1")
+            if (APIController.#CLIENT_KEY !== "-1")
             {
                 resolve(APIController.#CLIENT_KEY);
             }
 
             let keyPath = '/client_key.xml';
-            // For localhost use different xml file (to make suer we won't revwrite the server key when uploading websites)
+            // For localhost use different xml file (to make suer we won't rewrite the server key when uploading websites)
             if (location.hostname === "localhost")
             {
                 keyPath = '/local_client_key.xml'
@@ -284,9 +264,9 @@ class APIController
 
             fetch(keyPath).then(response => response.text()).then((data) =>
             {
-                var parser = new DOMParser();
-                var keyXML = parser.parseFromString(data, "text/xml");
-                var key = keyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
+                const parser = new DOMParser();
+                const keyXML = parser.parseFromString(data, "text/xml");
+                const key = keyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
 
                 APIController.#CLIENT_KEY = key;
                 resolve(APIController.#CLIENT_KEY);
@@ -297,14 +277,14 @@ class APIController
 
     static async GetCurrentHostURl()
     {
-        if (location.hostname == 'localhost')
+        if (location.hostname === 'localhost')
         {
             return "http://localhost:3000";
         }
         else
         {
             var r_key = await this.GetLocalRKey();
-            if (r_key == R_KEYs.r_key_test)
+            if (r_key === R_KEYs.r_key_test)
             {
                 return "https://test.itutoring.cz";
             }
@@ -317,7 +297,7 @@ class APIController
 
     static IntToBool(value)
     {
-        return value == 1 ? true : false;
+        return value === 1;
     }
 
     static BoolToInt(value)
