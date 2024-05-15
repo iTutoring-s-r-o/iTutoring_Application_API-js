@@ -82,7 +82,7 @@ export
     TeacherProfileModule,
     LectorDatabase,
     Pricing,
-    GoogleReviews,
+    Reviews,
     
     Course,
     CourseReservation,
