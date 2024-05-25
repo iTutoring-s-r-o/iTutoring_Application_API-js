@@ -1,3 +1,4 @@
+import BillingInfo from "../objects/billingInfo";
 import APIController from "./../apiController";
 import Reservation from "./../objects/Reservation";
 
@@ -23,11 +24,102 @@ class ReservationSystem
     static #RETRIVE_ORDER_ID = "RetriveOrderID";
     static #SEND_REQUEST = "SendRequest";
 
+    static #ADD_ITEM_TO_CART = "AddItemToCart";
+    static #GET_CART_ITEMS = "GetCartItems";
+    static #GET_TOTAL_PRICE = "GetTotalPrice";
+    static #PLACE_ORDER = "PlaceOrder";
+    static #SEND_ORDER_CONFIRMATION_EMAIL = "SendOrderConfirmationEmail";
+    static #CLEAR_CART = "ClearCart";
+    static #APPLY_SALE_COUPON = "ApplySaleCoupon";
+    static #GET_APPLIED_SALE_COUPONS = "GetAppliedSaleCoupons";
+    static #REMOVE_SALE_COUPON = "RemoveSaleCoupon";
+    static #GET_SALE_AMOUNTS = "GetSaleAmounts";
+
+
+    static async addItemToCart(itemSku)
+    {
+        await APIController.Post(this.#MODULE, this.#ADD_ITEM_TO_CART, { 'itemSku': itemSku });
+    }
+
+    static async getCartItems()
+    {
+        var items = await APIController.Get(this.#MODULE, this.#GET_CART_ITEMS);
+
+        return items;
+    }
+
+    static async getTotalPrice()
+    {
+        var price = await APIController.Get(this.#MODULE, this.#GET_TOTAL_PRICE);
+
+        return price;
+    }
+
+    /**
+     * 
+     * @param {BillingInfo} billingInfo - BillingInfo model expected. You can use prepared js object or create just array.
+     * @param {*} proforma 
+     * @param {*} vopAgree 
+     * @param {*} gdprAgree 
+     * @returns order id
+     */
+    static async placeOrder(billingInfo, proforma = 1, vopAgree = 0, gdprAgree = 0)
+    {
+        var orderId = await APIController.Post(this.#MODULE, this.#PLACE_ORDER, {
+            'billingInfo': JSON.stringify(billingInfo),
+            'proforma': proforma,
+            'vopAgree': vopAgree,
+            'gdprAgree': gdprAgree
+        });
+
+        return orderId;
+    }
+
+    static async sendOrderConfirmationEmail(orderId)
+    {
+        await APIController.Get(this.#MODULE, this.#SEND_ORDER_CONFIRMATION_EMAIL, { 'orderId': orderId });
+    }
+
+    static async clearCart()
+    {
+        await APIController.Get(this.#MODULE, this.#CLEAR_CART);
+    }
+
+    static async applySaleCoupon(code)
+    {
+        await APIController.Post(this.#MODULE, this.#APPLY_SALE_COUPON, { 'code': code });  
+    }
+
+    static async getAppliedSaleCoupons()
+    {
+        var coupons = await APIController.Get(this.#MODULE, this.#GET_APPLIED_SALE_COUPONS);
+
+        return coupons;
+    }
+
+    static async removeSaleCoupon(code)
+    {
+        await APIController.Post(this.#MODULE, this.#REMOVE_SALE_COUPON, { 'code': code });
+    }
+
+    /**
+     * 
+     * @returns {Promise<array>} - array - sale amounts as sku=>amount
+     */
+    static async getSaleAmounts()
+    {
+        var amounts = await APIController.Get(this.#MODULE, this.#GET_SALE_AMOUNTS);
+
+        return amounts;
+    }
+
+
     /**
      * Returns availability for specific day and subject
      * @param {*} date 
      * @param {*} subject 
      * @returns float in range 0...1
+     * @deprecated
      */
     static async GetAvailabilityForDay(date, subject)
     {
@@ -43,6 +135,7 @@ class ReservationSystem
      * @param {*} year 
      * @param {*} subject subject id
      * @returns all values (in percent 0...1) by day ascending (1st .... 31st/30rd) as JSON string.
+     * @deprecated
      */
     static async GetAvailabilityForMonth(month, year, subject)
     {
@@ -63,6 +156,7 @@ class ReservationSystem
      * @param {*} startTime 
      * @param {*} lessons number of lessons (1 = 60 mins, 2 = 2x60 mins)
      * @returns bool
+     * @deprecated
      */
     static async IsTimeAvailable(date, subject, startTime, lessons = 1)
     {
@@ -77,6 +171,7 @@ class ReservationSystem
      * @param {*} subject 
      * @param {*} lessons number of lessons (1 = 60 mins, 2 = 2x60 mins)
      * @returns float array of available times
+     * @deprecated
      */
     static async IsDayAvailable(date, subject, lessons = 1)
     {
@@ -96,6 +191,7 @@ class ReservationSystem
      * @param {*} subject 
      * @param {*} lessons 
      * @param {*} teacherId
+     * @deprecated
      */
     static async ReserveTime(date, startTime, subject, lessons, teacherId = "session")
     {
@@ -115,6 +211,7 @@ class ReservationSystem
      * @param {*} reservation 
      * @param {*} lessons 
      * @returns int (BookReturn)
+     * @deprecated
      */
     static async Book(reservation, lessons)
     {
@@ -140,6 +237,7 @@ class ReservationSystem
      * 
      * Should be called before book to check that time.
      * @returns true if is timeouted(time is deleted) , false if time is still there
+     * @deprecated
      */
     static async OrderTimeout()
     {
@@ -152,6 +250,7 @@ class ReservationSystem
      * Send confirmation email to teacher and customer.
      * @param {*} resend If true, the last send confirmation email will be resend. (just for the same session)
      * @returns True if succeded
+     * @deprecated
      */
     static async ConfirmReservation(resend = false)
     {
@@ -164,6 +263,7 @@ class ReservationSystem
      * Get reservation by id
      * @param {*} id reservation id
      * @returns Reservation object
+     * @deprecated
      */
     static async GetReservation(id)
     {
@@ -197,7 +297,8 @@ class ReservationSystem
      * Check if reservation has been paid
      * @param {*} id reservation id
      * @returns 
-     */ Bool
+     * @deprecated
+     */
     static async IsReservationPaid(id)
     {
         var res = await APIController.Get(this.#MODULE, this.#IS_RESERVATION_PAID, { 'id': id })
@@ -210,6 +311,7 @@ class ReservationSystem
      * @param {*} reservationId 
      * @param {*} transactionId 
      * @returns bool
+     * @deprecated
      */
     static async MarkReservationPaid(reservationId, transactionId)
     {
@@ -227,6 +329,8 @@ class ReservationSystem
      * Book function must be called before. ID is stored in session.
      * 
      * @returns orderId
+     * 
+     * @deprecated
      */
     static async RetriveOrderID()
     {
@@ -251,7 +355,7 @@ class ReservationSystem
             "tel": tel,
             "msg": msg,
             "place": place
-        })            
+        })
     }
 }
 

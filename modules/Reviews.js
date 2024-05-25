@@ -16,7 +16,7 @@ class Reviews
     {
         const review = await APIController.Get(this.#MODULE, this.#GET_RANDOM_REVIEW, {});
 
-        return JSON.parse(review);
+        return review;
     }
 
     /**
@@ -27,7 +27,7 @@ class Reviews
     {
         const reviews = await APIController.Get(this.#MODULE, this.#GET_REVIEWS, {});
 
-        return JSON.parse(reviews);
+        return reviews;
     }
 
     /**
@@ -38,7 +38,7 @@ class Reviews
     {
         const rating = await APIController.Get(this.#MODULE, this.#GET_RATING, {});
 
-        return JSON.parse(rating);
+        return rating;
     }
 }
 

@@ -154,7 +154,7 @@ class LectorDatabase
     {
         return await APIController.Get(this.#MODULE, this.#GET_PUBLIC_PROFILES, {
             'offset': offset,
-            'maxCount': maxCount,
+            'max': maxCount,
         });
     }
 }

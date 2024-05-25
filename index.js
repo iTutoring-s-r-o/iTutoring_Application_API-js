@@ -39,6 +39,9 @@ import Toolkit from "./toolkit/Toolkit";
 import TeacherProfileModule from "./modules/TeacherProfileModule";
 import Pricing from "./modules/Pricing";
 import Reviews from "./modules/Reviews";
+import FAQ from "./modules/FAQ";
+import Inventory from "./modules/Inventory";
+import BillingInfo from "./objects/billingInfo";
 
 import
     {
@@ -81,6 +84,8 @@ export
     LectorDatabase,
     Pricing,
     Reviews,
+    FAQ,
+    Inventory,
 
     Course,
     CourseReservation,
@@ -92,6 +97,7 @@ export
     iEvent,
     AuthUser,
     AttendanceEvent,
+    BillingInfo,
 
     BookReturn,
     AuthResult,
