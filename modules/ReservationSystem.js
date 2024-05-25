@@ -82,7 +82,7 @@ class ReservationSystem
 
     static async clearCart()
     {
-        await APIController.Get(this.#MODULE, this.#CLEAR_CART);
+        await APIController.Post(this.#MODULE, this.#CLEAR_CART);
     }
 
     static async applySaleCoupon(code)
