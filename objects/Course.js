@@ -1,3 +1,7 @@
+
+/**
+ * @deprecated do not use
+ */
 class Course 
 {
     Name;

@@ -3,7 +3,6 @@
 import APIController from "./apiController";
 import CookiesManager from "./CookiesManager";
 
-import CoursesSystem from "./modules/CoursesSystem";
 import CustomerAuth from "./modules/CustomerAuth";
 import CustomerPortal from "./modules/CustomerPortal";
 import Email from "./modules/Email";
@@ -59,7 +58,6 @@ export
     APIController,
     CookiesManager,
 
-    CoursesSystem,
     CustomerAuth,
     CustomerPortal,
     Email,
