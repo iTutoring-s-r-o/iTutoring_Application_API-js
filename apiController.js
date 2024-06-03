@@ -110,7 +110,7 @@ class APIController
      * @param data "data must be as array - key, value pair. They'll be passed into the request"
      * @returns "Response from server"
      */
-    static async Get(module, method, data, useCache = false)
+    static async Get(module, method, data, useCache = false, cacheSuffix = "")
     {
         if (useCache && APICache.IsCached(module + method))
         {
@@ -134,7 +134,7 @@ class APIController
                     var response = APIController.ResolveResponse(request);
                     if (useCache)
                     {
-                        APICache.Cache(module + method, response);
+                        APICache.Cache(module + method + cacheSuffix, response);
                     }
 
                     resolve(response);
