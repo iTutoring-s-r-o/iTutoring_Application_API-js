@@ -112,9 +112,9 @@ class APIController
      */
     static async Get(module, method, data, useCache = false, cacheSuffix = "")
     {
-        if (useCache && APICache.IsCached(module + method))
+        if (useCache && APICache.IsCached(module + method + cacheSuffix))
         {
-            return APICache.Retrive(module + method);
+            return APICache.Retrive(module + method + cacheSuffix);
         }
 
         await APIController.GetLocalRKey();
