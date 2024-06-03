@@ -1,6 +1,5 @@
 import BillingInfo from "../objects/billingInfo";
 import APIController from "./../apiController";
-import Reservation from "./../objects/Reservation";
 
 class ReservationSystem
 {

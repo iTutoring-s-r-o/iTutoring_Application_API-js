@@ -222,6 +222,14 @@ class APIController
             if (APIController.#R_KEY !== "-1")
             {
                 resolve(APIController.#R_KEY);
+                return;
+            }
+
+            if (localStorage.getItem("r_key") !== null)
+            {
+                APIController.#R_KEY = localStorage.getItem("r_key");
+                resolve(APIController.#R_KEY);
+                return;
             }
 
             // For localhost don't use xml config, but automatically
@@ -230,6 +238,7 @@ class APIController
             {
                 APIController.#R_KEY = R_KEYs.r_key_test;
                 resolve(APIController.#R_KEY);
+                return;
             }
             else
             {
@@ -240,7 +249,9 @@ class APIController
                     const rKey = rKeyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
 
                     APIController.#R_KEY = rKey;
+                    localStorage.setItem("r_key", APIController.#R_KEY)
                     resolve(APIController.#R_KEY);
+                    
                 });
             }
         });
@@ -253,6 +264,14 @@ class APIController
             if (APIController.#CLIENT_KEY !== "-1")
             {
                 resolve(APIController.#CLIENT_KEY);
+                return;
+            }
+
+            if (localStorage.getItem("client_key") !== null)
+            {
+                APIController.#CLIENT_KEY = localStorage.getItem("client_key");
+                resolve(APIController.#CLIENT_KEY);
+                return;
             }
 
             let keyPath = '/client_key.xml';
@@ -269,6 +288,7 @@ class APIController
                 const key = keyXML.getElementsByTagName("key")[0].childNodes[0].nodeValue;
 
                 APIController.#CLIENT_KEY = key;
+                localStorage.setItem("client_key", APIController.#CLIENT_KEY)
                 resolve(APIController.#CLIENT_KEY);
             });
 
