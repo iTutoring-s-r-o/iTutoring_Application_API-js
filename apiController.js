@@ -1,4 +1,5 @@
 import CookiesManager from "./CookiesManager";
+import APICache from "./cache";
 import { R_KEYs } from "./objects/Enums";
 
 /**
@@ -8,7 +9,7 @@ class APIController
 {
     static #R_KEY = "-1";
     static #CLIENT_KEY = "-1";
-    
+
     static UserSource = null;
 
     static onErrorReceived = null
@@ -70,12 +71,12 @@ class APIController
     static ResolveResponse(request)
     {
         const json = JSON.parse(request.responseText);
-        if (json.code ===200)
+        if (json.code === 200)
         {
             // check for redirect
             if (json.data === "redirect" && json.url !== undefined)
             {
-                window.location.href =  json.url;
+                window.location.href = json.url;
             }
             return (json.data);
         }
@@ -109,8 +110,13 @@ class APIController
      * @param data "data must be as array - key, value pair. They'll be passed into the request"
      * @returns "Response from server"
      */
-    static async Get(module, method, data)
+    static async Get(module, method, data, useCache = false)
     {
+        if (useCache && APICache.IsCached(module + method))
+        {
+            return APICache.Retrive(module + method);
+        }
+
         await APIController.GetLocalRKey();
         await APIController.GetClientKey();
 
@@ -125,7 +131,13 @@ class APIController
             {
                 if (request.readyState === 4)
                 {
-                   resolve(APIController.ResolveResponse(request));
+                    var response = APIController.ResolveResponse(request);
+                    if (useCache)
+                    {
+                        APICache.Cache(module + method, response);
+                    }
+
+                    resolve(response);
                 }
             }
 
@@ -148,8 +160,13 @@ class APIController
      * @param file
      * @returns "Response from server"
      */
-    static async Post(module, method, data, file = null)
+    static async Post(module, method, data, file = null, useCache = false)
     {
+        if (useCache && APICache.IsCached(module + method))
+        {
+            return APICache.Retrive(module + method);
+        }
+
         await APIController.GetLocalRKey();
         await APIController.GetClientKey();
 
@@ -173,7 +190,12 @@ class APIController
             {
                 if (request.readyState === 4)
                 {
-                    resolve(APIController.ResolveResponse(request));
+                    var response = APIController.ResolveResponse(request);
+                    if (useCache)
+                    {
+                        APICache.Cache(module + method, response);
+                    }
+                    resolve(response);
                 }
             }
 
@@ -251,7 +273,7 @@ class APIController
                     APIController.#R_KEY = rKey;
                     localStorage.setItem("r_key", APIController.#R_KEY)
                     resolve(APIController.#R_KEY);
-                    
+
                 });
             }
         });

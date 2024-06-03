@@ -156,7 +156,7 @@ class LectorDatabase
             'offset': offset,
             'max': maxCount,
             'onlyWithProfilePictures': onlyWithProfilePictures,
-        });
+        }, true);
     }
 }
 

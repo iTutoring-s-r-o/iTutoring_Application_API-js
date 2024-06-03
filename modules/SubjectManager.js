@@ -22,7 +22,7 @@ class SubjectManager
 
     static async getAllAvailableLocations()
     {
-        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_LOCATIONS);
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_LOCATIONS, {}, true);
         var arr = JSON.parse(data);
         return arr;
     }
@@ -31,21 +31,9 @@ class SubjectManager
      * 
      * @returns Array (Subject[id]) of all available subjects as array of Subject objects. Key is id of subject.
      */
-    static async GetAllAvailableSubjects(requestReload = false)
+    static async GetAllAvailableSubjects()
     {
-        var data;
-
-        /*if (APICache.IsCached(this.#SUBJECTS_CACHE_KEY) && !requestReload)
-        {
-            data = APICache.Retrive(this.#SUBJECTS_CACHE_KEY);
-        }
-        else
-        {
-            data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_SUBJECTS);
-            APICache.Cache(this.#SUBJECTS_CACHE_KEY, data);
-        }*/
-
-        data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_SUBJECTS);
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_SUBJECTS, {}, true);
 
         var dataArray = JSON.parse(data);
 
@@ -72,6 +60,11 @@ class SubjectManager
         return availableSubjects;
     }
 
+    /**
+     * @deprecated
+     * @param {*} requestReload 
+     * @returns 
+     */
     static async GetAllAvailableCourses(requestReload = false)
     {
         var data;
@@ -120,7 +113,7 @@ class SubjectManager
 
     static async GetAllAvailablePlaces()
     {
-        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_PLACES);
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_PLACES, {}, true);
 
         var arr = JSON.parse(data);
 
@@ -129,7 +122,7 @@ class SubjectManager
 
     static async GetAllAvailableClasses()
     {
-        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_CLASSES);
+        var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_CLASSES, {}, true);
         var arr = JSON.parse(JSON.parse(data));
         return arr;
     }

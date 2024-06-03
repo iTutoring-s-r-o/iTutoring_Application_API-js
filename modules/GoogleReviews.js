@@ -18,7 +18,7 @@ class GoogleReviews
     {
         var review = await APIController.Get(this.#MODULE, this.#GET_RANDOM_REVIEW, {
             "last_review": last_review_timestamp,
-        });
+        }, true);
 
         return JSON.parse(review);
     }

@@ -13,6 +13,7 @@ class Payments
     static #GET_AVAILABLE_ITEMS = "GetAvailableItems";
 
     /**
+     * @deprecated
      * Purchase specific product. After calling you'll be redirected depending on the result to success or cancel (failed) url
      * @param {*} product product name as defined in php such as HOUR_LESSON
      * @param {*} type payment type (credits, card), use PaymentType enum
@@ -36,6 +37,7 @@ class Payments
     }
 
     /**
+     * @deprecated
      * Call on success page after purchase to mark the payment as successful.
      *  
      * Will return false if is already marked.
@@ -50,6 +52,10 @@ class Payments
     }
 
     // Array of avaialable item names. returned as parsed json.
+    /**
+     * @deprecated
+     * @returns 
+     */
     static async GetAvailableItems()
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_ITEMS);

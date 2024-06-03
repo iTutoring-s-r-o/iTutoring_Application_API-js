@@ -33,7 +33,7 @@ class ReservationSystem
 
     static async getAvailableStates()
     {
-        var states = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_STATES);
+        var states = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_STATES, {}, true);
         return states;
     }
 

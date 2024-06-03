@@ -12,7 +12,7 @@ class FAQ
      */
     static async GetFAQ()
     {
-        const faq = await APIController.Get(this.#MODULE, this.#GET_FAQ, {});
+        const faq = await APIController.Get(this.#MODULE, this.#GET_FAQ, {}, true);
 
         return faq;
     }

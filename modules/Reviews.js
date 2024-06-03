@@ -25,7 +25,7 @@ class Reviews
      */
     static async GetReviews()
     {
-        const reviews = await APIController.Get(this.#MODULE, this.#GET_REVIEWS, {});
+        const reviews = await APIController.Get(this.#MODULE, this.#GET_REVIEWS, {}, true);
 
         return reviews;
     }
@@ -36,7 +36,7 @@ class Reviews
      */
     static async GetRating()
     {
-        const rating = await APIController.Get(this.#MODULE, this.#GET_RATING, {});
+        const rating = await APIController.Get(this.#MODULE, this.#GET_RATING, {}, true);
 
         return rating;
     }

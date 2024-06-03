@@ -1,6 +1,9 @@
 import APIController from "./../apiController";
 import TeacherProfile from "./../objects/TeacherProfile";
 
+/**
+ * @deprecated
+ */
 class TeacherProfiles
 {
     static #MODULE = "TeacherProfiles";
@@ -9,6 +12,7 @@ class TeacherProfiles
 
 
     /**
+     * @deprecated
      * Retrive all public teacher profiles
      * 
      * @returns teachers public profiles as array

@@ -15,7 +15,7 @@ class Pricing
      */
     static async getPriceTable()
     {
-        var priceTable = await APIController.Get(this.#MODULE, this.#GET_PRICE_TABLE, {});
+        var priceTable = await APIController.Get(this.#MODULE, this.#GET_PRICE_TABLE, {}, true);
 
         return priceTable;
     }

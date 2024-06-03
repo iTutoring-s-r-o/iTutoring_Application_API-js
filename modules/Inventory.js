@@ -1,4 +1,5 @@
 import APIController from "../apiController";
+import APICache from "../cache";
 
 class Inventory
 {

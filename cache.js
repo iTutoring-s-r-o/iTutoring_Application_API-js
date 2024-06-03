@@ -1,18 +1,22 @@
 class APICache
 {
+    static CacheStorage = {}
+
     static Cache(key, data)
     {
-        localStorage.setItem(key, data);
+        this.CacheStorage[key] = data;
     }
 
     static Retrive(key)
     {
-        return localStorage.getItem(key);
+        if (!this.IsCached(key))
+            return null;
+        return this.CacheStorage[key];
     }
 
     static IsCached(key)
     {
-        return !(localStorage.getItem(key) === null);
+        return this.CacheStorage[key] !== undefined;
     }
 }
 
