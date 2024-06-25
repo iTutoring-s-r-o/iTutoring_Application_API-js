@@ -16,7 +16,7 @@ class TableExplorer
     static #CREATE_INQUIRY_EXPLORER = "CreateInquiryExplorer";
     static #CREATE_EVENT_EXPLORER = "CreateEventExplorer";
     static #CREATE_OFFER_EXPLORER = "CreateOfferExplorer";
-    static #CREATE_CUSTUMER_EXPLORER = "CreateCustumerExplorer";
+    static #CREATE_CUSTOMER_EXPLORER = "CreateCustomerExplorer";
     static #CREATE_LECTURE_EXPLORER = "CreateLectureExplorer";
     static #CREATE_LECTURE_ATTENDANCE_EXPLORER = "CreateLectureAttendanceExplorer";
     static #CREATE_STUDENT_EXPLORER = "CreateStudentExplorer";
@@ -56,9 +56,9 @@ class TableExplorer
         return data['token'];
     }
 
-    static async createCustumerExplorer()
+    static async createCustomerExplorer()
     {
-        var data = await APIController.Get(this.#MODULE, this.#CREATE_CUSTUMER_EXPLORER);
+        var data = await APIController.Get(this.#MODULE, this.#CREATE_CUSTOMER_EXPLORER);
 
         return data['token'];
     }
