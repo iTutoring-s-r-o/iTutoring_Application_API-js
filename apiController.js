@@ -13,6 +13,7 @@ class APIController
     static UserSource = null;
 
     static onErrorReceived = null
+    static onConfimationReceived = null;
 
     /**
      * R_KEY MUST be loaded before calling this method!
@@ -77,6 +78,13 @@ class APIController
             if (json.data === "redirect" && json.url !== undefined)
             {
                 window.location.href = json.url;
+            }
+            if (json.data['conf_request'] !== undefined)
+            {
+                if (APIController.onConfimationReceived !== null && APIController.onConfimationReceived !== undefined)
+                {
+                    APIController.onConfimationReceived(json.data['conf_request']);
+                }
             }
             return (json.data);
         }
