@@ -1,3 +1,12 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+
 declare module 'iTutoring Application JS API';
 
 "use strict";

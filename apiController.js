@@ -1,3 +1,12 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+
 import CookiesManager from "./CookiesManager";
 import APICache from "./cache";
 import { R_KEYs } from "./objects/Enums";

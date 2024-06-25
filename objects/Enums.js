@@ -1,3 +1,12 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+
 const BookReturn = {
     SUCCESS: 0,
     NO_TEACHER_AVAILABLE: 1,

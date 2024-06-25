@@ -1,3 +1,12 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+
 import BillingInfo from "../objects/billingInfo";
 import APIController from "./../apiController";
 

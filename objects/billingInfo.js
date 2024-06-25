@@ -1,3 +1,12 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+
 /**
  * BillingInfo API model representation.
  * See documentation: https://zabesstudio.atlassian.net/wiki/spaces/ITUTAPP/pages/70549505/BillingInfo

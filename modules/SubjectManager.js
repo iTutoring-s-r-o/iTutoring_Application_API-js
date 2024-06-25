@@ -1,3 +1,12 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+
 import Subject from "./../objects/Subject";
 import APIController from "./../apiController";
 import Course from "./../objects/Course";

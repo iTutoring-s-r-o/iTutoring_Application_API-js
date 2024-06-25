@@ -1,3 +1,14 @@
+/*
+ * Copyright (C) 2024 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ 
+ *
+ */
+
+/**
+ * @deprecated
+ */
 class Customer
 {
     FirstName;
