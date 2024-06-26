@@ -177,6 +177,12 @@ class TableExplorer
 
     static async search(token, searchPhrase, base64encoded = true)
     {
+        searchPhrase = encodeURI(searchPhrase);
+        if (base64encoded)
+        {
+            searchPhrase = btoa(searchPhrase);
+        }
+
         var data = await APIController.Get(this.#MODULE, this.#SEARCH, {
             'token': token,
             'searchPhrase': searchPhrase,
