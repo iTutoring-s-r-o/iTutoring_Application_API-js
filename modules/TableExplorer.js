@@ -165,11 +165,10 @@ class TableExplorer
         return data;
     }
 
-    static async getFilteredResults(token, filters)
+    static async getFilteredResults(token)
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_FILTERED_RESULTS, {
             'token': token,
-            'filters': JSON.stringify(filters),
         });
 
         return data;
