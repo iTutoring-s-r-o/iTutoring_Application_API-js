@@ -42,7 +42,7 @@ class Models
     static async setEvent(event)
     {
         await APIController.Post(this.#MODULE, this.#SET_EVENT, {
-            'event': JSON.stringify(event),
+            'model': JSON.stringify(event),
         });
     }
 
@@ -66,7 +66,7 @@ class Models
     static async setInquiry(inquiry)
     {
         await APIController.Post(this.#MODULE, this.#SET_INQUIRY, {
-            'inquiry': JSON.stringify(inquiry),
+            'model': JSON.stringify(inquiry),
         });
     }
 
@@ -90,7 +90,7 @@ class Models
     static async setOffer(offer)
     {
         await APIController.Post(this.#MODULE, this.#SET_OFFER, {
-            'offer': JSON.stringify(offer),
+            'model': JSON.stringify(offer),
         });
     }
 
@@ -114,7 +114,7 @@ class Models
     static async setCustomer(customer)
     {
         await APIController.Post(this.#MODULE, this.#SET_CUSTOMER, {
-            'customer': JSON.stringify(customer),
+            'model': JSON.stringify(customer),
         });
     }
 
@@ -138,7 +138,7 @@ class Models
     static async setStudent(student)
     {
         await APIController.Post(this.#MODULE, this.#SET_STUDENT, {
-            'student': JSON.stringify(student),
+            'model': JSON.stringify(student),
         });
     }
 
@@ -162,7 +162,7 @@ class Models
     static async setLecture(lecture)
     {
         await APIController.Post(this.#MODULE, this.#SET_LECTURE, {
-            'lecture': JSON.stringify(lecture),
+            'model': JSON.stringify(lecture),
         });
     }
 
@@ -186,7 +186,7 @@ class Models
     static async setLectureAttendance(attendance)
     {
         await APIController.Post(this.#MODULE, this.#SET_LECTURE_ATTENDANCE, {
-            'attendance': JSON.stringify(attendance),
+            'model': JSON.stringify(attendance),
         });
     }
 
