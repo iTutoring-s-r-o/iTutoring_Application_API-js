@@ -88,7 +88,7 @@ class APIController
             {
                 window.location.href = json.url;
             }
-            if (json.data['conf_request'] !== undefined)
+            if ((json.data != null || json.data != undefined) && json.data['conf_request'] !== undefined)
             {
                 if (APIController.onConfimationReceived !== null && APIController.onConfimationReceived !== undefined)
                 {
