@@ -34,11 +34,11 @@ class TableExplorer
     static #SEARCH = "Search";
     static #ADD_FILTER = "AddFilter";
     static #RESET_FILTER = "ResetFilter";
-    static #ADD_SPECIAL_FILTER = "AddSpecialFilter";
+    static #SET_SPECIAL_FILTER = "SetSpecialFilter";
 
-    static async addSpecialFilter(token, filter)
+    static async setSpecialFilter(token, filter)
     {
-        await APIController.Post(this.#MODULE, this.#ADD_SPECIAL_FILTER, {
+        await APIController.Post(this.#MODULE, this.#SET_SPECIAL_FILTER, {
             'token': token,
             'filter': filter,
         });
