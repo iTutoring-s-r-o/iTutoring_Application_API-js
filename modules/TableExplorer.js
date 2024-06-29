@@ -30,7 +30,6 @@ class TableExplorer
     static #GET_PAGE = "GetPage";
     static #GET_NEXT_PAGE = "GetNextPage";
     static #GET_PREVIOUS_PAGE = "GetPreviousPage";
-    static #GET_FILTERED_RESULTS = "GetFilteredResults";
     static #SEARCH = "Search";
     static #ADD_FILTER = "AddFilter";
     static #RESET_FILTER = "ResetFilter";
@@ -168,15 +167,6 @@ class TableExplorer
     static async getPreviousPage(token)
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_PREVIOUS_PAGE, {
-            'token': token,
-        });
-
-        return data;
-    }
-
-    static async getFilteredResults(token)
-    {
-        var data = await APIController.Get(this.#MODULE, this.#GET_FILTERED_RESULTS, {
             'token': token,
         });
 
