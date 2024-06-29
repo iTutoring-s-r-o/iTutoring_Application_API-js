@@ -96,7 +96,7 @@ class APIController
                     APIController.onConfimationReceived(json.data['conf_request']);
                 }
             }
-            if (json.warnings != null && json.warnings.length > 0)
+            if (json.warnings != null && Object.entries(json.warnings).length > 0)
             {
                 if (APIController.onWarningReceived !== null && APIController.onWarningReceived !== undefined)
                 {
