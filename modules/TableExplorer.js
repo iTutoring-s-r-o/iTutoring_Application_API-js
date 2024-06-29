@@ -34,6 +34,15 @@ class TableExplorer
     static #SEARCH = "Search";
     static #ADD_FILTER = "AddFilter";
     static #RESET_FILTER = "ResetFilter";
+    static #ADD_SPECIAL_FILTER = "AddSpecialFilter";
+
+    static async addSpecialFilter(token, filter)
+    {
+        await APIController.Post(this.#MODULE, this.#ADD_SPECIAL_FILTER, {
+            'token': token,
+            'filter': filter,
+        });
+    }
 
     static async createInquiryExplorer()
     {
