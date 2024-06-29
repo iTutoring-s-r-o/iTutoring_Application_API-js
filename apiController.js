@@ -23,6 +23,7 @@ class APIController
 
     static onErrorReceived = null
     static onConfimationReceived = null;
+    static onWarningReceived = null;
 
     /**
      * R_KEY MUST be loaded before calling this method!
@@ -93,6 +94,13 @@ class APIController
                 if (APIController.onConfimationReceived !== null && APIController.onConfimationReceived !== undefined)
                 {
                     APIController.onConfimationReceived(json.data['conf_request']);
+                }
+            }
+            if (json.warnings != null && json.warnings.length > 0)
+            {
+                if (APIController.onWarningReceived !== null && APIController.onWarningReceived !== undefined)
+                {
+                    APIController.onWarningReceived(json.warnings);
                 }
             }
             return (json.data);
