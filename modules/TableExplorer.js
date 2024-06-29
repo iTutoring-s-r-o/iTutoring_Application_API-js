@@ -181,13 +181,11 @@ class TableExplorer
             searchPhrase = btoa(searchPhrase);
         }
 
-        var data = await APIController.Get(this.#MODULE, this.#SEARCH, {
+        await APIController.Get(this.#MODULE, this.#SEARCH, {
             'token': token,
             'searchPhrase': searchPhrase,
             'base64encoded': base64encoded,
         });
-
-        return data;
     }
 
     static async addFilter(token, filter, filterValue, filterOperation)
