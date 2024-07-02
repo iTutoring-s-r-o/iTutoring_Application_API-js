@@ -19,6 +19,8 @@ class Models
     static #SET_INQUIRY = 'SetInquiry';
     static #GET_INQUIRY = 'GetInquiry';
     static #DELETE_INQUIRY = 'DeleteInquiry';
+    static #SET_INQUIRY_FLAG = 'SetInquiryFlag';
+    static #UNSET_INQUIRY_FLAG = 'UnsetInquiryFlag';
     static #SET_OFFER = 'SetOffer';
     static #GET_OFFER = 'GetOffer';
     static #DELETE_OFFER = 'DeleteOffer';
@@ -38,6 +40,22 @@ class Models
     static #GET_STUDENTS_FOR_CUSTOMER = 'GetStudentsForCustomer';
     static #GET_LECTURES_FOR_EVENT = 'GetLecturesForEvent';
     static #GET_ATTENDANCE_FOR_LECTURE = 'GetAttendanceForLecture';
+
+    static async setInquiryFlag(inquiryId, flag)
+    {
+        await APIController.Post(this.#MODULE, this.#SET_INQUIRY_FLAG, {
+            'inquiryId': inquiryId,
+            'flag': flag,
+        });
+    }
+
+    static async unsetInquiryFlag(inquiryId, flag)
+    {
+        await APIController.Post(this.#MODULE, this.#UNSET_INQUIRY_FLAG, {
+            'inquiryId': inquiryId,
+            'flag': flag,
+        });
+    }
 
     static async setEvent(event)
     {
