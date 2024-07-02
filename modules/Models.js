@@ -41,18 +41,18 @@ class Models
     static #GET_LECTURES_FOR_EVENT = 'GetLecturesForEvent';
     static #GET_ATTENDANCE_FOR_LECTURE = 'GetAttendanceForLecture';
 
-    static async setInquiryFlag(inquiryId, flag)
+    static async setInquiryFlag(id, flag)
     {
         await APIController.Post(this.#MODULE, this.#SET_INQUIRY_FLAG, {
-            'inquiryId': inquiryId,
+            'id': id,
             'flag': flag,
         });
     }
 
-    static async unsetInquiryFlag(inquiryId, flag)
+    static async unsetInquiryFlag(id, flag)
     {
         await APIController.Post(this.#MODULE, this.#UNSET_INQUIRY_FLAG, {
-            'inquiryId': inquiryId,
+            'id': id,
             'flag': flag,
         });
     }
