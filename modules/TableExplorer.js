@@ -34,6 +34,15 @@ class TableExplorer
     static #ADD_FILTER = "AddFilter";
     static #RESET_FILTER = "ResetFilter";
     static #SET_SPECIAL_FILTER = "SetSpecialFilter";
+    static #REMOVE_FILTER = "RemoveFilter";
+
+    static async removeFilter(token, filter)
+    {
+        await APIController.Post(this.#MODULE, this.#REMOVE_FILTER, {
+            'token': token,
+            'filter': filter,
+        });
+    }
 
     static async setSpecialFilter(token, filter)
     {
@@ -100,7 +109,7 @@ class TableExplorer
 
         return data;
     }
-    
+
     static async getMaxPages(token)
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_MAX_PAGES, {
