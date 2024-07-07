@@ -173,17 +173,19 @@ class APIController
             {
                 if (request.readyState === 4)
                 {
-                    var response = APIController.ResolveResponse(request);
-                    if (useCache)
-                    {
-                        APICache.Cache(module + method + cacheSuffix, response);
-                    }
                     APIController.LastCall = {
                         "type": "GET",
                         "module": module,
                         "method": method,
                         "data": data,
                     }
+
+                    var response = APIController.ResolveResponse(request);
+                    if (useCache)
+                    {
+                        APICache.Cache(module + method + cacheSuffix, response);
+                    }
+
                     resolve(response);
                 }
             }
@@ -237,17 +239,19 @@ class APIController
             {
                 if (request.readyState === 4)
                 {
-                    var response = APIController.ResolveResponse(request);
-                    if (useCache)
-                    {
-                        APICache.Cache(module + method, response);
-                    }
                     APIController.LastCall = {
                         "type": "POST",
                         "module": module,
                         "method": method,
                         "data": data,
                     }
+                    
+                    var response = APIController.ResolveResponse(request);
+                    if (useCache)
+                    {
+                        APICache.Cache(module + method, response);
+                    }
+
                     resolve(response);
                 }
             }
