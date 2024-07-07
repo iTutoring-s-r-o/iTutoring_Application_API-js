@@ -109,7 +109,7 @@ class APIController
                 if (APIController.onConfimationReceived !== null && APIController.onConfimationReceived !== undefined)
                 {
                     APIController.ConfirmationToken = json.data['conf_request']['token'];
-                    json.data['conf_request']["confirm"] = this.ConfirmRequest;
+                    json.data['conf_request']["confirm"] = this.ConfirmRequest.bind(this);
                     APIController.onConfimationReceived(json.data['conf_request']);
                 }
             }
