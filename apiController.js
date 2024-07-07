@@ -173,18 +173,18 @@ class APIController
             {
                 if (request.readyState === 4)
                 {
-                    APIController.LastCall = {
-                        "type": "GET",
-                        "module": module,
-                        "method": method,
-                        "data": data,
-                    }
-
                     var response = APIController.ResolveResponse(request);
                     if (useCache)
                     {
                         APICache.Cache(module + method + cacheSuffix, response);
                     }
+                    if (response['conf_request'] !== undefined)
+                        APIController.LastCall = {
+                            "type": "GET",
+                            "module": module,
+                            "method": method,
+                            "data": data,
+                        }
 
                     resolve(response);
                 }
@@ -239,18 +239,19 @@ class APIController
             {
                 if (request.readyState === 4)
                 {
-                    APIController.LastCall = {
-                        "type": "POST",
-                        "module": module,
-                        "method": method,
-                        "data": data,
-                    }
-                    
                     var response = APIController.ResolveResponse(request);
                     if (useCache)
                     {
                         APICache.Cache(module + method, response);
                     }
+
+                    if (response['conf_request'] !== undefined)
+                        APIController.LastCall = {
+                            "type": "POST",
+                            "module": module,
+                            "method": method,
+                            "data": data,
+                        }
 
                     resolve(response);
                 }
