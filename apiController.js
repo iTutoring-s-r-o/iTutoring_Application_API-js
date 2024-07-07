@@ -25,6 +25,9 @@ class APIController
     static onConfimationReceived = null;
     static onWarningReceived = null;
 
+    static LastCall = null;
+    static ConfirmationToken = null;
+
     /**
      * R_KEY MUST be loaded before calling this method!
      * @returns Returns appropriate rest url based on current server.
@@ -79,6 +82,18 @@ class APIController
         }
     }
 
+    static async ConfirmRequest()
+    {
+        if (this.LastCall === null || this.ConfirmationToken === null)
+            return;
+
+        this.LastCall.data['token'] = this.ConfirmationToken;
+        if (this.LastCall.type === "GET")
+            return await this.Get(this.LastCall.module, this.LastCall.method, this.LastCall.data);
+        else if (this.LastCall.type === "POST")
+            return await this.Post(this.LastCall.module, this.LastCall.method, this.LastCall.data);
+    }
+
     static ResolveResponse(request)
     {
         const json = JSON.parse(request.responseText);
@@ -93,6 +108,8 @@ class APIController
             {
                 if (APIController.onConfimationReceived !== null && APIController.onConfimationReceived !== undefined)
                 {
+                    APIController.ConfirmationToken = json.data['conf_request']['token'];
+                    json.data["confirm"] = this.ConfirmRequest;
                     APIController.onConfimationReceived(json.data['conf_request']);
                 }
             }
@@ -161,7 +178,12 @@ class APIController
                     {
                         APICache.Cache(module + method + cacheSuffix, response);
                     }
-
+                    APIController.LastCall = {
+                        "type": "GET",
+                        "module": module,
+                        "method": method,
+                        "data": data,
+                    }
                     resolve(response);
                 }
             }
@@ -219,6 +241,12 @@ class APIController
                     if (useCache)
                     {
                         APICache.Cache(module + method, response);
+                    }
+                    APIController.LastCall = {
+                        "type": "POST",
+                        "module": module,
+                        "method": method,
+                        "data": data,
                     }
                     resolve(response);
                 }
