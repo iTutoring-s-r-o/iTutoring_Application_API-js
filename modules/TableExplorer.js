@@ -35,6 +35,16 @@ class TableExplorer
     static #RESET_FILTER = "ResetFilter";
     static #SET_SPECIAL_FILTER = "SetSpecialFilter";
     static #REMOVE_FILTER = "RemoveFilter";
+    static #GET_NUMBER_OF_ENTRIES = "GetNumberOfEntries";
+
+    static async getNumberOfEntries(token)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_NUMBER_OF_ENTRIES, {
+            'token': token,
+        });
+
+        return data;
+    }
 
     static async removeFilter(token, filter)
     {
