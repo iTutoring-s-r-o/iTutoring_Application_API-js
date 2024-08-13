@@ -178,7 +178,7 @@ class APIController
                     {
                         APICache.Cache(module + method + cacheSuffix, response);
                     }
-                    if (response['conf_request'] !== undefined)
+                    if (response != null && response['conf_request'] !== undefined)
                         APIController.LastCall = {
                             "type": "GET",
                             "module": module,
@@ -245,7 +245,7 @@ class APIController
                         APICache.Cache(module + method, response);
                     }
 
-                    if (response['conf_request'] !== undefined)
+                    if (response != null && response['conf_request'] !== undefined)
                         APIController.LastCall = {
                             "type": "POST",
                             "module": module,
