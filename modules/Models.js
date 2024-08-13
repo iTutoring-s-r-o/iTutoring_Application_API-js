@@ -40,6 +40,27 @@ class Models
     static #GET_STUDENTS_FOR_CUSTOMER = 'GetStudentsForCustomer';
     static #GET_LECTURES_FOR_EVENT = 'GetLecturesForEvent';
     static #GET_ATTENDANCE_FOR_LECTURE = 'GetAttendanceForLecture';
+    static #GET_PLANNED_LECTURE_COUNT = 'GetPlannedLectureCount';
+    static #CREATE_EVENT_FROM_INQUIRY = 'CreateEventFromInquiry';
+
+    static async createEventFromInquiry(inquiryId)
+    {
+        return await APIController.Post(this.#MODULE, this.#CREATE_EVENT_FROM_INQUIRY, {
+            'inquiryId': inquiryId,
+        });
+    }
+
+    static async getPlannedLectureCount(customerId, lessonType, lessonLength)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_PLANNED_LECTURE_COUNT, {
+            'customerId': customerId,
+            'lessonType': lessonType,
+            'lessonLength': lessonLength,
+        }
+        );
+
+        return data;
+    }
 
     static async setInquiryFlag(id, flag)
     {
