@@ -143,10 +143,11 @@ class ReservationSystem
      * @param {*} msg 
      * @param {*} place  must be PlaceID !
      */
-    static async SendRequest(name, email, tel, msg, place)
+    static async SendRequest(fname, lname, email, tel, msg, place)
     {
         await APIController.Post(this.#MODULE, this.#SEND_REQUEST, {
-            "name": name,
+            "fname": fname,
+            "lname": lname,
             "email": email,
             "tel": tel,
             "msg": msg,

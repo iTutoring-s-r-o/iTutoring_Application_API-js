@@ -36,6 +36,15 @@ class TableExplorer
     static #SET_SPECIAL_FILTER = "SetSpecialFilter";
     static #REMOVE_FILTER = "RemoveFilter";
     static #GET_NUMBER_OF_ENTRIES = "GetNumberOfEntries";
+    static #SET_CUSTOM_LOAD_QUERY = "SetCustomLoadQuery";
+
+    static async setCustomLoadQuery(token, query)
+{
+        await APIController.Post(this.#MODULE, this.#SET_CUSTOM_LOAD_QUERY, {
+            'token': token,
+            'filter': query,
+        });
+    }
 
     static async getNumberOfEntries(token)
     {
