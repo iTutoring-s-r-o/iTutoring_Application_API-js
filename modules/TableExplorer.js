@@ -38,11 +38,12 @@ class TableExplorer
     static #GET_NUMBER_OF_ENTRIES = "GetNumberOfEntries";
     static #SET_CUSTOM_LOAD_QUERY = "SetCustomLoadQuery";
 
-    static async setCustomLoadQuery(token, query)
-{
+    static async setCustomLoadQuery(token, query, variables = {})
+    {
         await APIController.Post(this.#MODULE, this.#SET_CUSTOM_LOAD_QUERY, {
             'token': token,
             'filter': query,
+            'filterVariables': JSON.stringify(variables),
         });
     }
 
@@ -63,11 +64,12 @@ class TableExplorer
         });
     }
 
-    static async setSpecialFilter(token, filter)
+    static async setSpecialFilter(token, filter, variables = {})
     {
         await APIController.Post(this.#MODULE, this.#SET_SPECIAL_FILTER, {
             'token': token,
             'filter': filter,
+            'filterVariables': JSON.stringify(variables),
         });
     }
 

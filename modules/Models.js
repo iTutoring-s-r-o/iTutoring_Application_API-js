@@ -42,6 +42,17 @@ class Models
     static #GET_ATTENDANCE_FOR_LECTURE = 'GetAttendanceForLecture';
     static #GET_PLANNED_LECTURE_COUNT = 'GetPlannedLectureCount';
     static #CREATE_EVENT_FROM_INQUIRY = 'CreateEventFromInquiry';
+    static #GET_FIRST_PLANNED_LECTURE = 'GetFirstPlannedLecture';
+
+    static async getFirstPlannedLecture(eventId, includeToday)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_FIRST_PLANNED_LECTURE, {
+            'eventId': eventId,
+            'includeToday': includeToday,
+        });
+
+        return data;
+    }
 
     static async createEventFromInquiry(inquiryId)
     {
@@ -198,10 +209,11 @@ class Models
         });
     }
 
-    static async setLecture(lecture)
+    static async setLecture(lecture, draft = false)
     {
         return await APIController.Post(this.#MODULE, this.#SET_LECTURE, {
             'model': JSON.stringify(lecture),
+            'draft': draft,
         });
     }
 
@@ -214,11 +226,12 @@ class Models
         return data;
     }
 
-    static async deleteLecture(id, toTrash = true)
+    static async deleteLecture(id, toTrash = true, draft = false)
     {
         await APIController.Post(this.#MODULE, this.#DELETE_LECTURE, {
             'id': id,
             'toTrash': toTrash,
+            'draft': draft,
         });
     }
 

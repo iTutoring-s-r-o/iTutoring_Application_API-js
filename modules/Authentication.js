@@ -18,6 +18,13 @@ class Authentication
     static #LOG_IN = "LogIn";
     static #IS_AUTHENTICATED = "IsAuthenticated";
     static #GET_USER_INFO = "GetUserInfo";
+    static #SIGN_OUT = "SignOut";
+
+    static async SignOut()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#SIGN_OUT);
+        return res;
+    }
 
     static async LogIn(email, pass, type)
     {
@@ -42,8 +49,8 @@ class Authentication
         var arr = JSON.parse(userString);
 
         var user = new AuthUser();
-        user.AuthenticationMethod = user['AuthenticationMethod']; 
-        
+        user.AuthenticationMethod = user['AuthenticationMethod'];
+
         user.ID = arr['ID'];
         user.Name = arr['Name'];
         user.Email = arr['Email'];

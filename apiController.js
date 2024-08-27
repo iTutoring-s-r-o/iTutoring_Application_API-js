@@ -28,6 +28,8 @@ class APIController
     static LastCall = null;
     static ConfirmationToken = null;
 
+    static IsTestServer = null;
+
     /**
      * R_KEY MUST be loaded before calling this method!
      * @returns Returns appropriate rest url based on current server.
@@ -46,7 +48,12 @@ class APIController
         }
     }
 
-    static CreateVisitorSession()
+    static TestServerCheck()
+    {
+        return this.IsTestServer;
+    }
+
+    static async CreateVisitorSession()
     {
         const id = Date.now();
         const date = new Date();
@@ -54,6 +61,9 @@ class APIController
 
         CookiesManager.SetCookie("session", id, date.toUTCString());
         this.ReadUserSource();
+
+        var rKey = await this.GetLocalRKey();
+        this.IsTestServer = rKey === R_KEYs.r_key_test || location.hostname === 'localhost';
     }
 
     static GetVisitorSessionID()

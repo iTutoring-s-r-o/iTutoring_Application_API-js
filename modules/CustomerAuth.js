@@ -20,7 +20,7 @@ class CustomerAuth
     // All method names
     static #IS_AUTHENTICATED = "IsAuthenticated";
     static #LOG_IN = "Login";
-    static #SIGN_ING = "SignIn";
+    static #SIGN_IN = "SignIn";
 
     /**
      * Checks if currunet user(customer) is authenticated or not.
@@ -43,7 +43,7 @@ class CustomerAuth
      */
     static async SignIn(email, pass, fname, lname, phone)
     {
-        var result = await APIController.Post(this.#MODULE, this.#SIGN_ING, {
+        var result = await APIController.Post(this.#MODULE, this.#SIGN_IN, {
             'email': email,
             'pass': pass,
             'fname': fname,
