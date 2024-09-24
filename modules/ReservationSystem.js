@@ -136,7 +136,7 @@ class ReservationSystem
     }
 
     /**
-     * Send request for tutoring. Will register as event
+     * Send request for tutoring. Will register as inquiry and it's id will be returned.
      * @param {*} name 
      * @param {*} email 
      * @param {*} tel 
@@ -145,7 +145,7 @@ class ReservationSystem
      */
     static async SendRequest(fname, lname, email, tel, msg, place)
     {
-        await APIController.Post(this.#MODULE, this.#SEND_REQUEST, {
+        var id = await APIController.Post(this.#MODULE, this.#SEND_REQUEST, {
             "fname": fname,
             "lname": lname,
             "email": email,
@@ -153,6 +153,7 @@ class ReservationSystem
             "msg": msg,
             "place": place
         })
+        return id;
     }
 }
 
