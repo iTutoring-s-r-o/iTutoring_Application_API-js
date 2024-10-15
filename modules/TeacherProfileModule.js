@@ -48,6 +48,19 @@ class TeacherProfileModule
     static #IS_PROFILE_COMPLETED = "IsProfileCompleted";
     static #SET_PROFILE_COMPLETE = "SetProfileCompleted";
     static #GET_AVAILABLE_MODULES = "GetAvailableModules";
+    static #CHECK_PROFILE ="CheckProfile";
+    static #IS_PROFILE_CHECKED = "IsProfileChecked";
+
+    static async isProfileChecked()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#IS_PROFILE_CHECKED);
+        return data;
+    }
+
+    static async checkProfile()
+    {
+        await APIController.Post(this.#MODULE, this.#CHECK_PROFILE);
+    }
 
     static async getAvailableModules()
     {
