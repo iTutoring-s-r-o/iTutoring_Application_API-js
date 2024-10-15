@@ -97,6 +97,8 @@ class APIController
         if (this.LastCall === null || this.ConfirmationToken === null)
             return;
 
+        if (this.LastCall.data == null)
+            this.LastCall.data = {};
         this.LastCall.data['conf_token'] = this.ConfirmationToken;
         if (this.LastCall.type === "GET")
             return await this.Get(this.LastCall.module, this.LastCall.method, this.LastCall.data);
