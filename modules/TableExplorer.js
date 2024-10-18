@@ -37,6 +37,14 @@ class TableExplorer
     static #REMOVE_FILTER = "RemoveFilter";
     static #GET_NUMBER_OF_ENTRIES = "GetNumberOfEntries";
     static #SET_CUSTOM_LOAD_QUERY = "SetCustomLoadQuery";
+    static #CREATE_LECTOR_EXPLORER = "CreateLectorExplorer";
+
+    static async createLectorExplorer()
+    {
+        var data = await APIController.Get(this.#MODULE, this.#CREATE_LECTOR_EXPLORER);
+
+        return data['token'];
+    }
 
     static async setCustomLoadQuery(token, query, variables = {})
     {

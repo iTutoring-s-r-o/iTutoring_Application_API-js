@@ -44,6 +44,33 @@ class Models
     static #CREATE_EVENT_FROM_INQUIRY = 'CreateEventFromInquiry';
     static #GET_FIRST_PLANNED_LECTURE = 'GetFirstPlannedLecture';
     static #MARK_INQUIRY_ALL_INFO_SET = 'MarkInquiryAllInfoSet';
+    static #SET_LECTOR = 'SetLector';
+    static #GET_LECTOR = 'GetLector';
+    static #DELETE_LECTOR = 'DeleteLector';
+
+    static async setLector(lector)
+    {
+        return await APIController.Post(this.#MODULE, this.#SET_LECTOR, {
+            'model': JSON.stringify(lector),
+        });
+    }
+
+    static async getLector(id)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_LECTOR, {
+            'id': id,
+        });
+
+        return data;
+    }
+
+    static async deleteLector(id, toTrash = true)
+    {
+        await APIController.Post(this.#MODULE, this.#DELETE_LECTOR, {
+            'id': id,
+            'toTrash': toTrash,
+        });
+    }
 
     static async markInquiryAllInfoSet(inquiryId)
     {
