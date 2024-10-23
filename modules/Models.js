@@ -64,11 +64,12 @@ class Models
         return data;
     }
 
-    static async deleteLector(id, toTrash = true)
+    static async deleteLector(id, toTrash = true, archiveOnly = false)
     {
         await APIController.Post(this.#MODULE, this.#DELETE_LECTOR, {
             'id': id,
             'toTrash': toTrash,
+            'archiveOnly': archiveOnly,
         });
     }
 
