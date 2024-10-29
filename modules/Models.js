@@ -52,7 +52,7 @@ class Models
     static async getLectorCalendar(lectorId, day, month, year, length)
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_LECTOR_CALENDAR, {
-            'lectorId': lectorId,
+            'id': lectorId,
             'day': day,
             'month': month,
             'year': year,
