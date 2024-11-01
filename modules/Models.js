@@ -48,6 +48,17 @@ class Models
     static #GET_LECTOR = 'GetLector';
     static #DELETE_LECTOR = 'DeleteLector';
     static #GET_LECTOR_CALENDAR = 'GetLectorCalendar';
+    static #GET_LECTORS_FOR_INQUIRY = 'GetLectorsForInquiry';
+
+    static async getLectorsForInquiry(inquiryId)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_LECTORS_FOR_INQUIRY, {
+            'inquiryId': inquiryId,
+        });
+
+        return data;
+    }
+
 
     static async getLectorCalendar(lectorId, day, month, year, length)
     {
