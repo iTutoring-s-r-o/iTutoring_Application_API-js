@@ -49,6 +49,27 @@ class Models
     static #DELETE_LECTOR = 'DeleteLector';
     static #GET_LECTOR_CALENDAR = 'GetLectorCalendar';
     static #GET_LECTORS_FOR_INQUIRY = 'GetLectorsForInquiry';
+    static #GENERATE_LECTURE_REPORT = 'GenerateLectureReport';
+    static #GET_LECTURE_REPORT = 'GetLectureReport';
+
+    static async getLectureReport(id)
+    {
+        var data = await APIController.Get(this.#MODULE, this.#GET_LECTURE_REPORT, {
+            'id': id,
+        });
+        return data;
+    }
+
+    static async generateLectureReport(lectureId, topic, report, review, hw)
+    {
+        return await APIController.Post(this.#MODULE, this.#GENERATE_LECTURE_REPORT, {
+            'lectureId': lectureId,
+            'topic': topic,
+            'report': report,
+            'review': review,
+            'hw': hw,
+        });
+    }
 
     static async getLectorsForInquiry(inquiryId)
     {

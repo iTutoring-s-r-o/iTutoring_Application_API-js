@@ -35,6 +35,7 @@ import AttendanceManager from "./modules/AttendanceManager";
 import TeacherProfileModule from "./modules/TeacherProfileModule";
 import LectorDatabase from "./modules/LectorDatabase";
 import LectorsCalendar from "./modules/LectorsCalendar";
+import AiAssist from "./modules/AiAssist";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -97,6 +98,7 @@ export
     FAQ,
     Inventory,
     LectorsCalendar,
+    AiAssist,
     
     Course,
     CourseReservation,
