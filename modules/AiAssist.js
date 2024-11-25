@@ -15,13 +15,14 @@ class AiAssist
 
     static #FIX_LECTURE_REPORT = 'FixLectureReport';
 
-    static async fixLectureReport(topic, report, review, homework)
+    static async fixLectureReport(topic, report, review, homework, language)
     {
         var data = await APIController.Post(this.#MODULE, this.#FIX_LECTURE_REPORT, {
             'topic': topic,
             'report': report,
             'review': review,
             'homework': homework,
+            'language': language
         });
 
         return data;
