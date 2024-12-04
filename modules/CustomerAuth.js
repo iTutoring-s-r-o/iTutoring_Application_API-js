@@ -2,13 +2,11 @@
  * Copyright (C) 2024 iTutoring s.r.o.
  * All rights reserved.
  *
- 
  *
  */
 
 
 import APIController from "./../apiController";
-//import EventHandling from "./EventHandling";
 
 class CustomerAuth
 {
@@ -18,20 +16,8 @@ class CustomerAuth
     static #MODULE = "CustomerAuth";
 
     // All method names
-    static #IS_AUTHENTICATED = "IsAuthenticated";
-    static #LOG_IN = "Login";
     static #SIGN_IN = "SignIn";
 
-    /**
-     * Checks if currunet user(customer) is authenticated or not.
-     * @returns bool
-     */
-    static async IsAuthenticated()
-    {
-        var result = await APIController.Get(this.#MODULE, this.#IS_AUTHENTICATED);
-
-        return APIController.IntToBool(result);
-    }
 
     /**
      * 
@@ -51,34 +37,6 @@ class CustomerAuth
             'phone': phone,
         });
 
-        /*EventHandling.OnUserSignIn.publish(
-            {
-                result: result
-            }
-        );*/
-
-        return result;
-    }
-
-    /**
-     * 
-     * @param {*} email 
-     * @param {*} password 
-     * @returns Int (AuthResult)
-     */
-    static async LogIn(email, password)
-    {
-        var result = await APIController.Post(this.#MODULE, this.#LOG_IN, {
-            'email': email,
-            'pass': password,
-        });
-
-        /*EventHandling.OnUserLogIn.publish(
-            {
-                result: result,
-            }
-        );
-*/
         return result;
     }
 }

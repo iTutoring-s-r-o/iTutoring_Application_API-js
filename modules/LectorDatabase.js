@@ -29,6 +29,8 @@ class LectorDatabase
     static #GET_PUBLIC_PROFILES = "GetPublicProfiles";
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      * desc: Get count of lectors
      * 
      * @returns {int} count of lectors
@@ -41,6 +43,8 @@ class LectorDatabase
     }
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      * desc: Remove module access
      * @param {string} lectorId
      * @param {string} moduleId
@@ -54,6 +58,8 @@ class LectorDatabase
     }
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      * desc: Get all lectors
      * @param {int} listOffset 
      * @param {int} maxCount 
@@ -70,6 +76,8 @@ class LectorDatabase
     }
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      *  desc: Get lector info
      * @param {string} lectorId 
      * @returns 
@@ -85,6 +93,8 @@ class LectorDatabase
 
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      *  desc: Query lector DSS
      * @param {string} dssQuery 
      * @returns 
@@ -100,6 +110,8 @@ class LectorDatabase
 
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      *  desc: Remove lector
      * @param {string} lectorId 
      */
@@ -139,6 +151,8 @@ class LectorDatabase
     }
 
     /**
+     * @deprecated use CRM (Table Explorer, Modles) instead
+     * 
      *  desc: Add module access
      * @param {string} lectorId 
      * @param {string} moduleId 

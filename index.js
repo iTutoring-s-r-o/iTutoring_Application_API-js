@@ -14,22 +14,13 @@ import CookiesManager from "./CookiesManager";
 
 import CustomerAuth from "./modules/CustomerAuth";
 import CustomerPortal from "./modules/CustomerPortal";
-import Email from "./modules/Email";
-import Newsletters from "./modules/Newsletters";
 import Payments from "./modules/Payments";
 import ReservationSystem from "./modules/ReservationSystem";
 import SubjectManager from "./modules/SubjectManager";
 import TeacherAuth from "./modules/TeacherAuth";
-import TeacherManager from "./modules/TeacherManager";
-import TeacherPortal from "./modules/TeacherPortal";
 import TeacherProfiles from "./modules/TeacherProfiles";
-import WebinarSystem from "./modules/WebinarsSystem";
 import GoogleReviews from "./modules/GoogleReviews";
-import CustomerEduPortal from "./modules/CustomerEduPortal";
-import EventManager from "./modules/EventManager";
 import iTutoringApplicationVersion from "./modules/Version";
-import LessonManager from "./modules/LessonManager";
-import AttendanceManager from "./modules/AttendanceManager";
 import LectorDatabase from "./modules/LectorDatabase";
 import LectorsCalendar from "./modules/LectorsCalendar";
 import AiAssist from "./modules/AiAssist";
@@ -71,23 +62,14 @@ export
 
     CustomerAuth,
     CustomerPortal,
-    Email,
-    Newsletters,
     Payments,
     ReservationSystem,
     SubjectManager,
     TeacherAuth,
-    TeacherManager,
-    TeacherPortal,
     TeacherProfiles,
-    WebinarSystem,
     GoogleReviews,
-    CustomerEduPortal,
-    EventManager,
     iTutoringApplicationVersion,
-    LessonManager,
     Authentication,
-    AttendanceManager,
     Toolkit,
     TeacherProfileModule,
     LectorDatabase,

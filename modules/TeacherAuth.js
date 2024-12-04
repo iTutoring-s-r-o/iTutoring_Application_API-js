@@ -31,22 +31,6 @@ class TeacherAuth
    }
 
    /**
-    * 
-    * @param {*} email 
-    * @param {*} password 
-    * @returns int (AuthResult)
-    */
-   static async Login(email, password)
-   {
-      var res = await APIController.Post(this.#MODULE, this.#LOGIN, {
-         'email': email,
-         'pass': password,
-      })
-
-      return res;
-   }
-
-   /**
     * Change current password
     * @param {*} oldPass is required to authorize user
     * @param {*} newPass 
@@ -60,32 +44,6 @@ class TeacherAuth
       });
 
       return res;
-   }
-
-   /**
-    * 
-    * @param {*} email 
-    * @param {*} password 
-    * @returns int (AuthResult)
-    */
-   static async Register(email, password, name, meetingLink, subjects)
-   {
-      var res = await APIController.Post(this.#MODULE, this.#REGISTER, {
-         'email': email,
-         'pass': password,
-         'name': name,
-         'meetingLink': meetingLink,
-         'subjects': subjects,
-      });
-
-      return res;
-   }
-
-   static async IsAuthenticated()
-   {
-      var res = await APIController.Get(this.#MODULE, this.#IS_AUTHENTICATED);
-
-      return APIController.IntToBool(res);
    }
 }
 
