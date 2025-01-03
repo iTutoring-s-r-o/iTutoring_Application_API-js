@@ -9,9 +9,9 @@
 
 class CookiesManager
 {
-    static SetCookie(name, value, expiracy)
+    static SetCookie(name, value, expiracy, force = false)
     {
-        if (this.GetCookie(name) != null)
+        if (this.GetCookie(name) != null && !force)
             return;
         
         document.cookie = name + "=" + value + "; expires=" + expiracy + ";path=/";
@@ -37,6 +37,11 @@ class CookiesManager
         }
 
         return null;
+    }
+
+    static RemoveCookie(name)
+    {
+        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
 }
 

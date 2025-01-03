@@ -19,6 +19,17 @@ class Authentication
     static #IS_AUTHENTICATED = "IsAuthenticated";
     static #GET_USER_INFO = "GetUserInfo";
     static #SIGN_OUT = "SignOut";
+    static #SUPER_LOGIN = "SuperLogin";
+
+    static async SuperLogin(email, type)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#SUPER_LOGIN, {
+            "email": email,
+            "type": type,
+        });
+
+        return res;
+    }
 
     static async SignOut()
     {
@@ -40,7 +51,7 @@ class Authentication
     static async IsAuthenticated()
     {
         var res = await APIController.Get(this.#MODULE, this.#IS_AUTHENTICATED);
-        return APIController.IntToBool(res);
+        return res;
     }
 
     static async GetUserInfo()
