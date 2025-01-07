@@ -7,7 +7,6 @@
  */
 
 import APIController from "./../apiController";
-import Customer from "./../objects/Customer";
 
 class CustomerPortal
 {
@@ -21,25 +20,11 @@ class CustomerPortal
 
    /**
     * Customer must be logged in otherwise this method will return null object.
-    * @returns Customer object
+    * @returns Customer (CRM Object)
     */
    static async GetCustomerInfo()
    {
-      var customerString = await APIController.Get(this.#MODULE, this.#GET_CUSTOMER_INFO);
-      if (customerString == "null")
-      {
-         return null;
-
-      }
-      var customerArray = JSON.parse(customerString);
-
-      var customer = new Customer();
-      customer.Email = customerArray['Email'];
-      customer.FirstName = customerArray['FirstName'];
-      customer.LastName = customerArray['LastName'];
-      customer.ID = customerArray['ID'];
-      customer.Phone = customerArray['Phone'];
-
+      var customer = await APIController.Get(this.#MODULE, this.#GET_CUSTOMER_INFO);
       return customer;
    }
 }
