@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 iTutoring s.r.o.
+ * Copyright (C) 2025 iTutoring s.r.o.
  * All rights reserved.
  *
  *
@@ -17,7 +17,16 @@ class CustomerAuth
 
     // All method names
     static #SIGN_IN = "SignIn";
+    static #RESEND_CONFIRMATION_EMAIL = 'ResendConfirmationEmail';
 
+    static async ResendConfirmationEmail(email)
+    {
+        var result = await APIController.Post(this.#MODULE, this.#RESEND_CONFIRMATION_EMAIL, {
+            'email': email
+        });
+
+        return result;
+    }
 
     /**
      * 
