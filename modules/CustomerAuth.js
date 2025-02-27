@@ -21,7 +21,7 @@ class CustomerAuth
 
     static async ResendConfirmationEmail(email)
     {
-        var result = await APIController.Post(this.#MODULE, this.#RESEND_CONFIRMATION_EMAIL, {
+        var result = await APIController.Get(this.#MODULE, this.#RESEND_CONFIRMATION_EMAIL, {
             'email': email
         });
 
