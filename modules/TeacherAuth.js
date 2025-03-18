@@ -21,6 +21,7 @@ class TeacherAuth
    static #REGISTER = "Register";
    static #IS_AUTHENTICATED = "IsAuthenticated";
    static #CHANGE_PASSWOD = "ChangePassword";
+   static #REQUEST_PASSWORD_CHANGE = "RequestPasswordChange";
 
    /**
     * This mothod will force default auth dialog
@@ -44,6 +45,13 @@ class TeacherAuth
       });
 
       return res;
+   }
+
+   static async RequestPasswordChange(email)
+   {
+      await APIController.Get(this.#MODULE, this.#REQUEST_PASSWORD_CHANGE, {
+         'email': email
+      });
    }
 }
 
