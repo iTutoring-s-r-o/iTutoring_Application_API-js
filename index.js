@@ -24,6 +24,7 @@ import iTutoringApplicationVersion from "./modules/Version";
 import LectorDatabase from "./modules/LectorDatabase";
 import LectorsCalendar from "./modules/LectorsCalendar";
 import AiAssist from "./modules/AiAssist";
+import CustomerLessonManager from "./modules/CustomerLessonManager";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -45,15 +46,15 @@ import Inventory from "./modules/Inventory";
 import BillingInfo from "./objects/billingInfo";
 
 import
-    {
-        BookReturn,
-        AuthResult,
-        PaymentType,
-        DeviceOS,
-        PasswordChange,
-        R_KEYs,
-        AuthType
-    } from "./objects/Enums";
+{
+    BookReturn,
+    AuthResult,
+    PaymentType,
+    DeviceOS,
+    PasswordChange,
+    R_KEYs,
+    AuthType
+} from "./objects/Enums";
 
 export
 {
@@ -79,6 +80,7 @@ export
     Inventory,
     LectorsCalendar,
     AiAssist,
+    CustomerLessonManager,
 
     Course,
     CourseReservation,
