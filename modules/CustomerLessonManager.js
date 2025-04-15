@@ -6,6 +6,8 @@
  *
  */
 
+import APIController from "../apiController";
+
 class CustomerLessonManager
 {
     static #MODULE = "CustomerLessonManager";
