@@ -28,6 +28,7 @@ import LectorDatabase from "./modules/LectorDatabase";
 import LectorsCalendar from "./modules/LectorsCalendar";
 import AiAssist from "./modules/AiAssist";
 import CustomerLessonManager from "./modules/CustomerLessonManager";
+import WebController from "./modules/WebController";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -83,6 +84,7 @@ export
     LectorsCalendar,
     AiAssist,
     CustomerLessonManager,
+    WebController,
 
     Course,
     CourseReservation,

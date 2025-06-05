@@ -14,6 +14,7 @@ class FAQ
     static #MODULE = "Faq";
 
     static #GET_FAQ = "GetFAQ";
+    static #ASK_QUESTION = "AskQuestion";
 
     /**
      * desc: Get FAQ
@@ -24,6 +25,15 @@ class FAQ
         const faq = await APIController.Get(this.#MODULE, this.#GET_FAQ, {}, true);
 
         return faq;
+    }
+
+    static async AskQuestion(question)
+    {
+        const res = await APIController.Post(this.#MODULE, this.#ASK_QUESTION, {
+            'question': question
+        });
+
+        return res;
     }
 }
 
