@@ -173,13 +173,13 @@ class LectorDatabase
      * @param {number} maxCount
      * @returns {Promise<array>}
      */
-    static async getPublicProfiles(offset = 0, maxCount = -1, onlyWithProfilePictures = false)
+    static async getPublicProfiles(offset = 0, maxCount = -1, onlyWithProfilePictures = false, useCache = true)
     {
         return await APIController.Get(this.#MODULE, this.#GET_PUBLIC_PROFILES, {
             'offset': offset,
             'max': maxCount,
             'onlyWithProfilePictures': onlyWithProfilePictures,
-        }, true, (onlyWithProfilePictures ? "onlyWithProfilePictures" : ""));
+        }, useCache, (onlyWithProfilePictures ? "onlyWithProfilePictures" : ""));
     }
 }
 
