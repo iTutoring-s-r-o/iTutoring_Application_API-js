@@ -15,6 +15,7 @@ class Inventory
 
     static #GET_AVAILABLE_ITEMS = "GetAvailableItems";
     static #SALE_COUPON_EXISTS = "SaleCouponExists";
+    static #SEARCH = "Search";
 
     static async saleCouponExists(code)
     {
@@ -25,13 +26,23 @@ class Inventory
         return exists;
     }
 
-    static async getAvailableItems(category = "ANY", max = -1, offset = 0, filter = {})
+    static async getAvailableItems(category = "ANY", max = -1, offset = 0, filter = {}, startingWithinHours = -1)
     {
         var items = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_ITEMS, {
             'category': category,
             'max': max,
             'offset': offset,
             'filter': JSON.stringify(filter),
+            'startingWithinHours': startingWithinHours
+        });
+
+        return items;
+    }
+
+    static async search(query) 
+    {
+        var items = await APIController.Get(this.#MODULE, this.#SEARCH, {
+            'query': query
         });
 
         return items;

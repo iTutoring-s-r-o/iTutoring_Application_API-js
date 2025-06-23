@@ -29,6 +29,8 @@ import LectorsCalendar from "./modules/LectorsCalendar";
 import AiAssist from "./modules/AiAssist";
 import CustomerLessonManager from "./modules/CustomerLessonManager";
 import WebController from "./modules/WebController";
+import MarketplaceController from "./modules/MarketplaceController";
+import LessonInventory from "./modules/LessonInventory";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -85,6 +87,8 @@ export
     AiAssist,
     CustomerLessonManager,
     WebController,
+    MarketplaceController,
+    LessonInventory,
 
     Course,
     CourseReservation,
