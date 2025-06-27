@@ -35,10 +35,10 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async getPzk(groupOnly, max, offset, obor = null, dayIndex = null, lessonCount = null, subject = null)
+    static async getPzk(lessonType, max, offset, obor = null, dayIndex = null, lessonCount = null, subject = null)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_PZK, {
-            'groupOnly': groupOnly,
+            'lessonType': lessonType,
             'max': max,
             'offset': offset,
             'obor': obor,
