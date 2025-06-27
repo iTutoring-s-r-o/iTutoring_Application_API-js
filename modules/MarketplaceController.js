@@ -17,6 +17,16 @@ class MarketplaceController
     static #GET_VS_EXAMS = "GetVsExams";
     static #GET_KROUZKY = "GetKrouzky";
     static #SEARCH = "Search";
+    static #GET_PRODUCT_PAGE = "GetProductPage";
+
+    static async getProductPage(sku, instanceId = null)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_PRODUCT_PAGE, {
+            'sku': sku,
+            'instanceId': instanceId
+        });
+        return JSON.parse(res);
+    }
 
     static async getHome()
     {
