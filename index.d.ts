@@ -31,6 +31,8 @@ import CustomerLessonManager from "./modules/CustomerLessonManager";
 import WebController from "./modules/WebController";
 import MarketplaceController from "./modules/MarketplaceController";
 import LessonInventory from "./modules/LessonInventory";
+import Cart from "./modules/Cart";
+import Checkout from "./modules/Checkout";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -89,6 +91,8 @@ export
     WebController,
     MarketplaceController,
     LessonInventory,
+    Cart,
+    Checkout,
 
     Course,
     CourseReservation,
