@@ -1,3 +1,13 @@
+/*
+ * Copyright (C) 2025 iTutoring s.r.o.
+ * All rights reserved.
+ *
+ *
+ */
+
+
+import APIController from "../apiController";
+
 class Checkout
 {
     static #MODULE = "Checkout";

@@ -41,9 +41,11 @@ class Cart
 
     static async applySaleCoupon(code)
     {
-        await APIController.Post(this.#MODULE, this.#APPLY_SALE_COUPON, {
+        var res = await APIController.Post(this.#MODULE, this.#APPLY_SALE_COUPON, {
             "code": code
         });
+
+        return res;
     }
 
     static async getAppliedSaleCoupons()
