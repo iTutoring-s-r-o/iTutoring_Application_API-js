@@ -1,21 +1,15 @@
 /*
- * Copyright (C) 2024 iTutoring s.r.o.
+ * Copyright (C) 2025 iTutoring s.r.o.
  * All rights reserved.
  *
- 
  *
- */
-
-
-/**
- * BillingInfo API model representation.
- * See documentation: https://zabesstudio.atlassian.net/wiki/spaces/ITUTAPP/pages/70549505/BillingInfo
  */
 class BillingInfo
 {
     FirstName = "";
     LastName = "";
     StudentName = "";
+    StudentAge = 1;
     Email = "";
     Phone = "";
     Address = "";
