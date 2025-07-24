@@ -18,6 +18,15 @@ class MarketplaceController
     static #GET_KROUZKY = "GetKrouzky";
     static #SEARCH = "Search";
     static #GET_PRODUCT_PAGE = "GetProductPage";
+    static #GET_ORDER_DETAIL = "GetOrderDetail";
+
+    static async getOrderPage(orderId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_ORDER_DETAIL, {
+            'orderId': orderId
+        });
+        return JSON.parse(res);
+    }
 
     static async getProductPage(sku, instanceId = null)
     {
