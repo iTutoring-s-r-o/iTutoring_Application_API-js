@@ -33,6 +33,7 @@ import MarketplaceController from "./modules/MarketplaceController";
 import LessonInventory from "./modules/LessonInventory";
 import Cart from "./modules/Cart";
 import Checkout from "./modules/Checkout";
+import InquiryCheckout from "./modules/InquiryCheckout";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -51,6 +52,8 @@ import Reviews from "./modules/Reviews";
 import FAQ from "./modules/FAQ";
 import Inventory from "./modules/Inventory";
 import BillingInfo from "./objects/billingInfo";
+import InquiryContactInfo from "./objects/InquiryContactInfo";
+import InquiryAdditionalInfo from "./objects/InquiryAdditionalInfo";
 
 import
 {
@@ -93,6 +96,7 @@ export
     LessonInventory,
     Cart,
     Checkout,
+    InquiryCheckout,
 
     Course,
     CourseReservation,
@@ -105,6 +109,8 @@ export
     AuthUser,
     AttendanceEvent,
     BillingInfo,
+    InquiryContactInfo,
+    InquiryAdditionalInfo,
 
     BookReturn,
     AuthResult,
