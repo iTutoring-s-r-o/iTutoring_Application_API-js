@@ -17,6 +17,15 @@ class InquiryCheckout
     static #CLEAR_CHECKOUT = "ClearCheckout";
     static #SEND_INQUIRY = "SendInquiry";
     static #FINISH_INQUIRY = "FinishInquiry";
+    static #IS_SUBJECT_IN_CHECKOUT = "IsSubjectInCheckout";
+
+    static async isSubjectInCheckout(subjectId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#IS_SUBJECT_IN_CHECKOUT, {
+            'subjectId': subjectId
+        });
+        return res
+    }
 
     static async addSubject(subjectId, level = 0)
     {
@@ -27,11 +36,10 @@ class InquiryCheckout
         return res;
     }
 
-    static async removeSubject(subjectId, level = 0)
+    static async removeSubject(subjectId)
     {
         var res = await APIController.Post(this.#MODULE, this.#REMOVE_SUBJECT, {
             'subjectId': subjectId,
-            'level': level
         });
         return res;
     }
