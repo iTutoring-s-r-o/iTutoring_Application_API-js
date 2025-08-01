@@ -18,6 +18,13 @@ class InquiryCheckout
     static #SEND_INQUIRY = "SendInquiry";
     static #FINISH_INQUIRY = "FinishInquiry";
     static #IS_SUBJECT_IN_CHECKOUT = "IsSubjectInCheckout";
+    static #GET_CHECKOUT_SUBJECTS_COUNT = "GetCheckoutSubjectsCount";
+
+    static async getCheckoutSubjectsCount()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_CHECKOUT_SUBJECTS_COUNT);
+        return res;
+    }
 
     static async isSubjectInCheckout(subjectId)
     {
