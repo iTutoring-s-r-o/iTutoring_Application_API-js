@@ -19,6 +19,16 @@ class InquiryCheckout
     static #FINISH_INQUIRY = "FinishInquiry";
     static #IS_SUBJECT_IN_CHECKOUT = "IsSubjectInCheckout";
     static #GET_CHECKOUT_SUBJECTS_COUNT = "GetCheckoutSubjectsCount";
+    static #FINISH_MULTIPLE_INQUIRIES = "FinishMultipleInquiries";
+
+    static async finishMultipleInquiries(inquiryIds, additionalInfo)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#FINISH_MULTIPLE_INQUIRIES, {
+            'inquiryIds': inquiryIds,
+            'additionalInfo': JSON.stringify(additionalInfo)
+        });
+        return res;
+    }
 
     static async getCheckoutSubjectsCount()
     {
