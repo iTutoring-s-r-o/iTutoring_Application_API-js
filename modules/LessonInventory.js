@@ -5,6 +5,8 @@
  *
  */
 
+import APIController from "../apiController";
+
 class LessonInventory  
 {
     static #MODULE = "LessonInventory";
