@@ -16,10 +16,15 @@ class LessonInventory
     static #GET_SUBJECT_NAME = "GetSubjectName";
     static #SEARCH = "Search";
 
-    static async getAvailableSubjects() 
+    static async getAvailableSubjects(category = 'ANY', max = -1, offset = 0, filter = []) 
     {
-        var subjects = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_SUBJECTS);
-        return JSON.parse(subjects);
+        var subjects = await APIController.Get(this.#MODULE, this.#GET_AVAILABLE_SUBJECTS, {
+            'category': category,
+            'max': max,
+            'offset': offset,
+            'filter': JSON.stringify(filter)
+        });
+        return subjects;
     }
 
     static async getSubject(id)
@@ -27,7 +32,7 @@ class LessonInventory
         var subject = await APIController.Get(this.#MODULE, this.#GET_SUBJECT, {
             'id': id
         });
-        return JSON.parse(subject);
+        return subject;
     }
 
     static async getSubjectName(id)
@@ -35,7 +40,7 @@ class LessonInventory
         var name = await APIController.Get(this.#MODULE, this.#GET_SUBJECT_NAME, {
             'id': id
         });
-        return JSON.parse(name);
+        return name;
     }
 
     static async search(query) 
@@ -43,7 +48,7 @@ class LessonInventory
         var subjects = await APIController.Get(this.#MODULE, this.#SEARCH, {
             'query': query
         });
-        return JSON.parse(subjects);
+        return subjects;
     }
 }
 
