@@ -261,6 +261,7 @@ class APIController
             const args = APIController.GetArgsFromArray(data);
 
             const request = new XMLHttpRequest();
+            request.withCredentials = true;
             request.open("POST", APIController.REST_URL() + module + "/" + method, true);
 
             request.onreadystatechange = function ()
