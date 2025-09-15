@@ -19,6 +19,7 @@ class MarketplaceController
     static #SEARCH = "Search";
     static #GET_PRODUCT_PAGE = "GetProductPage";
     static #GET_ORDER_DETAIL = "GetOrderDetail";
+    static #GET_INQUIRY_ACCEPT_PAGE = "GetInquiryAcceptPage";
 
     static async getOrderPage(orderId)
     {
@@ -88,6 +89,15 @@ class MarketplaceController
     {
         var res = await APIController.Get(this.#MODULE, this.#SEARCH, {
             'query': query
+        });
+        return JSON.parse(res);
+    }
+
+    static async getInquiryAcceptPage(inquiryId, selectedOnly = false)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_ACCEPT_PAGE, {
+            'inquiryId': inquiryId,
+            'selectedOnly': selectedOnly
         });
         return JSON.parse(res);
     }

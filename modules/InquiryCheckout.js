@@ -21,6 +21,9 @@ class InquiryCheckout
     static #GET_CHECKOUT_SUBJECTS_COUNT = "GetCheckoutSubjectsCount";
     static #FINISH_MULTIPLE_INQUIRIES = "FinishMultipleInquiries";
     static #IS_INQUIRY_FINISHED = "IsInquiryFinished";
+    static #SELECT_OFFER = "SelectOffer";
+    static #GET_SELECTED_OFFER = "GetSelectedOffer";
+    static #AGREE_OFFER = "AgreeOffer";
 
     static async isInquiryFinished(inquiryId)
     {
@@ -94,6 +97,30 @@ class InquiryCheckout
         var res = await APIController.Post(this.#MODULE, this.#FINISH_INQUIRY, {
             'inquiryId': inquiryId,
             'additionalInfo': JSON.stringify(additionalInfo)
+        });
+        return res;
+    }
+
+    static async selectOffer(offerId, lessonLength)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#SELECT_OFFER, {
+            'offerId': offerId,
+            'lessonLength': lessonLength
+        });
+        return res;
+    }
+
+    static async getSelectedOffer()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_SELECTED_OFFER);
+    }
+
+    static async agreeOffer(billingInfo, infoForLector, lecturePackageId = null)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#AGREE_OFFER, {
+            'billingInfo': billingInfo,
+            'infoForLector': infoForLector,
+            'lecturePackageId': lecturePackageId
         });
         return res;
     }
