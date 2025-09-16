@@ -17,6 +17,7 @@ class InquiryAdditionalInfo
      * Json string
      */
     Availability = "";
+    Place = "";
 }
 
 export default InquiryAdditionalInfo;
