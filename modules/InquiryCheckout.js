@@ -24,6 +24,15 @@ class InquiryCheckout
     static #SELECT_OFFER = "SelectOffer";
     static #GET_SELECTED_OFFER = "GetSelectedOffer";
     static #AGREE_OFFER = "AgreeOffer";
+    static #GET_INQUIRY_TYPE = "GetInquiryType";
+
+    static async getInquiryType(inquiryId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_TYPE, {
+            'inquiryId': inquiryId
+        });
+        return res;
+    }
 
     static async isInquiryFinished(inquiryId)
     {
