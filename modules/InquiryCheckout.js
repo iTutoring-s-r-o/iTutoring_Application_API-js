@@ -118,7 +118,7 @@ class InquiryCheckout
     static async agreeOffer(billingInfo, infoForLector, lecturePackageId = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#AGREE_OFFER, {
-            'billingInfo': billingInfo,
+            'billingInfo': JSON.stringify(billingInfo),
             'infoForLector': infoForLector,
             'lecturePackageId': lecturePackageId
         });
