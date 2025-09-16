@@ -101,23 +101,28 @@ class InquiryCheckout
         return res;
     }
 
-    static async selectOffer(offerId, lessonLength)
+    static async selectOffer(inquiryId, offerId, lessonLength)
     {
         var res = await APIController.Post(this.#MODULE, this.#SELECT_OFFER, {
+            'inquiryId': inquiryId,
             'offerId': offerId,
             'lessonLength': lessonLength
         });
         return res;
     }
 
-    static async getSelectedOffer()
+    static async getSelectedOffer(inquiryId)
     {
-        var res = await APIController.Get(this.#MODULE, this.#GET_SELECTED_OFFER);
+        var res = await APIController.Get(this.#MODULE, this.#GET_SELECTED_OFFER, {
+            'inquiryId': inquiryId
+        });
+        return res;
     }
 
-    static async agreeOffer(billingInfo, infoForLector, lecturePackageId = null)
+    static async agreeOffer(inquiryId, billingInfo, infoForLector, lecturePackageId = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#AGREE_OFFER, {
+            'inquiryId': inquiryId,
             'billingInfo': JSON.stringify(billingInfo),
             'infoForLector': infoForLector,
             'lecturePackageId': lecturePackageId
