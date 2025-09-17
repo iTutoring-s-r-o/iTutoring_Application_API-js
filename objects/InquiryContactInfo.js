@@ -12,6 +12,7 @@ class InquiryContactInfo
     Email = "";
     Phone = "";
     PlaceId = "online";
+    PlaceAdress = "";
 }
 
 export default InquiryContactInfo;
