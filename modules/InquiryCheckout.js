@@ -101,11 +101,12 @@ class InquiryCheckout
         return res;
     }
 
-    static async finishInquiry(inquiryId, additionalInfo)
+    static async finishInquiry(inquiryId, additionalInfo, silent = false)
     {
         var res = await APIController.Post(this.#MODULE, this.#FINISH_INQUIRY, {
             'inquiryId': inquiryId,
-            'additionalInfo': JSON.stringify(additionalInfo)
+            'additionalInfo': JSON.stringify(additionalInfo),
+            'silent': silent
         });
         return res;
     }
