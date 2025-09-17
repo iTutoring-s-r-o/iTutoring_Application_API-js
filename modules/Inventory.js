@@ -16,6 +16,16 @@ class Inventory
     static #GET_AVAILABLE_ITEMS = "GetAvailableItems";
     static #SALE_COUPON_EXISTS = "SaleCouponExists";
     static #SEARCH = "Search";
+    static #GET_ITEM = "GetItem";
+
+    static async getItem(id)
+    {
+        var item = await APIController.Get(this.#MODULE, this.#GET_ITEM, {
+            'id': id,
+        });
+
+        return item;
+    }
 
     static async saleCouponExists(code)
     {
