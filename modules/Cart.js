@@ -14,6 +14,14 @@ class Cart
     static #GET_SALE_AMMOUNTS = "GetSaleAmounts";
     static #GET_ITEMS_COUNT = "GetItemsCount";
     static #REMOVE_ITEM = "RemoveItem";
+    static #GET_ORDER_REQUIREMENTS = "GetOrderRequirements";
+
+    static async getOrderRequirements()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_ORDER_REQUIREMENTS);
+        return res;
+    }
+
 
     static async addItem(itemInstanceId)
     {

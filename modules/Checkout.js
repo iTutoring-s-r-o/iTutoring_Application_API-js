@@ -17,6 +17,13 @@ class Checkout
     static #INITIATE_PURCHASE = "InitiatePurchase";
     static #GET_TRANSACTION_STATUS = "GetTransactionStatus";
     static #UPDATE_PAYMENT_STATUS_EXTERNAL = "UpdatePaymentStatusExternal";
+    static #GET_BILLING_INFO = "GetBillingInfo";
+
+    static async getBillingInfo()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_BILLING_INFO);
+        return res;
+    }
 
     static async getAvailableStates()
     {
