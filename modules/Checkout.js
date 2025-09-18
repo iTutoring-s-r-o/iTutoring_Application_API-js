@@ -18,6 +18,15 @@ class Checkout
     static #GET_TRANSACTION_STATUS = "GetTransactionStatus";
     static #UPDATE_PAYMENT_STATUS_EXTERNAL = "UpdatePaymentStatusExternal";
     static #GET_BILLING_INFO = "GetBillingInfo";
+    static #CONVERT_ORDER_VARIABLE_SYMBOL_TO_ID = "ConvertOrderVariableSymbolToId";
+
+    static async convertOrderVariableSymbolToId(variableSymbol)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#CONVERT_ORDER_VARIABLE_SYMBOL_TO_ID, {
+            "variableSymbol": variableSymbol
+        });
+        return res;
+    }
 
     static async getBillingInfo()
     {
