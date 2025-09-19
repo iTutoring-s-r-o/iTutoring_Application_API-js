@@ -19,6 +19,15 @@ class Checkout
     static #UPDATE_PAYMENT_STATUS_EXTERNAL = "UpdatePaymentStatusExternal";
     static #GET_BILLING_INFO = "GetBillingInfo";
     static #CONVERT_ORDER_VARIABLE_SYMBOL_TO_ID = "ConvertOrderVariableSymbolToId";
+    static #CONVERT_TRANSACTION_ID_TO_ORDER_ID = "ConvertTransactionIdToOrderId";
+
+    static async convertTransactionIdToOrderId(transactionId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#CONVERT_TRANSACTION_ID_TO_ORDER_ID, {
+            "transactionId": transactionId
+        });
+        return res;
+    }
 
     static async convertOrderVariableSymbolToId(variableSymbol)
     {
@@ -49,10 +58,11 @@ class Checkout
         return res;
     }
 
-    static async initiatePurchase(orderId)
+    static async initiatePurchase(orderId, customCallbackUrl = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#INITIATE_PURCHASE, {
-            "orderId": orderId
+            "orderId": orderId,
+            "customCallbackUrl": customCallbackUrl
         });
         return res;
     }
