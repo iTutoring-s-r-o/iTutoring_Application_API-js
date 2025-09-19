@@ -21,6 +21,17 @@ class MarketplaceController
     static #GET_ORDER_DETAIL = "GetOrderDetail";
     static #GET_INQUIRY_ACCEPT_PAGE = "GetInquiryAcceptPage";
     static #GET_LECTURE_PACKAGE_SELECT_PAGE = "GetLecturePackageSelectPage";
+    static $GET_OFFER_STATUS_PAGE = "GetOfferStatusPage";
+
+    static async getOfferStatusPage(inquiryId, orderId = null)
+    {
+        var res = await APIController.Get(this.#MODULE, this.$GET_OFFER_STATUS_PAGE, {
+            'inquiryId': inquiryId,
+            'orderId': orderId
+        });
+
+        return JSON.parse(res);
+    }
 
     static async getLecturePackageSelectPage(customerId, loginToken = '', len = null, type = null, count = null)
     {
