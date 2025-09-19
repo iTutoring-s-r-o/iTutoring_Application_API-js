@@ -51,6 +51,16 @@ class Models
     static #GET_LECTORS_FOR_INQUIRY = 'GetLectorsForInquiry';
     static #GENERATE_LECTURE_REPORT = 'GenerateLectureReport';
     static #GET_LECTURE_REPORT = 'GetLectureReport';
+    static #SEND_INQUIRY_ACCEPT_LINK = 'SendInquiryAcceptLink';
+
+    static async sendInquiryAcceptLink(inquiryId)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#SEND_INQUIRY_ACCEPT_LINK, {
+            'inquiryId': inquiryId,
+        });
+
+        return res;
+    }
 
     static async getLectureReport(id)
     {
