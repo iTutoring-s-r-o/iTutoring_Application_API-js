@@ -56,7 +56,7 @@ class Models
     static async sendInquiryAcceptLink(inquiryId)
     {
         var res = await APIController.Post(this.#MODULE, this.#SEND_INQUIRY_ACCEPT_LINK, {
-            'inquiryId': inquiryId,
+            'id': inquiryId,
         });
 
         return res;
