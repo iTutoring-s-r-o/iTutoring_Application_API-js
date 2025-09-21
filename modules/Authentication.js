@@ -20,6 +20,29 @@ class Authentication
     static #GET_USER_INFO = "GetUserInfo";
     static #SIGN_OUT = "SignOut";
     static #SUPER_LOGIN = "SuperLogin";
+    static #OTP_LOGIN = "OTPLogin";
+    static #VALIDATE_OTP = "ValidateOTP";
+
+    static async OTPLogin(email, type)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#OTP_LOGIN, {
+            "email": email,
+            "type": type,
+        });
+
+        return res;
+    }
+
+    static async ValidateOTP(email, code, type)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#VALIDATE_OTP, {
+            "email": email,
+            "code": code,
+            "type": type,
+        });
+
+        return res;
+    }
 
     static async SuperLogin(email, type)
     {
