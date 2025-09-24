@@ -16,8 +16,6 @@ import CookiesManager from "./CookiesManager";
 
 import CustomerAuth from "./modules/CustomerAuth";
 import CustomerPortal from "./modules/CustomerPortal";
-import Payments from "./modules/Payments";
-import ReservationSystem from "./modules/ReservationSystem";
 import SubjectManager from "./modules/SubjectManager";
 import TeacherAuth from "./modules/TeacherAuth";
 import TeacherProfiles from "./modules/TeacherProfiles";
@@ -73,8 +71,6 @@ export
 
     CustomerAuth,
     CustomerPortal,
-    Payments,
-    ReservationSystem,
     SubjectManager,
     TeacherAuth,
     TeacherProfiles,
