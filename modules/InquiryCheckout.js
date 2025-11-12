@@ -25,6 +25,15 @@ class InquiryCheckout
     static #GET_SELECTED_OFFER = "GetSelectedOffer";
     static #AGREE_OFFER = "AgreeOffer";
     static #GET_INQUIRY_TYPE = "GetInquiryType";
+    static #SEND_PLAIN_INQUIRY = "SendPlainInquiry";
+
+    static async sendPlainInquiry(inquiryInfo = new PlainInquiryInfo())
+    {
+        var res = await APIController.Post(this.#MODULE, this.#SEND_PLAIN_INQUIRY, {
+            'inquiryInfo': JSON.stringify(inquiryInfo)
+        });
+        return res;
+    }
 
     static async getInquiryType(inquiryId)
     {

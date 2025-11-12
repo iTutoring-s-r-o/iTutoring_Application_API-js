@@ -53,7 +53,7 @@ class Cart
             "code": code
         });
 
-        return res;
+        return JSON.parse(res);
     }
 
     static async getAppliedSaleCoupons()

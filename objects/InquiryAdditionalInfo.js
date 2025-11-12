@@ -17,6 +17,7 @@ class InquiryAdditionalInfo
      * Json string
      */
     Availability = "";
+    StartTime = -1;
 }
 
 export default InquiryAdditionalInfo;

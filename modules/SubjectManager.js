@@ -29,6 +29,10 @@ class SubjectManager
     static #SUBJECTS_CACHE_KEY = "json_subjects_c_k";
     static #COURSES_CACHE_KEY = "json_courses_c_k";
 
+    /**
+     * @deprecated
+     * @returns 
+     */
     static async getAllAvailableLocations()
     {
         var data = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_LOCATIONS, {}, true);
@@ -37,7 +41,7 @@ class SubjectManager
     }
 
     /**
-     * 
+     * @deprecated
      * @returns Array (Subject[id]) of all available subjects as array of Subject objects. Key is id of subject.
      */
     static async GetAllAvailableSubjects()

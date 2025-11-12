@@ -50,6 +50,9 @@ import Inventory from "./modules/Inventory";
 import BillingInfo from "./objects/billingInfo";
 import InquiryContactInfo from "./objects/InquiryContactInfo";
 import InquiryAdditionalInfo from "./objects/InquiryAdditionalInfo";
+import PlainInquiryInfo from "./objects/PlainInquiryInfo";
+
+import { InitializeDebugConsole } from "./dist/debugConsole";
 
 import
 {
@@ -66,6 +69,8 @@ export
 {
     APIController,
     CookiesManager,
+
+    InitializeDebugConsole,
 
     CustomerAuth,
     CustomerPortal,
@@ -105,6 +110,7 @@ export
     BillingInfo,
     InquiryContactInfo,
     InquiryAdditionalInfo,
+    PlainInquiryInfo,
 
     BookReturn,
     AuthResult,
@@ -114,3 +120,5 @@ export
     R_KEYs,
     AuthType
 }
+
+

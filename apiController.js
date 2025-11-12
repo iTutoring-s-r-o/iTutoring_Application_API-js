@@ -170,6 +170,11 @@ class APIController
 
             return (JSON.stringify(error));
         }
+
+        if (json.code === 422)
+        {
+            return ({ "form_errors": json.form_errors });
+        }
     }
 
 

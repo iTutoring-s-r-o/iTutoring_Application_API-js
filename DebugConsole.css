@@ -1,0 +1,89 @@
+#debug-console {
+    position: fixed;
+    cursor: grab;
+    z-index: 1000;
+    top: 0;
+    border: none;
+}
+
+#debug-console:active {
+    opacity: 0.6;
+}
+
+#debug-console:active iframe {
+    pointer-events: none;
+}
+
+#debug-console iframe {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    animation: showUp 0.3s ease-in-out;
+}
+
+#debug-console>div {
+    background-color: #282e35;
+    user-select: none;
+    height: 30px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    animation: showUp 0.3s ease-in-out;
+}
+
+.debug-console-close {
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    background-color: #ff5f56;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.debug-console-minimize {
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    background-color: #ffbd2e;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.debug-console-close:hover {
+    background-color: #ff3b30;
+}
+
+#debug-console-icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: #282e35;
+    border-radius: 50% !important;
+    color: white;
+    padding: 0;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+#debug-console-icon:hover{
+    border-radius: 10%;
+}
+
+
+@keyframes showUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

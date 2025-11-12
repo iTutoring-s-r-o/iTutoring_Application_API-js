@@ -49,11 +49,12 @@ class Checkout
         return res;
     }
 
-    static async placeOrder(billingInfo, customerId = null)
+    static async placeOrder(billingInfo, customerId = null, note = "")
     {
         var res = await APIController.Post(this.#MODULE, this.#PLACE_ORDER, {
             "billingInfo": JSON.stringify(billingInfo),
-            "customerId": customerId
+            "customerId": customerId,
+            "note": note
         });
         return res;
     }
