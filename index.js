@@ -30,6 +30,8 @@ import Cart from "./modules/Cart";
 import Checkout from "./modules/Checkout";
 import InquiryCheckout from "./modules/InquiryCheckout";
 import DbTags from "./modules/DbTags";
+import ActiveTraining from "./modules/ActiveTraining";
+import Training from "./modules/Training";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -98,6 +100,8 @@ export
     Checkout,
     InquiryCheckout,
     DbTags,
+    ActiveTraining,
+    Training,
 
     Course,
     CourseReservation,
