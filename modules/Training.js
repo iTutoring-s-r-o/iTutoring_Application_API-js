@@ -20,6 +20,13 @@ class Training
     static #GET_ACTIVE_TRAINING = "GetActiveTraining";
     static #GET_TRAINING_RESULT = "GetTrainingResult";
     static #IS_TRAINING_ASSIGNED_TO_LECTOR = "IsTrainingAssignedToLector";
+    static #GET_ALL_AVAILABLE_TRAININGS = "GetAllAvailableTrainings";
+
+    static async getAllAvailableTrainings()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_ALL_AVAILABLE_TRAININGS);
+        return res;
+    }
 
     static async isTrainingAssignedToLector(trainingId)
     {
