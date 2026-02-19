@@ -19,6 +19,15 @@ class Training
     static #START_TRAINING = "StartTraining";
     static #GET_ACTIVE_TRAINING = "GetActiveTraining";
     static #GET_TRAINING_RESULT = "GetTrainingResult";
+    static #IS_TRAINING_ASSIGNED_TO_LECTOR = "IsTrainingAssignedToLector";
+
+    static async isTrainingAssignedToLector(trainingId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#IS_TRAINING_ASSIGNED_TO_LECTOR, {
+            'trainingId': trainingId
+        });
+        return res;
+    }
 
     static async assignTraining(trainingId, lectorId)
     {
@@ -51,7 +60,7 @@ class Training
         var res = await APIController.Get(this.#MODULE, this.#GET_TRAINING_DETAILS, {
             'trainingId': trainingId
         });
-        return res;
+        return JSON.parse(res);
     }
 
     static async startTraining(trainingId)
@@ -65,7 +74,7 @@ class Training
     static async getActiveTraining()
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_ACTIVE_TRAINING);
-        return res;
+        return JSON.parse(res);
     }
 
     static async getTrainingResult(trainingId)

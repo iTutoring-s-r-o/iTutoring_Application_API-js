@@ -19,6 +19,14 @@ class ActiveTraining
     static #COMPLETE = "Complete";
     static #END_TRAINING = "EndTraining";
     static #ACK = "Ack";
+    static #GET_PROGRESS = "GetProgress";
+
+
+    static async getProgress()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_PROGRESS);
+        return res;
+    }
 
     static async getCurrentStep()
     {
