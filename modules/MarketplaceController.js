@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 iTutoring s.r.o.
+ * Copyright (C) 2026 iTutoring s.r.o.
  * All rights reserved.
  *
  *
@@ -16,12 +16,22 @@ class MarketplaceController
     static #GET_PZK = "GetPzk";
     static #GET_VS_EXAMS = "GetVsExams";
     static #GET_KROUZKY = "GetKrouzky";
+    static #GET_TABORY = "GetTabory";
     static #SEARCH = "Search";
     static #GET_PRODUCT_PAGE = "GetProductPage";
     static #GET_ORDER_DETAIL = "GetOrderDetail";
     static #GET_INQUIRY_ACCEPT_PAGE = "GetInquiryAcceptPage";
     static #GET_LECTURE_PACKAGE_SELECT_PAGE = "GetLecturePackageSelectPage";
     static $GET_OFFER_STATUS_PAGE = "GetOfferStatusPage";
+
+    static async getTabory(place = null, turnus = -1)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_TABORY, {
+            'place': place,
+            'turnus': turnus
+        });
+        return JSON.parse(res);
+    }
 
     static async getOfferStatusPage(inquiryId, orderId = null)
     {
