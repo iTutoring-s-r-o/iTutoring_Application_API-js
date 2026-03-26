@@ -63,11 +63,12 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async getProductPage(sku, instanceId = null)
+    static async getProductPage(sku, instanceId = null, similarTemplatesOnly = false)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_PRODUCT_PAGE, {
             'sku': sku,
-            'instanceId': instanceId
+            'instanceId': instanceId,
+            'similarTemplatesOnly': similarTemplatesOnly
         });
         return JSON.parse(res);
     }
