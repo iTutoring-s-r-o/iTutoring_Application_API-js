@@ -24,7 +24,7 @@ class MarketplaceController
     static #GET_LECTURE_PACKAGE_SELECT_PAGE = "GetLecturePackageSelectPage";
     static $GET_OFFER_STATUS_PAGE = "GetOfferStatusPage";
 
-    static async getTabory(place = null, turnus = -1)
+    static async getTabory(place = null, turnus = null)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_TABORY, {
             'place': place,
