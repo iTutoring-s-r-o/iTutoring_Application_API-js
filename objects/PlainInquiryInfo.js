@@ -12,4 +12,5 @@ export default class PlainInquiryInfo
     Email = "";
     Phone = ""
     Message = "";
+    GdprConsent = false;
 }
