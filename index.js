@@ -54,6 +54,7 @@ import BillingInfo from "./objects/billingInfo";
 import InquiryContactInfo from "./objects/InquiryContactInfo";
 import InquiryAdditionalInfo from "./objects/InquiryAdditionalInfo";
 import PlainInquiryInfo from "./objects/PlainInquiryInfo";
+import RegistrationForm from "./objects/RegistrationForm";
 
 import { InitializeDebugConsole } from "./dist/debugConsole";
 
@@ -117,7 +118,7 @@ export
     InquiryContactInfo,
     InquiryAdditionalInfo,
     PlainInquiryInfo,
-
+    RegistrationForm,
     BookReturn,
     AuthResult,
     PaymentType,

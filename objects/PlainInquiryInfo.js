@@ -13,4 +13,5 @@ export default class PlainInquiryInfo
     Phone = ""
     Message = "";
     GdprConsent = false;
+    MarketingConsent = true;
 }

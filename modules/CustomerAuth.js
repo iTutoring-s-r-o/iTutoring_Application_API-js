@@ -6,6 +6,7 @@
  */
 
 
+import RegistrationForm from "../objects/RegistrationForm";
 import APIController from "./../apiController";
 
 class CustomerAuth
@@ -17,8 +18,17 @@ class CustomerAuth
 
     // All method names
     static #SIGN_IN = "SignIn";
+    static $REGISTER = "Register";
     static #RESEND_CONFIRMATION_EMAIL = 'ResendConfirmationEmail';
     static #REQUEST_PASSWORD_CHANGE = 'RequestPasswordChange';
+
+    static async Register(registrationForm = new RegistrationForm())
+    {
+        var result = await APIController.Post(this.#MODULE, this.$REGISTER, {
+            'form': JSON.stringify(registrationForm)
+        });
+        return result;
+    }
 
     static async RequestPasswordChange(email)
     {
@@ -43,6 +53,7 @@ class CustomerAuth
      * @param {*} email 
      * @param {*} pass 
      * @returns Int (AuthResult)
+     * @deprecated Use Register instead
      */
     static async SignIn(email, pass)
     {
