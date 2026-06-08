@@ -10,6 +10,7 @@
 import CookiesManager from "./CookiesManager";
 import APICache from "./cache";
 import { R_KEYs } from "./objects/Enums";
+import ApiFile from "./objects/ApiFile";
 
 /**
  * Main class for communicating with our backend REST api.
