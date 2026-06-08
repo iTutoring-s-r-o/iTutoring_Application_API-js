@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2024 iTutoring s.r.o.
- * All rights reserved.
+ * Copyright (c) 2026 iTutoring s.r.o.
  *
- 
+ * This source code is proprietary and confidential.
+ * Unauthorized copying, distribution, or disclosure is prohibited.
  *
  */
 
@@ -35,6 +35,7 @@ import InquiryCheckout from "./modules/InquiryCheckout";
 import DbTags from "./modules/DbTags";
 import ActiveTraining from "./modules/ActiveTraining";
 import Training from "./modules/Training";
+import Hr from "./modules/Hr";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -58,6 +59,7 @@ import InquiryAdditionalInfo from "./objects/InquiryAdditionalInfo";
 import PlainInquiryInfo from "./objects/PlainInquiryInfo";
 import RegistrationForm from "./objects/RegistrationForm";
 import ApiFile from "./objects/ApiFile";
+import ApplicationInfo from "./objects/ApplicationInfo";
 
 import { InitializeDebugConsole } from "./dist/debugConsole";
 
@@ -106,6 +108,7 @@ export
     DbTags,
     ActiveTraining,
     Training,
+    Hr,
 
     Course,
     CourseReservation,
@@ -123,6 +126,7 @@ export
     PlainInquiryInfo,
     RegistrationForm,
     ApiFile,
+    ApplicationInfo,
 
     BookReturn,
     AuthResult,
