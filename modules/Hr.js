@@ -19,7 +19,7 @@ class Hr
     static async getJobOffers(max = -1, offset = 0)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_JOB_OFFERS, { max: max, offset: offset });
-        return JSON.parse(res);
+        return res;
     }
 
     static async sendApplication(applicationInfo = new ApplicationInfo())
