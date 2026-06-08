@@ -57,6 +57,7 @@ import InquiryContactInfo from "./objects/InquiryContactInfo";
 import InquiryAdditionalInfo from "./objects/InquiryAdditionalInfo";
 import PlainInquiryInfo from "./objects/PlainInquiryInfo";
 import RegistrationForm from "./objects/RegistrationForm";
+import ApiFile from "./objects/ApiFile";
 
 import { InitializeDebugConsole } from "./dist/debugConsole";
 
@@ -121,6 +122,7 @@ export
     InquiryAdditionalInfo,
     PlainInquiryInfo,
     RegistrationForm,
+    ApiFile,
 
     BookReturn,
     AuthResult,
