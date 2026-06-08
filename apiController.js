@@ -297,7 +297,7 @@ class APIController
     {
         let formData = new FormData();
         // Extract ApiFiles from data and add them to formData
-        const files = this.GetApiFileFromObject(data);
+        const files = this.ExtractApiFileFromObject(data);
         Object.entries(files).forEach(([key, value]) =>
         {
             formData.append(key, value);
@@ -308,11 +308,10 @@ class APIController
         {
             if (typeof value === "object" && !(value instanceof File) && !(value instanceof ApiFile))
             {
-                const files = this.GetApiFileFromObject(value);
+                const files = this.ExtractApiFileFromObject(value);
                 Object.entries(files).forEach(([fKey, fValue]) =>
                 {
                     formData.append(fKey, fValue);
-                    delete value[fKey];
                 });
 
                 let jsonVal = JSON.stringify(value);
@@ -323,14 +322,27 @@ class APIController
         return formData;
     }
 
-    static GetApiFileFromObject(data)
+    /**
+     * Will remove original ApiFile objects from data and return them as key.
+     * @param {*} data 
+     * @returns 
+     */
+    static ExtractApiFileFromObject(data)
     {
         let fileAttributes = {};
         Object.entries(data).forEach(([key, value]) =>
         {
             if (typeof value === "object" && value instanceof ApiFile)
             {
-                fileAttributes[key] = value.File;
+                let index = 0;
+                var file = value.File
+                while (file != null)
+                {
+                    fileAttributes[key + "_" + index] = file;
+                    file = file.next;
+                    index++;
+                }
+                delete data[key];
             }
         });
 

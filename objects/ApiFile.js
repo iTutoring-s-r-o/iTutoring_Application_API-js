@@ -18,4 +18,8 @@ export default class ApiFile
      * @type {File}
      */
     File;
+    /**
+     * Linked list, next file or null
+     */
+    next = null;
 }
