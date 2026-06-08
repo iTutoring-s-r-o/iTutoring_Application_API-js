@@ -6,6 +6,7 @@
  */
 
 import APIController from "../apiController";
+import PlainInquiryInfo from "../objects/PlainInquiryInfo";
 
 class InquiryCheckout
 {

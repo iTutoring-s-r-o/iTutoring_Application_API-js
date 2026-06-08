@@ -239,10 +239,9 @@ class APIController
      * @param module "Name of API module"
      * @param method "Name of API method "
      * @param data "data must be as array - key, value pair. They'll be passed into the request"
-     * @param file
      * @returns "Response from server"
      */
-    static async Post(module, method, data, file = null, useCache = false)
+    static async Post(module, method, data, useCache = false)
     {
         if (useCache && APICache.IsCached(module + method))
         {
@@ -254,16 +253,7 @@ class APIController
 
         return new Promise(resolve =>
         {
-            let formData = new FormData();
-            if (file != null)
-            {
-                formData = new FormData();
-                formData.append("file", file);
-
-
-            }
-
-            const args = APIController.GetArgsFromArray(data);
+            let formData = this.GetFormDataFromObject(data);
 
             const request = new XMLHttpRequest();
             request.withCredentials = true;
@@ -298,17 +288,52 @@ class APIController
             if (this.UserSource != null)
                 request.setRequestHeader("visitor-source", this.UserSource);
 
-            if (file != null)
+            request.send(formData);
+        });
+    }
+
+    static GetFormDataFromObject(data)
+    {
+        let formData = new FormData();
+        // Extract ApiFiles from data and add them to formData
+        const files = this.GetApiFileFromObject(data);
+        Object.entries(files).forEach(([key, value]) =>
+        {
+            formData.append(key, value);
+        });
+
+        // Search for objects and stringify them.
+        Object.entries(data).forEach(([key, value]) =>
+        {
+            if (typeof value === "object" && !(value instanceof File) && !(value instanceof ApiFile))
             {
-                console.log(formData);
-                request.send(formData);
-            }
-            else
-            {
-                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send(args);
+                const files = this.GetApiFileFromObject(value);
+                Object.entries(files).forEach(([fKey, fValue]) =>
+                {
+                    formData.append(fKey, fValue);
+                    delete value[fKey];
+                });
+
+                let jsonVal = JSON.stringify(value);
+                formData.append(key, jsonVal);
             }
         });
+
+        return formData;
+    }
+
+    static GetApiFileFromObject(data)
+    {
+        let fileAttributes = {};
+        Object.entries(data).forEach(([key, value]) =>
+        {
+            if (typeof value === "object" && value instanceof ApiFile)
+            {
+                fileAttributes[key] = value.File;
+            }
+        });
+
+        return fileAttributes;
     }
 
     static GetArgsFromArray(args)
@@ -319,6 +344,9 @@ class APIController
         {
             for (const [key, value] of Object.entries(args))
             {
+                if (typeof value === "object")
+                    value = JSON.stringify(value);
+
                 argsString += key + "=" + value + "&";
             }
         }
