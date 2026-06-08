@@ -28,8 +28,9 @@ export default class ApiFile
                 let current = this;
                 for (let i = 1; i < files.length; i++)
                 {
-                    current.next = new ApiFile(files[i]);
+                    current.next = new ApiFile(null);
                     current = current.next;
+                    current.File = files[i];
                 }
             }
         }

@@ -334,11 +334,11 @@ class APIController
         {
             if (typeof value === "object" && value instanceof ApiFile)
             {
-                let index = 0;
-                var file = value.File
+                var index = 0;
+                var file = value;
                 while (file != null)
                 {
-                    fileAttributes[key + "_" + index] = file;
+                    fileAttributes[key + "_" + index] = file.File;
                     file = file.next;
                     index++;
                 }
