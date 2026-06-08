@@ -13,6 +13,27 @@
  */
 export default class ApiFile
 {
+
+    /**
+     * 
+     * @param {FileList} files 
+     */
+    constructor(files)
+    {
+        if (files instanceof FileList)
+        {
+            if (files.length > 0)
+            {
+                this.File = files[0];
+                let current = this;
+                for (let i = 1; i < files.length; i++)
+                {
+                    current.next = new ApiFile(files[i]);
+                    current = current.next;
+                }
+            }
+        }
+    }
     /**
      * File object from input type=file
      * @type {File}
