@@ -15,6 +15,13 @@ class Hr
 
     static #GET_JOB_OFFERS = "GetJobOffers";
     static #SEND_APPLICATION = "SendApplication";
+    static #GET_JOB_OFFER_BY_ID = "GetJobOfferById";
+
+    static async getJobOfferById(id)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_JOB_OFFER_BY_ID, { id: id });
+        return res;
+    }
 
     static async getJobOffers(max = -1, offset = 0)
     {
