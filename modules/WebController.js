@@ -15,6 +15,13 @@ class WebController
     static #GET_GENERAL_PAGE_CONTENT = "GetGeneralPageContent";
     static #GET_PZK_PAGE_CONTENT = "GetPzkPage";
     static #GET_PRICING_PAGE = "GetPricingPage";
+    static #GET_JAZYKY_PAGE = "GetJazykyPage";
+
+    static async GetJazykyPageContent()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_JAZYKY_PAGE);
+        return JSON.parse(res);
+    }
 
     static async GetGeneralPageContent()
     {
