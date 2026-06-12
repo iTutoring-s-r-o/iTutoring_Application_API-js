@@ -317,6 +317,10 @@ class APIController
                 let jsonVal = JSON.stringify(value);
                 formData.append(key, jsonVal);
             }
+            else
+            {
+                formData.append(key, value);
+            }
         });
 
         return formData;
