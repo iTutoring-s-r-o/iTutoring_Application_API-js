@@ -36,6 +36,7 @@ import DbTags from "./modules/DbTags";
 import ActiveTraining from "./modules/ActiveTraining";
 import Training from "./modules/Training";
 import Hr from "./modules/Hr";
+import SaleEvents from "./modules/SaleEvents";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -109,6 +110,7 @@ export
     ActiveTraining,
     Training,
     Hr,
+    SaleEvents,
 
     Course,
     CourseReservation,

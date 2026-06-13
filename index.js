@@ -32,6 +32,7 @@ import DbTags from "./modules/DbTags";
 import ActiveTraining from "./modules/ActiveTraining";
 import Training from "./modules/Training";
 import Hr from "./modules/Hr";
+import SaleEvents from "./modules/SaleEvents";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -108,6 +109,7 @@ export
     ApiFile,
     ApplicationInfo,
     Hr,
+    SaleEvents,
 
     Course,
     CourseReservation,
