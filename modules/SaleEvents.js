@@ -13,6 +13,13 @@ class SaleEvents
     static #MODULE = "SaleEvents";
 
     static #GET_SALE_EVENTS = "GetSaleEvents";
+    static #GET_SALE_EVENT_BY_ID = "GetSaleEventById";
+
+    static async getSaleEventById(id)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_SALE_EVENT_BY_ID, { id: id });
+        return res;
+    } 
 
     static async getSaleEvents(max = -1, offset = 0)
     {
