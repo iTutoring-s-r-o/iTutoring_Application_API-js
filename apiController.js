@@ -56,25 +56,6 @@ class APIController
 
     static async CreateVisitorSession()
     {
-        var id = '';
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has("vid"))
-        {
-            if (CookiesManager.GetCookie("session_url") != null)
-                CookiesManager.RemoveCookie("session_url");
-
-            id = urlParams.get("vid");
-            const date = new Date();
-            date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
-            CookiesManager.SetCookie("session_url", id, date.toUTCString());
-        }
-        else
-        {
-            id = Date.now();
-            const date = new Date();
-            date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
-            CookiesManager.SetCookie("session", id, date.toUTCString());
-        }
         this.ReadUserSource();
 
         var rKey = await this.GetLocalRKey();
@@ -83,10 +64,9 @@ class APIController
 
     static GetVisitorSessionID()
     {
-        //console.log(CookiesManager.GetCookie("session"));
-        if (CookiesManager.GetCookie("session_url") != null)
-            return CookiesManager.GetCookie("session_url");
-        return CookiesManager.GetCookie("session");
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("vid"))
+            return urlParams.get("vid");
     }
 
     static ReadUserSource()
