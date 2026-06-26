@@ -339,7 +339,7 @@ class APIController
 
         if (args != null)
         {
-            for (const [key, value] of Object.entries(args))
+            for (let [key, value] of Object.entries(args))
             {
                 if (typeof value === "object")
                     value = JSON.stringify(value);
