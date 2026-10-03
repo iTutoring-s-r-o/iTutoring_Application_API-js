@@ -81,6 +81,7 @@ class APIController
             const source = urlParams.get("o");
             if (this.UserSource == null)
             {
+                // TODO: Dont save it here as cookie. It' maintaned by server
                 const date = new Date();
                 date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
                 CookiesManager.SetCookie("_o", source, date.toUTCString());
@@ -286,7 +287,7 @@ class APIController
         // Search for objects and stringify them.
         Object.entries(data).forEach(([key, value]) =>
         {
-            if (typeof value === "object" && !(value instanceof File) && !(value instanceof ApiFile))
+            if (typeof value === "object" && !(value instanceof File) && !(value instanceof ApiFile) && value !== null)
             {
                 const files = this.ExtractApiFileFromObject(value);
                 Object.entries(files).forEach(([fKey, fValue]) =>
