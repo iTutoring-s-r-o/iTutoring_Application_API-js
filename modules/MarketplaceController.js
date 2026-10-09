@@ -22,7 +22,23 @@ class MarketplaceController
     static #GET_ORDER_DETAIL = "GetOrderDetail";
     static #GET_INQUIRY_ACCEPT_PAGE = "GetInquiryAcceptPage";
     static #GET_LECTURE_PACKAGE_SELECT_PAGE = "GetLecturePackageSelectPage";
-    static $GET_OFFER_STATUS_PAGE = "GetOfferStatusPage";
+    static #GET_OFFER_STATUS_PAGE = "GetOfferStatusPage";
+    static #GET_MATURITA = "GetMaturita";
+    static #AUTOCOMPLETE_SEARCH = "AutocompleteSearch";
+
+    static async autocompleteSearch(query)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#AUTOCOMPLETE_SEARCH, {
+            'query': query
+        });
+        return JSON.parse(res);
+    }
+
+    static async getMaturita()
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_MATURITA);
+        return JSON.parse(res);
+    }
 
     static async getTabory(place = null, turnus = null)
     {
@@ -35,7 +51,7 @@ class MarketplaceController
 
     static async getOfferStatusPage(inquiryId, orderId = null)
     {
-        var res = await APIController.Get(this.#MODULE, this.$GET_OFFER_STATUS_PAGE, {
+        var res = await APIController.Get(this.#MODULE, this.#GET_OFFER_STATUS_PAGE, {
             'inquiryId': inquiryId,
             'orderId': orderId
         });

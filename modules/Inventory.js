@@ -17,6 +17,13 @@ class Inventory
     static #SALE_COUPON_EXISTS = "SaleCouponExists";
     static #SEARCH = "Search";
     static #GET_ITEM = "GetItem";
+    static #GET_ITEM_COUNT = "GetItemCount";
+
+    static async getItemCount() 
+    {
+        var count = await APIController.Get(this.#MODULE, this.#GET_ITEM_COUNT);
+        return count;
+    }
 
     static async getItem(id)
     {

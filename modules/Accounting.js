@@ -2,7 +2,6 @@
  * Copyright (C) 2026 iTutoring s.r.o.
  * All rights reserved.
  *
- *
  */
 
 import APIController from "../apiController";
