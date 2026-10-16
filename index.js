@@ -35,6 +35,7 @@ import Hr from "./modules/Hr";
 import SaleEvents from "./modules/SaleEvents";
 import Accounting from "./modules/Accounting";
 import WebConfig from "./modules/WebConfig";
+import Legal from "./modules/Legal";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -114,6 +115,7 @@ export
     SaleEvents,
     Accounting,
     WebConfig,
+    Legal,
 
     Course,
     CourseReservation,

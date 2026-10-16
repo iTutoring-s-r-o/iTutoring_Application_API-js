@@ -36,9 +36,11 @@ class Cart
         return res;
     }
 
-    static async getTotalPrice()
+    static async getTotalPrice(excludeVat = false)
     {
-        var res = await APIController.Get(this.#MODULE, this.#GET_TOTAL_PRICE);
+        var res = await APIController.Get(this.#MODULE, this.#GET_TOTAL_PRICE, {
+            "excludeVat": excludeVat
+        });
         return res;
     }
 
@@ -69,9 +71,11 @@ class Cart
         });
     }
 
-    static async getSaleAmounts()
+    static async getSaleAmounts(excludeVat = false)
     {
-        var res = await APIController.Get(this.#MODULE, this.#GET_SALE_AMMOUNTS);
+        var res = await APIController.Get(this.#MODULE, this.#GET_SALE_AMMOUNTS, {
+            "excludeVat": excludeVat
+        });
         return res;
     }
 
