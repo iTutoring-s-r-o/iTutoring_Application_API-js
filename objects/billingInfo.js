@@ -4,6 +4,9 @@
  *
  *
  */
+
+import Agreement from "./Agreement";
+
 class BillingInfo
 {
     FirstName = "";
@@ -19,6 +22,8 @@ class BillingInfo
      * @var {int} Country
      */
     Country = 2;
+    VopGdprConsent = new Agreement();
+    MarketingConsent = new Agreement();
 }
 
 export default BillingInfo;

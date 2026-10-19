@@ -148,7 +148,7 @@ class InquiryCheckout
         return res;
     }
 
-    static async agreeOffer(inquiryId, billingInfo, infoForLector, lecturePackageId = null)
+    static async agreeOffer(inquiryId, billingInfo, lecturePackageId = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#AGREE_OFFER, {
             'inquiryId': inquiryId,

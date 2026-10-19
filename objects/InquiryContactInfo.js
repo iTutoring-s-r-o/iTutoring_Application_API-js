@@ -5,6 +5,8 @@
  *
  */
 
+import Agreement from "./Agreement";
+
 class InquiryContactInfo
 {
     FirstName = "";
@@ -13,6 +15,8 @@ class InquiryContactInfo
     Phone = "";
     PlaceId = "online";
     PlaceAdress = "";
+    VopGdprConsent = new Agreement();
+    MarketingConsent = new Agreement();
 }
 
 export default InquiryContactInfo;

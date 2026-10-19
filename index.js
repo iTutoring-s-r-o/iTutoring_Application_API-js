@@ -61,6 +61,8 @@ import PlainInquiryInfo from "./objects/PlainInquiryInfo";
 import RegistrationForm from "./objects/RegistrationForm";
 import ApiFile from "./objects/ApiFile";
 import ApplicationInfo from "./objects/ApplicationInfo";
+import Agreement from "./objects/Agreement";
+import InquiryOfferBillingInfo from "./objects/inquiryOfferBillingInfo";
 
 import { InitializeDebugConsole } from "./dist/debugConsole";
 
@@ -116,6 +118,8 @@ export
     Accounting,
     WebConfig,
     Legal,
+    Agreement,
+    InquiryOfferBillingInfo,
 
     Course,
     CourseReservation,

@@ -25,6 +25,15 @@ class MarketplaceController
     static #GET_OFFER_STATUS_PAGE = "GetOfferStatusPage";
     static #GET_MATURITA = "GetMaturita";
     static #AUTOCOMPLETE_SEARCH = "AutocompleteSearch";
+    static #GET_INQUIRY_SUMMARY = "GetInquirySummary";
+
+    static async getInquirySummary(inquiryId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_SUMMARY, {
+            'inquiryId': inquiryId
+        });
+        return JSON.parse(res);
+    }
 
     static async autocompleteSearch(query)
     {

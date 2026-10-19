@@ -11,8 +11,14 @@ class WebConfig
     static #MODULE = "WebConfig";
 
     static #GET_MARKETPLACE_HERO = "GetMarketplaceHero";
+    static #GET_MARKETPLACE_HOME_FEED = "GetMarketplaceHomeFeed";
 
-    static async GetMarketplaceHero() 
+    static async getMarketplaceHomeFeed() 
+    {
+        return await APIController.Get(this.#MODULE, this.#GET_MARKETPLACE_HOME_FEED);
+    }
+
+    static async getMarketplaceHero() 
     {
         return await APIController.Get(this.#MODULE, this.#GET_MARKETPLACE_HERO);
     }

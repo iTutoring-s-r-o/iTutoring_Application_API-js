@@ -20,6 +20,22 @@ class Checkout
     static #GET_BILLING_INFO = "GetBillingInfo";
     static #CONVERT_ORDER_VARIABLE_SYMBOL_TO_ID = "ConvertOrderVariableSymbolToId";
     static #CONVERT_TRANSACTION_ID_TO_ORDER_ID = "ConvertTransactionIdToOrderId";
+    static #GET_ORDER_PAYMENT_DETAILS = "GetOrderPaymentDetails";
+    static #RESEND_ORDER_CONFIRMATION = "ResendOrderConfirmation";
+
+    static async resendOrderConfirmation()
+    {
+        var res = await APIController.Post(this.#MODULE, this.#RESEND_ORDER_CONFIRMATION);
+        return res;
+    }
+
+    static async getOrderPaymentDetails(orderId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_ORDER_PAYMENT_DETAILS, {
+            "orderId": orderId
+        });
+        return JSON.parse(res);
+    }
 
     static async convertTransactionIdToOrderId(transactionId)
     {
