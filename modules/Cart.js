@@ -85,10 +85,11 @@ class Cart
         return res;
     }
 
-    static async removeItem(itemInstanceId)
+    static async removeItem(itemInstanceId, all = false)
     {
         await APIController.Post(this.#MODULE, this.#REMOVE_ITEM, {
-            "itemInstanceId": itemInstanceId
+            "itemInstanceId": itemInstanceId,
+            "all": all
         });
     }
 }
