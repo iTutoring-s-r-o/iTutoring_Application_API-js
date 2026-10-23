@@ -25,10 +25,10 @@ class Filter
         return filter;
     }
     
-    static async set(name, id, value)
+    static async set(filterName, id, value)
     {
         var result = await APIController.Post(this.#MODULE, this.#SET, {
-            'name': name,
+            'filterName': filterName,
             'id': id,
             'value': value
         });
