@@ -40,6 +40,7 @@ import SaleEvents from "./modules/SaleEvents";
 import Accounting from "./modules/Accounting";
 import WebConfig from "./modules/WebConfig";
 import Legal from "./modules/Legal";
+import Filter from "./modules/Filter";
 
 import Course from "./objects/Course";
 import CourseReservation from "./objects/CourseReservation";
@@ -119,6 +120,7 @@ export
     Accounting,
     WebConfig,
     Legal,
+    Filter,
 
     Course,
     CourseReservation,

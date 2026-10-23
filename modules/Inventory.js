@@ -19,9 +19,15 @@ class Inventory
     static #GET_ITEM = "GetItem";
     static #GET_ITEM_COUNT = "GetItemCount";
 
-    static async getItemCount() 
+    static async getItemCount(category = "ANY", filter = {}, searchArchive = false) 
     {
-        var count = await APIController.Get(this.#MODULE, this.#GET_ITEM_COUNT);
+        var count = await APIController.Get(this.#MODULE, this.#GET_ITEM_COUNT,
+            {
+                'category': category,
+                'filter': JSON.stringify(filter),
+                'searchArchive': searchArchive
+            }
+        );
         return count;
     }
 

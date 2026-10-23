@@ -17,9 +17,12 @@ class LessonInventory
     static #SEARCH = "Search";
     static #GET_SUBJECT_COUNT = "GetSubjectCount";
 
-    static async getSubjectCount() 
+    static async getSubjectCount(category = 'ANY', filter = []) 
     {
-        var count = await APIController.Get(this.#MODULE, this.#GET_SUBJECT_COUNT);
+        var count = await APIController.Get(this.#MODULE, this.#GET_SUBJECT_COUNT, {
+            'category': category,
+            'filter': JSON.stringify(filter)
+        });
         return count;
     }
 
