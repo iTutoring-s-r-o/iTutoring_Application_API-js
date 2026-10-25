@@ -18,7 +18,7 @@ class Filter
 
     static async calculateDataCount(filterName)
     {
-        var filter = await APIController.Get(this.#MODULE, this.#CALCULATE_DATA_COUNT, {
+        var filter = await APIController.Post(this.#MODULE, this.#CALCULATE_DATA_COUNT, {
             'filterName': filterName
         });
 
