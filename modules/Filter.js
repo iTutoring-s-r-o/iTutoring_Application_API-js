@@ -14,6 +14,16 @@ class Filter
     static #SET = "Set";
     static #GET_OPTIONS = "GetOptions";
     static #CLEAR_FILTERS = "ClearFilters";
+    static #CALCULATE_DATA_COUNT = "CalculateDataCount";
+
+    static async calculateDataCount(filterName)
+    {
+        var filter = await APIController.Get(this.#MODULE, this.#CALCULATE_DATA_COUNT, {
+            'filterName': filterName
+        });
+
+        return filter;
+    }
 
     static async get(name, forceNew = false)
     {
