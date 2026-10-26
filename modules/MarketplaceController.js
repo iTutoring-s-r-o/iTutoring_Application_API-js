@@ -53,9 +53,11 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async getTabory(place = null, turnus = null)
+    static async getTabory(max = -1, offset = 0, place = null, turnus = null)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_TABORY, {
+            'max': max,
+            'offset': offset,
             'place': place,
             'turnus': turnus
         });
@@ -139,9 +141,11 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async getKrouzky(subcategory = null, dayIndex = null, level = null)
+    static async getKrouzky(max = -1, offset = 0, subcategory = null, dayIndex = null, level = null)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_KROUZKY, {
+            'max': max,
+            'offset': offset,
             'subcategory': subcategory,
             'dayIndex': dayIndex,
             'level': level
