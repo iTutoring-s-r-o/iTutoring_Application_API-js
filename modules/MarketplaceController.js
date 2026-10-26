@@ -43,9 +43,13 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async getMaturita()
+    static async getMaturita(max = -1, offset = 0, category = '')
     {
-        var res = await APIController.Get(this.#MODULE, this.#GET_MATURITA);
+        var res = await APIController.Get(this.#MODULE, this.#GET_MATURITA, {
+            'max': max,
+            'offset': offset,
+            'category': category
+        });
         return JSON.parse(res);
     }
 
