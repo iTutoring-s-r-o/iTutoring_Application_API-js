@@ -162,13 +162,13 @@ class MarketplaceController
         return res;
     }
 
-    static async getSearchResults(hash, max, offset, catergory = null)
+    static async getSearchResults(hash, max, offset, category = null)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_SEARCH_RESULTS, {
             'hash': hash,
             'max': max,
             'offset': offset,
-            'catergory': catergory
+            'category': category
         });
         return res;
     }
