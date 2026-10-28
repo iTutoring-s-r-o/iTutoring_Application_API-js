@@ -159,7 +159,7 @@ class MarketplaceController
         var res = await APIController.Get(this.#MODULE, this.#SEARCH, {
             'query': query,
         });
-        return JSON.parse(res);
+        return res;
     }
 
     static async getSearchResults(hash, max, offset, catergory = null)
@@ -170,7 +170,7 @@ class MarketplaceController
             'offset': offset,
             'catergory': catergory
         });
-        return JSON.parse(res);
+        return res;
     }
 
     static async getInquiryAcceptPage(inquiryId, selectedOnly = false)
