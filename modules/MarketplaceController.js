@@ -153,12 +153,13 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async search(query, max = -1, offset = 0)
+    static async search(query, max = -1, offset = 0, category = null)
     {
         var res = await APIController.Get(this.#MODULE, this.#SEARCH, {
             'query': query,
             'max': max,
-            'offset': offset
+            'offset': offset,
+            'category': category
         });
         return JSON.parse(res);
     }
