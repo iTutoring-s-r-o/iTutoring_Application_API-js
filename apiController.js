@@ -277,6 +277,8 @@ class APIController
     static GetFormDataFromObject(data)
     {
         let formData = new FormData();
+        if (data == null || data == undefined)
+            return formData;
         // Extract ApiFiles from data and add them to formData
         const files = this.ExtractApiFileFromObject(data);
         Object.entries(files).forEach(([key, value]) =>

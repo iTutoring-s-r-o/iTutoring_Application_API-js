@@ -18,7 +18,7 @@ class Legal
         var res = await APIController.Get(this.#MODULE, this.#GET_CONSENT_SNAPSHOT, {
             "consentId": consentId
         });
-        return JSON.parse(res);
+        return res;
     }
 }
 
