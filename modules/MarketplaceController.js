@@ -26,6 +26,7 @@ class MarketplaceController
     static #GET_MATURITA = "GetMaturita";
     static #AUTOCOMPLETE_SEARCH = "AutocompleteSearch";
     static #GET_INQUIRY_SUMMARY = "GetInquirySummary";
+    static #GET_SEARCH_RESULTS = "GetSearchResults";
 
     static async getInquirySummary(inquiryId)
     {
@@ -153,13 +154,21 @@ class MarketplaceController
         return JSON.parse(res);
     }
 
-    static async search(query, max = -1, offset = 0, category = null)
+    static async search(query)
     {
         var res = await APIController.Get(this.#MODULE, this.#SEARCH, {
             'query': query,
+        });
+        return JSON.parse(res);
+    }
+
+    static async getSearchResults(hash, max, offset, catergory = null)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_SEARCH_RESULTS, {
+            'hash': hash,
             'max': max,
             'offset': offset,
-            'category': category
+            'catergory': catergory
         });
         return JSON.parse(res);
     }
