@@ -22,6 +22,7 @@ class BillingInfo
      * @var {int} Country
      */
     Country = 2;
+    Note = "";
     VopGdprConsent = new Agreement();
     MarketingConsent = new Agreement();
 }

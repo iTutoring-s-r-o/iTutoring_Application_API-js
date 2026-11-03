@@ -22,10 +22,21 @@ class Checkout
     static #CONVERT_TRANSACTION_ID_TO_ORDER_ID = "ConvertTransactionIdToOrderId";
     static #GET_ORDER_PAYMENT_DETAILS = "GetOrderPaymentDetails";
     static #RESEND_ORDER_CONFIRMATION = "ResendOrderConfirmation";
+    static #RESEND_ORDER_PAYMENT_CONFIRMATION = "ResendOrderPaymentConfirmation";
 
-    static async resendOrderConfirmation()
+    static async resendOrderConfirmation(orderUuid)
     {
-        var res = await APIController.Post(this.#MODULE, this.#RESEND_ORDER_CONFIRMATION);
+        var res = await APIController.Post(this.#MODULE, this.#RESEND_ORDER_CONFIRMATION, {
+            "orderUuid": orderUuid
+        });
+        return res;
+    }
+
+    static async resendOrderPaymentConfirmation(orderUuid)
+    {
+        var res = await APIController.Post(this.#MODULE, this.#RESEND_ORDER_PAYMENT_CONFIRMATION, {
+            "orderUuid": orderUuid
+        });
         return res;
     }
 
@@ -65,20 +76,27 @@ class Checkout
         return res;
     }
 
-    static async placeOrder(billingInfo, customerId = null, note = "")
+    static async placeOrder(billingInfo, registrationForm = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#PLACE_ORDER, {
             "billingInfo": JSON.stringify(billingInfo),
-            "customerId": customerId,
-            "note": note
+            "registrationForm": JSON.stringify(registrationForm)
         });
-        return res;
+        try
+        {
+            var parsedRes = JSON.parse(res);
+            return parsedRes;
+        } catch (e)
+        {
+            return res;
+        }
+
     }
 
-    static async initiatePurchase(orderId, customCallbackUrl = null)
+    static async initiatePurchase(orderUuid, customCallbackUrl = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#INITIATE_PURCHASE, {
-            "orderId": orderId,
+            "orderUuid": orderUuid,
             "customCallbackUrl": customCallbackUrl
         });
         return res;

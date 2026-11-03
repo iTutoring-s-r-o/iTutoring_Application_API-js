@@ -5,11 +5,13 @@
  *
  */
 
+import Agreement from "./Agreement";
+
 export default class RegistrationForm
 {
     Email = "";
     Password = "";
     PasswordRepeat = "";
-    GdprConsent = false;
-    MarketingConsent = true;
+    GdprConsent = new Agreement();
+    MarketingConsent = new Agreement();
 }
