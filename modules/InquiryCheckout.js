@@ -27,13 +27,22 @@ class InquiryCheckout
     static #AGREE_OFFER = "AgreeOffer";
     static #GET_INQUIRY_TYPE = "GetInquiryType";
     static #SEND_PLAIN_INQUIRY = "SendPlainInquiry";
-    static #GET_INQUIRY_DETAILS = "GetInquiryDetails";
+    static #GET_INQUIRY_GROUP_DETAILS = "GetInquiryGroupDetails";
     static #FINISH_INQUIRY_GROUP = "FinishInquiryGroup";
-
-    static async getInquiryDetails(inquiryId)
+    static #IS_INQUIRY_GROUP_FINISHED = "IsInquiryGroupFinished";
+    
+    static async isInquiryGroupFinished(groupId)
     {
-        var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_DETAILS, {
-            'inquiryId': inquiryId
+        var res = await APIController.Get(this.#MODULE, this.#IS_INQUIRY_GROUP_FINISHED, {
+            'groupId': groupId
+        });
+        return res;
+    }
+
+    static async getInquiryGroupDetails(groupId)
+    {
+        var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_GROUP_DETAILS, {
+            'groupId': groupId
         });
         return res;
     }
@@ -62,7 +71,7 @@ class InquiryCheckout
         return res;
     }
 
-    static async FinishInquiryGroup(groupId, additionalInfo)
+    static async finishInquiryGroup(groupId, additionalInfo)
     {
         var res = await APIController.Post(this.#MODULE, this.#FINISH_INQUIRY_GROUP, {
             'groupId': groupId,
