@@ -28,6 +28,7 @@ class InquiryCheckout
     static #GET_INQUIRY_TYPE = "GetInquiryType";
     static #SEND_PLAIN_INQUIRY = "SendPlainInquiry";
     static #GET_INQUIRY_DETAILS = "GetInquiryDetails";
+    static #FINISH_INQUIRY_GROUP = "FinishInquiryGroup";
 
     static async getInquiryDetails(inquiryId)
     {
@@ -61,10 +62,10 @@ class InquiryCheckout
         return res;
     }
 
-    static async finishMultipleInquiries(inquiryIds, additionalInfo)
+    static async FinishInquiryGroup(groupId, additionalInfo)
     {
-        var res = await APIController.Post(this.#MODULE, this.#FINISH_MULTIPLE_INQUIRIES, {
-            'inquiryIds': inquiryIds,
+        var res = await APIController.Post(this.#MODULE, this.#FINISH_INQUIRY_GROUP, {
+            'groupId': groupId,
             'additionalInfo': JSON.stringify(additionalInfo)
         });
         return res;
@@ -112,12 +113,20 @@ class InquiryCheckout
         await APIController.Post(this.#MODULE, this.#CLEAR_CHECKOUT);
     }
 
-    static async sendInquiry(contactInfo)
+    static async sendInquiry(contactInfo, registrationForm = null)
     {
         var res = await APIController.Post(this.#MODULE, this.#SEND_INQUIRY, {
-            'contactInfo': JSON.stringify(contactInfo)
+            'contactInfo': JSON.stringify(contactInfo),
+            'registrationForm': JSON.stringify(registrationForm)
         });
-        return res;
+        try
+        {
+            var parsedRes = JSON.parse(res);
+            return parsedRes;
+        } catch (e)
+        {
+            return res;
+        }
     }
 
     static async finishInquiry(inquiryId, additionalInfo, silent = false)
