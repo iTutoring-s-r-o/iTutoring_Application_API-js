@@ -28,10 +28,10 @@ class MarketplaceController
     static #GET_INQUIRY_SUMMARY = "GetInquirySummary";
     static #GET_SEARCH_RESULTS = "GetSearchResults";
 
-    static async getInquirySummary(inquiryId)
+    static async getInquirySummary(groupId)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_SUMMARY, {
-            'inquiryId': inquiryId
+            'groupId': groupId
         });
         return JSON.parse(res);
     }
@@ -173,10 +173,13 @@ class MarketplaceController
         return res;
     }
 
-    static async getInquiryAcceptPage(inquiryId, selectedOnly = false)
+    static async getInquiryAcceptPage(inquiryId, month, year, lessonLength, selectedOnly = false)
     {
         var res = await APIController.Get(this.#MODULE, this.#GET_INQUIRY_ACCEPT_PAGE, {
             'inquiryId': inquiryId,
+            'month': month,
+            'year': year,
+            'lessonLength': lessonLength,
             'selectedOnly': selectedOnly
         });
         return JSON.parse(res);

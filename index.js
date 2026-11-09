@@ -64,6 +64,7 @@ import ApiFile from "./objects/ApiFile";
 import ApplicationInfo from "./objects/ApplicationInfo";
 import Agreement from "./objects/Agreement";
 import InquiryOfferBillingInfo from "./objects/inquiryOfferBillingInfo";
+import SelectedLessonDate from "./objects/SelectedLessonDate";
 
 import { InitializeDebugConsole } from "./dist/debugConsole";
 
@@ -122,6 +123,7 @@ export
     Legal,
     Agreement,
     InquiryOfferBillingInfo,
+    SelectedLessonDate,
 
     Course,
     CourseReservation,

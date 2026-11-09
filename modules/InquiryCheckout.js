@@ -7,6 +7,7 @@
 
 import APIController from "../apiController";
 import PlainInquiryInfo from "../objects/PlainInquiryInfo";
+import SelectedLessonDate from "../objects/SelectedLessonDate";
 
 class InquiryCheckout
 {
@@ -148,12 +149,11 @@ class InquiryCheckout
         return res;
     }
 
-    static async selectOffer(inquiryId, offerId, lessonLength)
+    static async selectOffer(inquiryId, selection = new SelectedLessonDate())
     {
         var res = await APIController.Post(this.#MODULE, this.#SELECT_OFFER, {
             'inquiryId': inquiryId,
-            'offerId': offerId,
-            'lessonLength': lessonLength
+            'selection': JSON.stringify(selection)
         });
         return res;
     }
@@ -171,7 +171,6 @@ class InquiryCheckout
         var res = await APIController.Post(this.#MODULE, this.#AGREE_OFFER, {
             'inquiryId': inquiryId,
             'billingInfo': JSON.stringify(billingInfo),
-            'infoForLector': infoForLector,
             'lecturePackageId': lecturePackageId
         });
         return res;

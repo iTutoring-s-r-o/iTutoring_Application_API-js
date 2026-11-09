@@ -7,17 +7,18 @@
 
 class InquiryAdditionalInfo
 {
-    StudentName = "";
-    StudentAge = 1;
-    ClassId = "";
+    StudentName;
+    StudentAge;
+    ClassId;
+    Availability = null;
+    Frequency = -1;
+    PreferedLessonLength = null;
     Gender = 2;
-    TutoringDetails = "";
-    Note = "";
-    /**
-     * Json string
-     */
-    Availability = "";
-    StartTime = -1;
+    DesiredStartDate = null;
+    Deadline = null;
+    TutoringDetails;
+    Note = '';
+
 }
 
 export default InquiryAdditionalInfo;
