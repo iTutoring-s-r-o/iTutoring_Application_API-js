@@ -31,7 +31,7 @@ class InquiryCheckout
     static #GET_INQUIRY_GROUP_DETAILS = "GetInquiryGroupDetails";
     static #FINISH_INQUIRY_GROUP = "FinishInquiryGroup";
     static #IS_INQUIRY_GROUP_FINISHED = "IsInquiryGroupFinished";
-    
+
     static async isInquiryGroupFinished(groupId)
     {
         var res = await APIController.Get(this.#MODULE, this.#IS_INQUIRY_GROUP_FINISHED, {
@@ -173,7 +173,14 @@ class InquiryCheckout
             'billingInfo': JSON.stringify(billingInfo),
             'lecturePackageId': lecturePackageId
         });
-        return res;
+        try
+        {
+            var parsedRes = JSON.parse(res);
+            return parsedRes;
+        } catch (e)
+        {
+            return res;
+        }
     }
 }
 
