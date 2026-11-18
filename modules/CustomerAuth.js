@@ -20,6 +20,7 @@ class CustomerAuth
     static #SIGN_IN = "SignIn";
     static $REGISTER = "Register";
     static #RESEND_CONFIRMATION_EMAIL = 'ResendConfirmationEmail';
+    static #SEND_ACCOUNT_CONFIRMATION_EMAIL = "SendAccountConfirmationEmail";
     static #REQUEST_PASSWORD_CHANGE = 'RequestPasswordChange';
 
     static async Register(registrationForm = new RegistrationForm())
@@ -39,9 +40,16 @@ class CustomerAuth
         return result;
     }
 
-    static async ResendConfirmationEmail(email)
+    static async ResendConfirmationEmail()
     {
-        var result = await APIController.Get(this.#MODULE, this.#RESEND_CONFIRMATION_EMAIL, {
+        var result = await APIController.Get(this.#MODULE, this.#RESEND_CONFIRMATION_EMAIL);
+
+        return result;
+    }
+
+    static async SendAccountConfirmationEmail(email)
+    {
+        var result = await APIController.Get(this.#MODULE, this.#SEND_ACCOUNT_CONFIRMATION_EMAIL, {
             'email': email
         });
 

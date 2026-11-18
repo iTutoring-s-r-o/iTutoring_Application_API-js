@@ -8,6 +8,7 @@
 
 
 import APIController from "../apiController";
+import ApiFile from "../objects/ApiFile";
 
 class TeacherProfileModule
 {
@@ -238,9 +239,9 @@ class TeacherProfileModule
         });
     }
 
-    static async uploadProfilePicture(photoFile)
+    static async uploadProfilePicture(files = new ApiFile())
     {
-        await APIController.Post(this.#MODULE, this.#UPLOAD_PROFILE_PICTURE, null, photoFile);
+        await APIController.Post(this.#MODULE, this.#UPLOAD_PROFILE_PICTURE, {'photo': files});
     }
 
     static async setOnsitePlace(places)
